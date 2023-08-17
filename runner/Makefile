@@ -42,27 +42,8 @@ FLAGS	=	-I./include			\
 COMP	=	gcc
 
 $(NAME):	$(OBJ)
-	@echo -ne $(BLUE)
-	@echo "Compilation des libs"
 	@make -C ../lib/list double
-	@echo -ne $(GREEN)
-	@echo -ne $(BOLD)
-	@echo "[\x9C]Lib compilée"
-	@echo -ne $(NORMAL)
-	@echo -ne $(BLUE)
-	@echo "Compilation de src"
-	@echo -ne $(NORMAL)
 	$(COMP) -o $(NAME) $(SRC) $(SRC_OPT) $(FLAGS)
-	@echo -ne $(GREEN)
-	@echo -ne $(BLING)
-	@echo -ne $(BOLD)
-	@echo -ne "[\x9C]Compilation réussi !"
-	@echo -ne $(NORMAL)
-	@echo -ne $(GREEN)
-	@echo -ne $(BOLD)
-	@echo -ne "\('o')/\n                         | |"
-	@echo -ne $(NORMAL)
-
 
 all:	$(NAME)
 
