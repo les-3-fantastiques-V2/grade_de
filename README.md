@@ -26,13 +26,13 @@ Construction :
 
 | Reference | Contenu | Obligatoire |
 |-|-|-|
-| {TYPE} | [Voir tableau type](#table_type) | OUI |
+| {TYPE} | [Voir tableau type](#table_type_branch) | OUI |
 | {NOM} | Nom décrivant la branche | OUI |
 
 <br>
 <br>
 
-Type<a id="table_type"></a>
+Type<a id="table_type_branch"></a>
 
 | Terme | Utilisation | Exemple |
 |-|-|-|
@@ -62,14 +62,14 @@ Construction :
 
 | Reference | Contenu | Obligatoire |
 |-|-|-|
-| {TYPE} | [Voir tableau type](#table_type) | OUI |
+| {TYPE} | [Voir tableau type](#table_type_commit) | OUI |
 | {SOMMAIRE} | Petit sommaire du commit | OUI |
 | {DESCRIPTION} | Description complète du commit | NON |
 
 <br>
 <br>
 
-Type<a id="table_type"></a>
+Type<a id="table_type_commit"></a>
 
 | Terme | Utilisation | Exemple |
 |-|-|-|
