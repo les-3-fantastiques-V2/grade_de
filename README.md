@@ -117,13 +117,14 @@ Exemple de Commits :
 
 ## FICHIER <a id="rules_file"></a>
 
-Modèle de nom des fichiers : PascalCase
-> PascalCase :
+Modèle de nom des fichiers / dossier : camelCase
+> camelCase :
 > - Pas d'espace
+> - Première lettre en minuscule
 > - Première lettre de chaque mot en majuscule
 > - Pas d'accent
 >
-> Exemple : NomDeFichier.c
+> Exemple : nomDeFichier.c
 
 Modèle de nom des fonctions : camelCase
 > camelCase :
@@ -134,6 +135,13 @@ Modèle de nom des fonctions : camelCase
 >
 > Exemple : nomDeFonction
 
+Modèle de nom des structures : PascalCase
+> PascalCase :
+> - Pas d'espace
+> - Première lettre en minuscule
+> - Pas d'accent
+>
+> Exemple : NomDeStructure
 
 
 <br>
