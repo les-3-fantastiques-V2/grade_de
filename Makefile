@@ -7,6 +7,7 @@
 
 SRC		=   $(wildcard src/loader/*.c)						\
 			$(wildcard src/games/runner/src/*.c)			\
+			$(wildcard src/games/runner/src/init/*.c)
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
 

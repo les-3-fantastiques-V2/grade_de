@@ -24,8 +24,9 @@ static char *nameTexture(char *file)
 
     while (file[i] != '.' && file[i] != '\0')
         i++;
+    if (i == 0) return NULL;
     char *name = malloc(sizeof(char) * (i + 1));
-    memset(name, 0, strlen(file) + 1);
+    memset(name, 0, i + 1);
     strncpy(name, file, i);
     return name;
 }
@@ -38,8 +39,11 @@ static void fillMap(char *path, map_t *assets)
     while ((file = readdir(dir)) != NULL) {
         if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0) {
             char *pathFile = getFilePath(path, file->d_name);
-            assets->pushFront(assets, nameTexture(file->d_name), sfTexture_createFromFile(pathFile, NULL), STR);
+            char *nameText = nameTexture(file->d_name);
+            if (nameText == NULL) continue;
+            assets->pushFront(assets, strdup(nameText), sfTexture_createFromFile(pathFile, NULL), STR);
             free(pathFile);
+            free(nameText);
         }
     }
     closedir(dir);

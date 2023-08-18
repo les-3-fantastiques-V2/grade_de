@@ -7,11 +7,43 @@
 
 #include "runner.h"
 
+static void startRunner(void)
+{
+    game_t *game = getGame();
+    fillGame(game, loadAssets("runner"));
+}
+
+static void loopRunner(void)
+{
+    game_t *game = getGame();
+    sfRenderWindow *window = game->window->window;
+
+    sfRenderWindow_setFramerateLimit(window, game->window->fps);
+    while (sfRenderWindow_isOpen(window)) {
+        pollEvent();
+        sfRenderWindow_clear(window, sfBlack);
+        drawGame();
+        sfRenderWindow_display(window);
+    }
+}
+
+static void stopRunner(void)
+{
+    game_t *game = getGame();
+
+    sfClock_destroy(game->clock);
+    sfRenderWindow_destroy(game->window->window);
+    destroyAssets(game->assets);
+    for (d_node_t *curr = game->decor.head; curr; curr = curr->next)
+        sfSprite_destroy(curr->data);
+    d_free_list(&game->decor, NULL, 0);
+    free(game->window);
+}
+
 int main(void)
 {
-    map_t *textures = loadAssets("runner");
-    for (node_t *curr = textures->head; curr != NULL; curr = curr->next)
-        printf("%s\n", curr->key);
-    destroyAssets(textures);
+    startRunner();
+    loopRunner();
+    stopRunner();
     return 0;
 }
