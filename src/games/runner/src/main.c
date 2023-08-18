@@ -7,14 +7,11 @@
 
 #include "runner.h"
 
-static int textures_loader(void)
-{
-    return 0;
-}
-
 int main(void)
 {
-    textures_loader();
-    printf("Hello, World!\n");
+    map_t *textures = loadAssets("runner");
+    for (node_t *curr = textures->head; curr != NULL; curr = curr->next)
+        printf("%s\n", curr->key);
+    destroyAssets(textures);
     return 0;
 }

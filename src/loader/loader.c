@@ -10,7 +10,7 @@
 
 static char *getPathAssets(char *game)
 {
-    char *path = malloc(sizeof(char) * (strlen(game) + strlen("src/games//assets")));
+    char *path = malloc(sizeof(char) * (strlen(game) + strlen("src/games//assets") + 1));
     memset(path, 0, strlen(game) + strlen("src/games//assets"));
     strcpy(path, "src/games/");
     strcat(path, game);
@@ -18,7 +18,7 @@ static char *getPathAssets(char *game)
     return path;
 }
 
-static char *name_texture(char *file)
+static char *nameTexture(char *file)
 {
     int i = 0;
 
@@ -30,29 +30,32 @@ static char *name_texture(char *file)
     return name;
 }
 
-static void fill_map(char *path, map_t *assets)
+static void fillMap(char *path, map_t *assets)
 {
     DIR *dir = opendir(path);
     struct dirent *file = NULL;
 
     while ((file = readdir(dir)) != NULL) {
-        if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0)
-            assets->pushFront(assets, name_texture(file->d_name), sfTexture_createFromFile(file->d_name, NULL), STR);
+        if (strcmp(file->d_name, ".") != 0 && strcmp(file->d_name, "..") != 0) {
+            char *pathFile = getFilePath(path, file->d_name);
+            assets->pushFront(assets, nameTexture(file->d_name), sfTexture_createFromFile(pathFile, NULL), STR);
+            free(pathFile);
+        }
     }
     closedir(dir);
 }
 
-map_t *load_assets(char *game)
+map_t *loadAssets(char *game)
 {
     map_t *game_assets = createMallocMap();
     char *path = getPathAssets(game);
 
-    fill_map(path, game_assets);
+    fillMap(path, game_assets);
     free(path);
     return game_assets;
 }
 
-void destroy_assets(map_t *assets)
+void destroyAssets(map_t *assets)
 {
     for (node_t *curr = assets->head; curr != NULL; curr = curr->next) {
         sfTexture_destroy(curr->data);

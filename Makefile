@@ -12,28 +12,28 @@ OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
 
 NAME	=	"runner"
 
-FLAGS	=	-I./include			\
-			-I../include		\
-			-L../lib			\
-			-llist_d			\
-			-lmap				\
-			-lcsfml-graphics	\
-			-lcsfml-system		\
-			-lcsfml-window		\
-			-Wall 				\
-			-Wextra				\
-			-Wfloat-equal 		\
-			-Wundef 			\
-			-Wcast-align		\
-			-Wshadow			\
-			-Wlogical-op		\
+FLAGS	=	-I./include							\
+			-I./src/games/runner/include		\
+			-Llib								\
+			-llist_d							\
+			-lmap								\
+			-lcsfml-graphics					\
+			-lcsfml-system						\
+			-lcsfml-window						\
+			-Wall 								\
+			-Wextra								\
+			-Wfloat-equal 						\
+			-Wundef 							\
+			-Wcast-align						\
+			-Wshadow							\
+			-Wlogical-op						\
 			-Wredundant-decls
 
 COMP	=	gcc
 
 $(NAME):	$(OBJ)
-	@make -C ../lib/list double
-	@make -C ../lib/map
+	@make -C ./lib/list double
+	@make -C ./lib/map
 	$(COMP) -o $(NAME) $(SRC) $(FLAGS)
 
 all:	$(NAME)
@@ -41,8 +41,8 @@ all:	$(NAME)
 clean:
 	@rm -rf vgcore*
 	@rm -rf $(OBJ)
-	@make -C ../lib/list fclean
-	@make -C ../lib/map fclean
+	@make -C ./lib/list fclean
+	@make -C ./lib/map fclean
 	@rm -rf object
 
 fclean: clean
