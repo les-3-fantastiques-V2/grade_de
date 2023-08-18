@@ -7,8 +7,14 @@
 
 #include "runner.h"
 
+static int textures_loader(void)
+{
+    return 0;
+}
+
 int main(void)
 {
-    printf("WIP\n");
+    textures_loader();
+    printf("Hello, World!\n");
     return 0;
 }

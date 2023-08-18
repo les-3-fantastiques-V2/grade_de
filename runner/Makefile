@@ -9,24 +9,13 @@ SRC		=   $(wildcard src/*.c)
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
 
-GREEN	=	"\033[32m"
-
-BLUE	=	"\033[34m"
-
-RED		=	"\033[31m"
-
-NORMAL	=	"\033[0m"
-
-BLING	=	"\033[5m"
-
-BOLD	=	"\033[1m"
-
 NAME	=	"runner"
 
 FLAGS	=	-I./include			\
 			-I../include		\
 			-L../lib			\
-			-llist				\
+			-llist_d			\
+			-lmap				\
 			-lcsfml-graphics	\
 			-lcsfml-system		\
 			-lcsfml-window		\
@@ -43,7 +32,8 @@ COMP	=	gcc
 
 $(NAME):	$(OBJ)
 	@make -C ../lib/list double
-	$(COMP) -o $(NAME) $(SRC) $(SRC_OPT) $(FLAGS)
+	@make -C ../lib/map
+	$(COMP) -o $(NAME) $(SRC) $(FLAGS)
 
 all:	$(NAME)
 
@@ -51,6 +41,7 @@ clean:
 	@rm -rf vgcore*
 	@rm -rf $(OBJ)
 	@make -C ../lib/list fclean
+	@make -C ../lib/map fclean
 	@rm -rf object
 
 fclean: clean

@@ -11,4 +11,7 @@
     #include <SFML/Graphics.h>
     #include <SFML/Config.h>
 
+    #include "double_list.h"
+    #include "map.h"
+
 #endif //GRADE_DE_MAIN_H
