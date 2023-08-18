@@ -8,16 +8,24 @@
 
 # SOMMAIRE
 
-[>> BRANCH](#rules_branch)
+<br>
+<br>
+
+[>> BRANCHE](#rules_branch)
 
 [>> COMMIT](#rules_commit)
+
+[>> FICHIER](#rules_file)
 
 <br>
 <br>
 
 ----
 
-## Branch <a id="rules_branch"></a>
+<br>
+<br>
+
+## Branche <a id="rules_branch"></a>
 
 Construction :
 ```
@@ -51,6 +59,8 @@ Langue : Anglais
 
 ----
 
+<br>
+<br>
 
 ## COMMITS <a id="rules_commit"></a>
 
@@ -95,6 +105,36 @@ Exemple de Commits :
 [ADD] : Project Setup
 >> Adding README and .gitignore files
 ```
+
+<br>
+<br>
+
+----
+
+<br>
+<br>
+
+
+## FICHIER <a id="rules_file"></a>
+
+Modèle de nom des fichiers : PascalCase
+> PascalCase :
+> - Pas d'espace
+> - Première lettre de chaque mot en majuscule
+> - Pas d'accent
+>
+> Exemple : NomDeFichier.c
+
+Modèle de nom des fonctions : camelCase
+> camelCase :
+> - Pas d'espace
+> - Première lettre en minuscule
+> - Première lettre de chaque mot en majuscule
+> - Pas d'accent
+>
+> Exemple : nomDeFonction
+
+
 
 <br>
 <br>
