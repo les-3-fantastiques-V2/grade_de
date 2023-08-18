@@ -5,7 +5,8 @@
 ## Makefile
 ##
 
-SRC		=   $(wildcard src/*.c)
+SRC		=   $(wildcard src/loader/*.c)						\
+			$(wildcard src/games/runner/src/*.c)			\
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
 

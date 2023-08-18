@@ -10,6 +10,8 @@
 
     #include <SFML/Graphics.h>
     #include <SFML/Config.h>
+    #include <string.h>
+    #include <stdlib.h>
 
     #include "double_list.h"
     #include "map.h"
