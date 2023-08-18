@@ -16,4 +16,7 @@
     #include "double_list.h"
     #include "map.h"
 
+map_t *load_assets(char *game);
+void destroy_assets(map_t *assets);
+
 #endif //GRADE_DE_MAIN_H

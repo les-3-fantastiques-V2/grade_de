@@ -51,3 +51,12 @@ map_t *load_assets(char *game)
     free(path);
     return game_assets;
 }
+
+void destroy_assets(map_t *assets)
+{
+    for (node_t *curr = assets->head; curr != NULL; curr = curr->next) {
+        sfTexture_destroy(curr->data);
+        free(curr->key);
+    }
+    assets->free(assets);
+}
