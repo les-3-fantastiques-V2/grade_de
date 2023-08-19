@@ -13,6 +13,6 @@ void eventManager(void)
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
     while (sfRenderWindow_pollEvent(windowConfig->window, &windowConfig->event)) {
-        if (windowConfig->event.type == sfEvtClosed) gradeDe->currentScene = EXIT;
+        if (windowConfig->event.type == sfEvtClosed) gradeDe->currentSceneId = EXIT;
     }
 }

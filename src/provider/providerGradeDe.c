@@ -18,7 +18,8 @@ void initGradeDeStruct(void)
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
 
     initWindowConfigStruct();
-    gradeDeStruct->currentScene = SCENE_MENU_CHOOSE_GAME;
+    initSceneMapStruct();
+    gradeDeStruct->currentSceneId = SCENE_MENU_CHOOSE_GAME;
     gradeDeStruct->exitStatus = 0;
 }
 
@@ -26,6 +27,7 @@ int destroyGradeDeStruct(void)
 {
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
 
+    destroySceneMapStruct();
     destroyWindowConfigStruct();
 
     return gradeDeStruct->exitStatus;

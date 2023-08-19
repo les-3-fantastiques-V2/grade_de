@@ -12,5 +12,5 @@ bool sceneIsOpen(int currentSceneId)
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
-    return (gradeDeStruct->currentScene == currentSceneId && sfRenderWindow_isOpen(windowConfig->window));
+    return (gradeDeStruct->currentSceneId == currentSceneId && sfRenderWindow_isOpen(windowConfig->window));
 }

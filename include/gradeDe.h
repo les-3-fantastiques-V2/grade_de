@@ -23,30 +23,11 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "mapScene.h"
+    #include "provider.h"
 
 
 /*==================== STRUCTURE =====================*/
-
-
-    typedef struct structWindowConfig {
-        sfRenderWindow *window;
-        sfVideoMode videoMode;
-        char *name;
-        unsigned int frameRate;
-        sfEvent event;
-    } WindowConfig_t;
-
-    typedef struct structSceneConfig {
-        void (*renderFunction)(void);
-        void (*loaderSceneElement)(void);
-        int sceneId;
-    } SceneConfig_t;
-
-    typedef struct structGradeDe {
-        WindowConfig_t *windowConfig;
-        int currentScene;
-        int exitStatus;
-    } GradeDe_t;
 
 
 /*==================== ENUM ====================*/
@@ -55,6 +36,7 @@
     enum SCENE {
         EXIT = -1,
         SCENE_MENU_CHOOSE_GAME,
+        SCENE_MAX,
     };
 
 
@@ -63,17 +45,8 @@
 
     void eventManager(void);
     void sceneManager(void);
-    void initGradeDeStruct(void);
-    void sceneMenuChooseGame(void);
-    void initWindowConfigStruct(void);
-    void destroyWindowConfigStruct(void);
 
     bool sceneIsOpen(int currentSceneId);
-
-    int destroyGradeDeStruct(void);
-
-    GradeDe_t *getGradeDeStruct(void);
-    WindowConfig_t *getWindowConfigStruct(void);
 
 
 /*==================== MACRO ====================*/
