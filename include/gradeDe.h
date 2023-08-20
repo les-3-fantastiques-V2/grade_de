@@ -39,14 +39,24 @@
         SCENE_MAX,
     };
 
+    enum GAME {
+        GAME_TEST,
+        GAME_MAX,
+    };
+
 
 /*==================== FUNCTION ====================*/
 
 
     void eventManager(void);
     void sceneManager(void);
+    void renderGameSlotList(void);
 
     bool sceneIsOpen(int currentSceneId);
+
+    int percent(int value, int percent);
+
+    sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
 
 
 /*==================== MACRO ====================*/

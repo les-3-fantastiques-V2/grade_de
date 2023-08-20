@@ -40,6 +40,14 @@
 
 /*==================== FUNCTION ====================*/
 
+        // Game Slot
+    int getGameSlotIdByMousePosition();
+    GameSlot_t *getGameSlotById(int gameId);
+
+        // Game Slot List
+    void initGameSlotListStruct(void);
+    void destroyGameSlotListStruct(void);
+
         // Grade De
     void initGradeDeStruct(void);
     int destroyGradeDeStruct(void);
@@ -60,6 +68,8 @@
 
 /*==================== MACRO ====================*/
 
+    #define WINDOW_WIDTH 1280
+    #define WINDOW_HEIGHT 720
 
 #endif /*PROVIDER_H_*/
 

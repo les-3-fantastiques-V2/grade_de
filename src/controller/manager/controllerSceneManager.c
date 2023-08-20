@@ -15,8 +15,8 @@ static void _renderScene(SceneConfig_t *sceneConfig)
     while (sceneIsOpen(sceneConfig->sceneId)) {
         eventManager();
         sceneConfig->renderFunction();
-        sfRenderWindow_clear(windowConfig->window, sfBlack);
         sfRenderWindow_display(windowConfig->window);
+        sfRenderWindow_clear(windowConfig->window, sfBlack);
     }
 
     sceneConfig->destroySceneElement();

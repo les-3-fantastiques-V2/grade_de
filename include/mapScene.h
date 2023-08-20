@@ -14,6 +14,7 @@
 //General Include
 
 //Personal Include
+    #include "gameSlot.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -32,6 +33,15 @@
     } SceneMap_t;
 
 
+    typedef struct structSceneMenuChooseGame {
+        int currentSlotId;
+        sfRectangleShape *background;
+        sfRectangleShape *backgroundMenu;
+        GameSlotList_t *gameSlotList;
+        GameSlot_t *emptySlot;
+    } SceneMenuChooseGame_t;
+
+
 /*==================== ENUM ====================*/
 
 
@@ -42,10 +52,10 @@
     void loadSceneMenuChooseGame(void);
     void renderSceneMenuChooseGame(void);
     void destroySceneMenuChooseGame(void);
+    SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
 
 
 /*==================== MACRO ====================*/
 
 
 #endif /*MAP_SCENE_H_*/
-

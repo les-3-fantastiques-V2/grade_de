@@ -18,7 +18,7 @@ void initWindowConfigStruct(void)
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
     WindowConfig_t *windowConfigStruct = getWindowConfigStruct();
 
-    windowConfigStruct->videoMode = (sfVideoMode){1280, 720, 32};
+    windowConfigStruct->videoMode = (sfVideoMode){WINDOW_WIDTH, WINDOW_HEIGHT, 32};
     windowConfigStruct->name = "GradeDe";
     windowConfigStruct->frameRate = 60;
     windowConfigStruct->window = sfRenderWindow_create(
