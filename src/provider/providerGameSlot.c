@@ -8,11 +8,13 @@
 #include "gradeDe.h"
 
 char *gameName[GAME_MAX] = {
-    "Test",
+    "Runner",
+    "TEST",
 };
 
 char *gameDescription[GAME_MAX] = {
-    "Testing Slot",
+    "Run for your life",
+    "TESTING",
 };
 
 static GameSlot_t *_getEmptyGameSlot()
@@ -42,21 +44,18 @@ GameSlot_t *getGameSlotById(int gameId)
 
 int getGameSlotIdByMousePosition() {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
-    WindowConfig_t *windowConfig = getWindowConfigStruct();
     GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
-    sfVector2i mousePosition =  sfMouse_getPositionRenderWindow(windowConfig->window);
 
+    for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
+        if (gameSlotList == NULL) return -1;
+        gameSlotList = gameSlotList->next;
+    }
     for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
-            gameSlotList = gameSlotList->next;
-        }
         if (gameSlotList == NULL) break;
-
         sfVector2f slotPosition = sfRectangleShape_getPosition(gameSlotList->gameSlot->icon);
-        if (mousePosition.x >= slotPosition.x && mousePosition.x <= slotPosition.x + GAME_SLOT_WIDTH &&
-            mousePosition.y >= slotPosition.y && mousePosition.y <= slotPosition.y + GAME_SLOT_HEIGHT) {
+        if (mouseIsOn(slotPosition, (sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}))
             return gameSlotList->gameSlot->id;
-        }
+        gameSlotList = gameSlotList->next;
     }
 
     return -1;

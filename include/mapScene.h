@@ -37,6 +37,7 @@
         int currentSlotId;
         sfRectangleShape *background;
         sfRectangleShape *backgroundMenu;
+        sfCircleShape *exitButton;
         GameSlotList_t *gameSlotList;
         GameSlot_t *emptySlot;
     } SceneMenuChooseGame_t;

@@ -24,9 +24,15 @@ void initWindowConfigStruct(void)
     windowConfigStruct->window = sfRenderWindow_create(
         windowConfigStruct->videoMode,
         windowConfigStruct->name,
-        sfDefaultStyle,
+        sfTitlebar | sfClose,
         NULL
     );
+    sfVideoMode desktopVideoMode = sfVideoMode_getDesktopMode();
+    sfVector2i newPosition = {
+        desktopVideoMode.width / 2 - WINDOW_WIDTH / 2,
+        desktopVideoMode.height / 2 - WINDOW_HEIGHT / 2
+    };
+    sfRenderWindow_setPosition(windowConfigStruct->window, newPosition);
 
     gradeDeStruct->windowConfig = windowConfigStruct;
 }

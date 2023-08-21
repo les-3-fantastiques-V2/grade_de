@@ -13,25 +13,57 @@ SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void)
     return &sceneMenuChooseGameStruct;
 }
 
-void _eventManager(void)
+static bool _clickOnGame(void)
+{
+    int gameId = getGameSlotIdByMousePosition();
+    if (gameId != -1) {
+        printf("gameId: %d\n", gameId);
+        return true;
+    }
+    return false;
+}
+
+static bool _clickOnExit(void)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
+    SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
+    sfVector2f circlePosition = sfCircleShape_getPosition(sceneMenuChooseGame->exitButton);
+    float circleRadius = sfCircleShape_getRadius(sceneMenuChooseGame->exitButton);
+    sfVector2f circleSize = (sfVector2f){circleRadius * 2, circleRadius * 2};
+
+    if (mouseIsOn(circlePosition, circleSize)) {
+        gradeDe->currentSceneId = EXIT;
+        return true;
+    }
+    return false;
+}
+
+void _eventManager(void)
+{
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
-    if (windowConfig->event.mouseButton.type == sfEvtMouseButtonReleased && windowConfig->event.mouseButton.button == sfMouseRight) {
-        int gameId = getGameSlotIdByMousePosition();
-        if (gameId != -1) gradeDe->currentSceneId = EXIT;
+    if (windowConfig->event.mouseButton.type == sfEvtMouseButtonReleased) {
+        if (_clickOnGame()) return;
+        if (_clickOnExit()) return;
     }
+}
+
+void renderGamePopUp(void)
+{
+    int gameId = getGameSlotIdByMousePosition();
+    if (gameId != -1)
+        printf("Mouse is on : %d\n", gameId);
 }
 
 void renderSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
-    WindowConfig_t *windowConfig = getWindowConfigStruct();
 
-    sfRenderWindow_drawRectangleShape(windowConfig->window, sceneMenuChooseGame->background, NULL);
-    sfRenderWindow_drawRectangleShape(windowConfig->window, sceneMenuChooseGame->backgroundMenu, NULL);
+    renderRectangleShape(sceneMenuChooseGame->background);
+    renderRectangleShape(sceneMenuChooseGame->backgroundMenu);
+    renderCircleShape(sceneMenuChooseGame->exitButton);
     renderGameSlotList();
+    renderGamePopUp();
     _eventManager();
 }
 
@@ -52,12 +84,18 @@ void loadSceneMenuChooseGame(void)
         sfColor_fromRGB(100, 100, 100),
         (sfVector2f){0, 0}
     );
+    sceneMenuChooseGame->exitButton = createCircleShape(
+        40,
+        sfColor_fromRGB(229, 9, 20),
+        (sfVector2f){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100}
+    );
 }
 
 void destroySceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
+    sfCircleShape_destroy(sceneMenuChooseGame->exitButton);
     sfRectangleShape_destroy(sceneMenuChooseGame->background);
     sfRectangleShape_destroy(sceneMenuChooseGame->backgroundMenu);
 }

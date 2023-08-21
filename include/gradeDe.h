@@ -40,6 +40,7 @@
     };
 
     enum GAME {
+        GAME_RUNNER,
         GAME_TEST,
         GAME_MAX,
     };
@@ -51,11 +52,15 @@
     void eventManager(void);
     void sceneManager(void);
     void renderGameSlotList(void);
+    void renderRectangleShape(sfRectangleShape *rectangleShape);
+    void renderCircleShape(sfCircleShape *circleShape);
 
     bool sceneIsOpen(int currentSceneId);
+    bool mouseIsOn(sfVector2f position, sfVector2f size);
 
     int percent(int value, int percent);
 
+    sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
     sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
 
 

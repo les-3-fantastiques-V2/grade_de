@@ -27,10 +27,11 @@ void renderGameSlotList(void)
     WindowConfig_t *windowConfig = getWindowConfigStruct();
     GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
 
+    for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
+        if (gameSlotList == NULL) return;
+        gameSlotList = gameSlotList->next;
+    }
     for (int i = 0; i < 6; i++) {
-        for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
-            gameSlotList = gameSlotList->next;
-        }
         if (gameSlotList == NULL) {
             sfRectangleShape_setPosition(sceneMenuChooseGame->emptySlot->icon, _getSlotPosition(i));
             sfRenderWindow_drawRectangleShape(windowConfig->window, sceneMenuChooseGame->emptySlot->icon, NULL);
