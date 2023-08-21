@@ -15,5 +15,4 @@ void drawGame(void)
     for (d_node_t *node = game->decor.head; node; node = node->next) {
         sfRenderWindow_drawSprite(window, node->data, NULL);
     }
-
 }

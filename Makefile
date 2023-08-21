@@ -35,7 +35,7 @@ COMP	=	gcc
 $(NAME):	$(OBJ)
 	@make -C ./lib/list double
 	@make -C ./lib/map
-	$(COMP) -o $(NAME) $(SRC) $(FLAGS)
+	$(COMP) -o $(NAME) $(SRC) $(FLAGS) -g3
 
 all:	$(NAME)
 
