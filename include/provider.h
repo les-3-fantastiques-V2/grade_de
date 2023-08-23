@@ -42,7 +42,9 @@
 
         // Game Slot
     int getGameSlotIdByMousePosition();
+    GameSlot_t *createEmptyGameSlot();
     GameSlot_t *getGameSlotById(int gameId);
+    GameSlot_t *createGameSlotById(int gameId);
 
         // Game Slot List
     void initGameSlotListStruct(void);

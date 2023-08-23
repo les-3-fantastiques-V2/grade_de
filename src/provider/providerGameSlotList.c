@@ -9,7 +9,7 @@
 
 static void _addGameSlot(int gameId, GameSlotList_t **gameSlotList)
 {
-    GameSlot_t *gameSlot = getGameSlotById(gameId);
+    GameSlot_t *gameSlot = createGameSlotById(gameId);
 
     if (gameSlot == NULL) return;
 
@@ -29,6 +29,7 @@ void initGameSlotListStruct(void)
     }
 
     sceneMenuChooseGame->gameSlotList = gameSlotList;
+    sceneMenuChooseGame->emptySlot = createEmptyGameSlot();
 }
 
 void destroyGameSlotListStruct(void)

@@ -17,29 +17,15 @@ char *gameDescription[GAME_MAX] = {
     "TESTING",
 };
 
-static GameSlot_t *_getEmptyGameSlot()
+GameSlot_t *createEmptyGameSlot()
 {
     GameSlot_t *emptySlot = malloc(sizeof(GameSlot_t));
     emptySlot->id = -1;
-    emptySlot->name = "";
-    emptySlot->description = "";
+    emptySlot->name = "empty slot";
+    emptySlot->description = "empty slot";
     emptySlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(255, 255, 255), (sfVector2f){0, 0});
 
     return emptySlot;
-}
-
-GameSlot_t *getGameSlotById(int gameId)
-{
-    if (gameId == -1) return _getEmptyGameSlot();
-    if (gameId < 0 || gameId >= GAME_MAX) return NULL;
-
-    GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
-    gameSlot->id = gameId;
-    gameSlot->name = gameName[gameId];
-    gameSlot->description = gameDescription[gameId];
-    gameSlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(150, 150, 150), (sfVector2f){0, 0});
-
-    return gameSlot;
 }
 
 int getGameSlotIdByMousePosition() {
@@ -59,4 +45,30 @@ int getGameSlotIdByMousePosition() {
     }
 
     return -1;
+}
+
+GameSlot_t *createGameSlotById(int gameId)
+{
+    GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
+    gameSlot->id = gameId;
+    gameSlot->name = gameName[gameId];
+    gameSlot->description = gameDescription[gameId];
+    gameSlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(150, 150, 150), (sfVector2f){0, 0});
+
+    return gameSlot;
+}
+
+GameSlot_t *getGameSlotById(int gameId)
+{
+
+    SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
+    GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
+
+    if (gameId < 0 || gameId > GAME_MAX) return sceneMenuChooseGame->emptySlot;
+    while (gameSlotList != NULL) {
+        if (gameSlotList->gameSlot->id == gameId)
+            return gameSlotList->gameSlot;
+        gameSlotList = gameSlotList->next;
+    }
+    return NULL;
 }

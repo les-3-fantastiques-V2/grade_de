@@ -38,7 +38,7 @@ static bool _clickOnExit(void)
     return false;
 }
 
-void _eventManager(void)
+void eventManagerSceneMenuChooseGame(void)
 {
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
@@ -51,20 +51,22 @@ void _eventManager(void)
 void renderGamePopUp(void)
 {
     int gameId = getGameSlotIdByMousePosition();
-    if (gameId != -1)
-        printf("Mouse is on : %d\n", gameId);
+    if (gameId == -1) return;
+    GameSlot_t *gameSlot = getGameSlotById(gameId);
+    if (gameSlot == NULL) return;
+    printf("%s\n%s\n\n", gameSlot->name, gameSlot->description);
 }
 
 void renderSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
+    eventManagerSceneMenuChooseGame();
     renderRectangleShape(sceneMenuChooseGame->background);
     renderRectangleShape(sceneMenuChooseGame->backgroundMenu);
     renderCircleShape(sceneMenuChooseGame->exitButton);
     renderGameSlotList();
     renderGamePopUp();
-    _eventManager();
 }
 
 void loadSceneMenuChooseGame(void)
