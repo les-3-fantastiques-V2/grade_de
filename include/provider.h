@@ -14,6 +14,9 @@
 //General Include
 
 //Personal Include
+    #include "font.h"
+    #include "gameSlot.h"
+    #include "mapScene.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -30,6 +33,7 @@
     typedef struct structGradeDe {
         WindowConfig_t *windowConfig;
         SceneMap_t *sceneMap;
+        FontList_t *fontList;
         int currentSceneId;
         int exitStatus;
     } GradeDe_t;
@@ -40,7 +44,18 @@
 
 /*==================== FUNCTION ====================*/
 
+
+        // Font
+    void destroyFont(Font_t *font);
+    Font_t *getFontById(int fontId);
+    Font_t *createFontById(int fontId);
+
+        // Font List
+    void initFontListStruct(void);
+    void destroyFontListStruct(void);
+
         // Game Slot
+    void destroyGameSlot(GameSlot_t *gameSlot);
     int getGameSlotIdByMousePosition();
     GameSlot_t *createEmptyGameSlot();
     GameSlot_t *getGameSlotById(int gameId);
@@ -49,6 +64,11 @@
         // Game Slot List
     void initGameSlotListStruct(void);
     void destroyGameSlotListStruct(void);
+
+        // Game ToolTips
+    void renderTooltips(GameTooltips_t *gameTooltips);
+    void destroyGameTooltips(GameTooltips_t *gameTooltips);
+    GameTooltips_t *createGameTooltips(char *name, char *description);
 
         // Grade De
     void initGradeDeStruct(void);

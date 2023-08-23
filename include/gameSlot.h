@@ -5,8 +5,8 @@
 ** gameSlot.h
 */
 
-#ifndef GAME_SLOT_H
-    #define GAME_SLOT_H
+#ifndef GAME_SLOT_H_
+    #define GAME_SLOT_H_
 
 /*=========================== INCLUDE ========================*/
 
@@ -21,11 +21,16 @@
 /*==================== STRUCTURE =====================*/
 
 
+    typedef struct structGameTooltips {
+        sfRectangleShape *background;
+        sfText *name;
+        sfText *description;
+    } GameTooltips_t;
+
     typedef struct structGameSlot {
         int id;
-        char *name;
-        char *description;
         sfRectangleShape *icon;
+        GameTooltips_t *tooltips;
     } GameSlot_t;
 
     typedef struct structGameSlotList {
@@ -45,4 +50,4 @@
     #define GAME_SLOT_WIDTH 250
     #define GAME_SLOT_HEIGHT 150
 
-#endif /*GAME_SLOT_H*/
+#endif /*GAME_SLOT_H_*/

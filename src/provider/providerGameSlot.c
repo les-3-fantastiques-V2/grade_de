@@ -9,21 +9,25 @@
 
 char *gameName[GAME_MAX] = {
     "Runner",
-    "TEST",
 };
 
 char *gameDescription[GAME_MAX] = {
     "Run for your life",
-    "TESTING",
 };
+
+void destroyGameSlot(GameSlot_t *gameSlot)
+{
+    sfRectangleShape_destroy(gameSlot->icon);
+    destroyGameTooltips(gameSlot->tooltips);
+    free(gameSlot);
+}
 
 GameSlot_t *createEmptyGameSlot()
 {
     GameSlot_t *emptySlot = malloc(sizeof(GameSlot_t));
     emptySlot->id = -1;
-    emptySlot->name = "empty slot";
-    emptySlot->description = "empty slot";
-    emptySlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(255, 255, 255), (sfVector2f){0, 0});
+    emptySlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(150, 150, 150), (sfVector2f){0, 0});
+    emptySlot->tooltips = createGameTooltips("empty slot", "empty slot");
 
     return emptySlot;
 }
@@ -51,9 +55,8 @@ GameSlot_t *createGameSlotById(int gameId)
 {
     GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
     gameSlot->id = gameId;
-    gameSlot->name = gameName[gameId];
-    gameSlot->description = gameDescription[gameId];
-    gameSlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(150, 150, 150), (sfVector2f){0, 0});
+    gameSlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(255, 255, 255), (sfVector2f){0, 0});
+    gameSlot->tooltips = createGameTooltips(gameName[gameId], gameDescription[gameId]);
 
     return gameSlot;
 }

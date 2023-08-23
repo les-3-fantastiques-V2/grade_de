@@ -54,7 +54,7 @@ void renderGamePopUp(void)
     if (gameId == -1) return;
     GameSlot_t *gameSlot = getGameSlotById(gameId);
     if (gameSlot == NULL) return;
-    printf("%s\n%s\n\n", gameSlot->name, gameSlot->description);
+    renderTooltips(gameSlot->tooltips);
 }
 
 void renderSceneMenuChooseGame(void)

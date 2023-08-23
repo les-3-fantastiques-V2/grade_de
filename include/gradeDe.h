@@ -25,6 +25,7 @@
 //Personal Include
     #include "mapScene.h"
     #include "provider.h"
+    #include "font.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -41,7 +42,6 @@
 
     enum GAME {
         GAME_RUNNER,
-        GAME_TEST,
         GAME_MAX,
     };
 
@@ -52,8 +52,9 @@
     void eventManager(void);
     void sceneManager(void);
     void renderGameSlotList(void);
-    void renderRectangleShape(sfRectangleShape *rectangleShape);
+    void renderText(sfText *text);
     void renderCircleShape(sfCircleShape *circleShape);
+    void renderRectangleShape(sfRectangleShape *rectangleShape);
 
     bool sceneIsOpen(int currentSceneId);
     bool mouseIsOn(sfVector2f position, sfVector2f size);
@@ -62,6 +63,7 @@
 
     sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
     sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
+    sfText *createText(char *textContent, sfVector2f position, unsigned int fontSize, int fontId);
 
 
 /*==================== MACRO ====================*/
