@@ -61,6 +61,8 @@
 
     int percent(int value, int percent);
 
+    char *splitText(char *text, int maxWidth, int fontSize);
+
     sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
     sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
     sfText *createText(char *textContent, sfVector2f position, unsigned int fontSize, int fontId);

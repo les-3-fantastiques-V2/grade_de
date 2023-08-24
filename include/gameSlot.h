@@ -22,6 +22,9 @@
 
 
     typedef struct structGameTooltips {
+        sfVector2f originBackgroundPosition;
+        sfVector2f originNamePosition;
+        sfVector2f originDescriptionPosition;
         sfRectangleShape *background;
         sfText *name;
         sfText *description;

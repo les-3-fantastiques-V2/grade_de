@@ -32,6 +32,7 @@ Font_t *createFontById(int fontId)
 
     font->fontId = fontId;
     font->font = sfFont_createFromFile(fontPath);
+
     free(fontPath);
     if (font->font == NULL) return NULL;
     return font;
