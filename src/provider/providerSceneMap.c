@@ -9,7 +9,7 @@
 
 static void _addSceneMap(int sceneId, SceneMap_t **sceneMap)
 {
-    SceneConfig_t *sceneConfig = getSceneConfigById(sceneId);
+    SceneConfig_t *sceneConfig = createSceneConfigById(sceneId);
 
     if (sceneConfig == NULL) return;
 
@@ -36,8 +36,8 @@ void destroySceneMapStruct(void)
     GradeDe_t *gradeDe = getGradeDeStruct();
 
     while (gradeDe->sceneMap != NULL) {
-        SceneMap_t *next = gradeDe->sceneMap->next;
-        free(gradeDe->sceneMap);
-        gradeDe->sceneMap = next;
+        SceneMap_t *sceneMap = gradeDe->sceneMap;
+        gradeDe->sceneMap = gradeDe->sceneMap->next;
+        destroySceneConfig(sceneMap->sceneConfig); free(sceneMap);
     }
 }

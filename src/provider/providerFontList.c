@@ -36,8 +36,8 @@ void destroyFontListStruct(void)
     GradeDe_t *gradeDe = getGradeDeStruct();
 
     while (gradeDe->fontList != NULL) {
-        FontList_t *next = gradeDe->fontList->next;
-        destroyFont(gradeDe->fontList->font);
-        gradeDe->fontList = next;
+        FontList_t *fontStruct = gradeDe->fontList;
+        gradeDe->fontList = gradeDe->fontList->next;
+        destroyFont(fontStruct->font); free(fontStruct);
     }
 }

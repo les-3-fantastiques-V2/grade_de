@@ -19,7 +19,7 @@ void (*destroySceneElement[SCENE_MAX])(void) = {
     &destroySceneMenuChooseGame,
 };
 
-SceneConfig_t *getSceneConfigById(int sceneId)
+SceneConfig_t *createSceneConfigById(int sceneId)
 {
     if (sceneId < 0 || sceneId >= SCENE_MAX) return NULL;
 
@@ -30,4 +30,9 @@ SceneConfig_t *getSceneConfigById(int sceneId)
     sceneConfig->sceneId = sceneId;
 
     return sceneConfig;
+}
+
+void destroySceneConfig(SceneConfig_t *sceneConfig)
+{
+    free(sceneConfig);
 }

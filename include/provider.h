@@ -76,7 +76,8 @@
     GradeDe_t *getGradeDeStruct(void);
 
         // Scene Config
-    SceneConfig_t *getSceneConfigById(int sceneId);
+    SceneConfig_t *createSceneConfigById(int sceneId);
+    void destroySceneConfig(SceneConfig_t *sceneConfig);
 
         // Scene Map
     void initSceneMapStruct(void);
