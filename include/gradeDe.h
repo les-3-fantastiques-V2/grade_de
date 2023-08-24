@@ -41,7 +41,6 @@
     };
 
     enum GAME {
-        GAME_RUNNER,
         GAME_MAX,
     };
 
