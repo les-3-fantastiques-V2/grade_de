@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** serviceMergeToString.c
+** serviceStringManipulation.c
 */
 
 #include "gradeDe.h"
@@ -57,14 +57,6 @@ static int *_getTableConfig(char *string)
     return tableConfig;
 }
 
-bool isAlphanumeric(char character)
-{
-    if (character >= '0' && character <= '9') return true;
-    if (character >= 'A' && character <= 'Z') return true;
-    if (character >= 'a' && character <= 'z') return true;
-    return false;
-}
-
 char **stringToWordArray(char *string)
 {
     int *tableConfig = _getTableConfig(string);
@@ -87,7 +79,7 @@ char **stringToWordArray(char *string)
 
     for (i = 0; table[i] != NULL; i++)
         for (j = 0; table[i][j] != '\0'; j++)
-            if (!isAlphanumeric(table[i][j])) table[i][j] = '\0';
+            if (!charIsAlphanumeric(table[i][j])) table[i][j] = '\0';
 
     free(tableConfig);
     return table;

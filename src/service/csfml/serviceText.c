@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** serviceSplitText.c
+** serviceText.c
 */
 
 #include "gradeDe.h"
@@ -30,7 +30,7 @@ static char *_splitWord(char *newText, char *word, int maxWidth, int currentWidt
     return newText;
 }
 
-char *splitText(char *text, int maxWidth, int fontSize, int fontId)
+static char *_splitText(char *text, int maxWidth, int fontSize, int fontId)
 {
     char *newText = malloc(sizeof(char) * 1); newText[0] = '\0';
     char **words = stringToWordArray(text);
@@ -55,4 +55,33 @@ char *splitText(char *text, int maxWidth, int fontSize, int fontId)
     for (int i = 0; words[i] != NULL; i++) free(words[i]);
 
     return newText;
+}
+
+void renderText(sfText *text)
+{
+    WindowConfig_t *windowConfig = getWindowConfigStruct();
+
+    sfRenderWindow_drawText(windowConfig->window, text, NULL);
+}
+
+sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId)
+{
+    sfText *text = sfText_create();
+    sfFont *font = getFontById(fontId);
+    if (text == NULL || font == NULL) return NULL;
+
+    sfText_setString(text, textContent);
+    sfText_setPosition(text, textPosition);
+    sfText_setColor(text, sfBlack);
+    sfText_setFont(text, font);
+    sfText_setCharacterSize(text, fontSize);
+    return text;
+}
+
+sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId, int maxWidth)
+{
+    char *splittedText = _splitText(textContent, maxWidth, fontSize, fontId);
+    sfText *text = createText(splittedText, textPosition, fontSize, fontId);
+    free(splittedText);
+    return text;
 }

@@ -26,6 +26,7 @@
     #include "mapScene.h"
     #include "provider.h"
     #include "font.h"
+    #include "service.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -55,24 +56,6 @@
     void eventManager(void);
     void sceneManager(void);
     void renderGameSlotList(void);
-    void renderText(sfText *text);
-    void renderCircleShape(sfCircleShape *circleShape);
-    void renderRectangleShape(sfRectangleShape *rectangleShape);
-
-    bool sceneIsOpen(int currentSceneId);
-    bool mouseIsOn(sfVector2f position, sfVector2f size);
-
-    int percent(int value, int percent);
-
-    char *mergeCharToString(char *string, char c);
-    char *mergeStringToString(char *string1, char *string2);
-    char *splitText(char *text, int maxWidth, int fontSize, int fontId);
-
-    char **stringToWordArray(char *string);
-
-    sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
-    sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
-    sfText *createText(char *textContent, sfVector2f position, unsigned int fontSize, int fontId);
 
 
 /*==================== MACRO ====================*/

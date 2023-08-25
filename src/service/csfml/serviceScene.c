@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** serviceSceneOpen.c
+** serviceScene.c
 */
 
 #include "gradeDe.h"
