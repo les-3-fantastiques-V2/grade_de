@@ -10,7 +10,7 @@
 sfText *createText(char *textContent, sfVector2f textposition, unsigned int fontSize, int fontId)
 {
     sfText *text = sfText_create();
-    sfFont *font = getFontById(fontId)->font;
+    sfFont *font = getFontById(fontId);
     if (text == NULL || font == NULL) return NULL;
 
     sfText_setString(text, textContent);

@@ -47,7 +47,7 @@
 
         // Font
     void destroyFont(Font_t *font);
-    Font_t *getFontById(int fontId);
+    sfFont *getFontById(int fontId);
     Font_t *createFontById(int fontId);
 
         // Font List

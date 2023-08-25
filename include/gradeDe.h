@@ -41,6 +41,10 @@
     };
 
     enum GAME {
+        GAME_TESTING,
+        GAME_EMPTY,
+        GAME_ABC,
+        GAME_RUNNER,
         GAME_MAX,
     };
 
@@ -60,7 +64,11 @@
 
     int percent(int value, int percent);
 
-    char *splitText(char *text, int maxWidth, int fontSize);
+    char *mergeCharToString(char *string, char c);
+    char *mergeStringToString(char *string1, char *string2);
+    char *splitText(char *text, int maxWidth, int fontSize, int fontId);
+
+    char **stringToWordArray(char *string);
 
     sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
     sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
