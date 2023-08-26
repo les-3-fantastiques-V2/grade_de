@@ -13,8 +13,9 @@ static void _renderScene(SceneConfig_t *sceneConfig)
     sceneConfig->loadSceneElement();
 
     while (sceneIsOpen(sceneConfig->sceneId)) {
-        eventManager();
+        eventManager(sceneConfig);
         sceneConfig->renderFunction();
+        renderMouseCursor();
         sfRenderWindow_display(windowConfig->window);
         sfRenderWindow_clear(windowConfig->window, sfBlack);
     }

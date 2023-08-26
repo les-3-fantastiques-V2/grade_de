@@ -38,12 +38,12 @@ GameSlot_t *createEmptyGameSlot()
     return emptySlot;
 }
 
-int getGameSlotIdByMousePosition() {
+GAME_E getGameSlotIdByMousePosition() {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
 
     for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
-        if (gameSlotList == NULL) return -1;
+        if (gameSlotList == NULL) return NO_GAME;
         gameSlotList = gameSlotList->next;
     }
     for (int i = 0; i < 6; i++) {
@@ -54,10 +54,10 @@ int getGameSlotIdByMousePosition() {
         gameSlotList = gameSlotList->next;
     }
 
-    return -1;
+    return NO_GAME;
 }
 
-GameSlot_t *createGameSlotById(int gameId)
+GameSlot_t *createGameSlotById(GAME_E gameId)
 {
     GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
     gameSlot->id = gameId;
@@ -67,7 +67,7 @@ GameSlot_t *createGameSlotById(int gameId)
     return gameSlot;
 }
 
-GameSlot_t *getGameSlotById(int gameId)
+GameSlot_t *getGameSlotById(GAME_E gameId)
 {
 
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();

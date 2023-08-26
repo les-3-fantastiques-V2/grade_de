@@ -7,7 +7,7 @@
 
 #include "gradeDe.h"
 
-static void _addFont(int fontId, FontList_t **fontList)
+static void _addFont(FONT_E fontId, FontList_t **fontList)
 {
     Font_t *font = createFontById(fontId);
 

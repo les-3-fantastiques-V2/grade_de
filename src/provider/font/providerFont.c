@@ -20,7 +20,7 @@ void destroyFont(Font_t *font)
     free(font);
 }
 
-Font_t *createFontById(int fontId)
+Font_t *createFontById(FONT_E fontId)
 {
     Font_t *font = malloc(sizeof(Font_t));
     char *fontPath = malloc(sizeof(char) * (strlen("assets/font/") + strlen(fontNameList[fontId]) + strlen(".ttf") + 1));
@@ -38,7 +38,7 @@ Font_t *createFontById(int fontId)
     return font;
 }
 
-sfFont *getFontById(int fontId)
+sfFont *getFontById(FONT_E fontId)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
     FontList_t *fontList = gradeDe->fontList;

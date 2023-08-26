@@ -7,7 +7,7 @@
 
 #include "gradeDe.h"
 
-static int _getCharacterWidth(int character, int fontSize, int fontId)
+static int _getCharacterWidth(int character, int fontSize, FONT_E fontId)
 {
     sfFont *font = getFontById(fontId);
     sfGlyph glyph = sfFont_getGlyph(font, character, fontSize, sfFalse, 0);
@@ -15,7 +15,7 @@ static int _getCharacterWidth(int character, int fontSize, int fontId)
     return glyph.advance;
 }
 
-static char *_splitWord(char *newText, char *word, int maxWidth, int currentWidth, int fontSize, int fontId)
+static char *_splitWord(char *newText, char *word, int maxWidth, int currentWidth, int fontSize, FONT_E fontId)
 {
     for (int i = 0; word[i] != '\0'; i++) {
         int characterWidth = _getCharacterWidth(word[i], fontSize, fontId);
@@ -30,7 +30,7 @@ static char *_splitWord(char *newText, char *word, int maxWidth, int currentWidt
     return newText;
 }
 
-static char *_splitText(char *text, int maxWidth, int fontSize, int fontId)
+static char *_splitText(char *text, int maxWidth, int fontSize, FONT_E fontId)
 {
     char *newText = malloc(sizeof(char) * 1); newText[0] = '\0';
     char **words = stringToWordArray(text);
@@ -64,7 +64,7 @@ void renderText(sfText *text)
     sfRenderWindow_drawText(windowConfig->window, text, NULL);
 }
 
-sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId)
+sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId)
 {
     sfText *text = sfText_create();
     sfFont *font = getFontById(fontId);
@@ -78,7 +78,7 @@ sfText *createText(char *textContent, sfVector2f textPosition, unsigned int font
     return text;
 }
 
-sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId, int maxWidth)
+sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId, int maxWidth)
 {
     char *splittedText = _splitText(textContent, maxWidth, fontSize, fontId);
     sfText *text = createText(splittedText, textPosition, fontSize, fontId);

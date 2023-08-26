@@ -7,7 +7,7 @@
 
 #include "gradeDe.h"
 
-static void _addGameSlot(int gameId, GameSlotList_t **gameSlotList)
+static void _addGameSlot(GAME_E gameId, GameSlotList_t **gameSlotList)
 {
     GameSlot_t *gameSlot = createGameSlotById(gameId);
 

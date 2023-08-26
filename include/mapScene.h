@@ -15,14 +15,26 @@
 
 //Personal Include
 
+
+/*==================== ENUM ====================*/
+
+
+    typedef enum SCENE {
+        EXIT = -1,
+        SCENE_MENU_CHOOSE_GAME,
+        SCENE_MAX,
+    } SCENE_E;
+
+
 /*==================== STRUCTURE =====================*/
 
 
     typedef struct structSceneConfig {
         void (*renderFunction)(void);
         void (*loadSceneElement)(void);
+        void (*eventSceneManager)(void);
         void (*destroySceneElement)(void);
-        int sceneId;
+        SCENE_E sceneId;
     } SceneConfig_t;
 
     typedef struct structSceneMap {
@@ -41,9 +53,6 @@
     } SceneMenuChooseGame_t;
 
 
-/*==================== ENUM ====================*/
-
-
 /*==================== FUNCTION ====================*/
 
 
@@ -51,6 +60,7 @@
     void loadSceneMenuChooseGame(void);
     void renderSceneMenuChooseGame(void);
     void destroySceneMenuChooseGame(void);
+    void eventManagerSceneMenuChooseGame(void);
     SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
 
 

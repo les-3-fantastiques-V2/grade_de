@@ -23,6 +23,7 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"
     #include "mapScene.h"
@@ -30,33 +31,18 @@
     #include "service.h"
 
 
-/*==================== STRUCTURE =====================*/
-
-
 /*==================== ENUM ====================*/
 
 
-    enum SCENE {
-        EXIT = -1,
-        SCENE_MENU_CHOOSE_GAME,
-        SCENE_MAX,
-    };
-
-    enum GAME {
-        GAME_TESTING,
-        GAME_EMPTY,
-        GAME_ABC,
-        GAME_RUNNER,
-        GAME_MAX,
-    };
+/*==================== STRUCTURE =====================*/
 
 
 /*==================== FUNCTION ====================*/
 
 
-    void eventManager(void);
     void sceneManager(void);
     void renderGameSlotList(void);
+    void eventManager(SceneConfig_t *sceneConfig);
 
 
 /*==================== MACRO ====================*/

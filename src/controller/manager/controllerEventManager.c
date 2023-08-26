@@ -7,12 +7,20 @@
 
 #include "gradeDe.h"
 
-void eventManager(void)
+static bool closeEvent(WindowConfig_t *windowConfig)
+{
+    if (windowConfig->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape))
+        return true;
+    return false;
+}
+
+void eventManager(SceneConfig_t *sceneConfig)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
     while (sfRenderWindow_pollEvent(windowConfig->window, &windowConfig->event)) {
-        if (windowConfig->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)) gradeDe->currentSceneId = EXIT;
+        if (closeEvent(windowConfig)) gradeDe->currentSceneId = EXIT;
+        sceneConfig->eventSceneManager();
     }
 }
