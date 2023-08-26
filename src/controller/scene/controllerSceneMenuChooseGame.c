@@ -15,24 +15,53 @@ SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void)
 
 static bool _clickOnGame(void)
 {
-    int gameId = getGameSlotIdByMousePosition();
-    if (gameId != -1) {
+    GAME_E gameId = getGameSlotIdByMousePosition();
+    if (gameId != NO_GAME) {
         printf("gameId: %d\n", gameId);
         return true;
     }
     return false;
 }
 
-static bool _clickOnExit(void)
+static bool _mouseIsOnExit(void)
 {
-    GradeDe_t *gradeDe = getGradeDeStruct();
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     sfVector2f circlePosition = sfCircleShape_getPosition(sceneMenuChooseGame->exitButton);
     float circleRadius = sfCircleShape_getRadius(sceneMenuChooseGame->exitButton);
     sfVector2f circleSize = (sfVector2f){circleRadius * 2, circleRadius * 2};
 
-    if (mouseIsOn(circlePosition, circleSize)) {
+    return mouseIsOn(circlePosition, circleSize);
+}
+
+static bool _clickOnExit(void)
+{
+    GradeDe_t *gradeDe = getGradeDeStruct();
+
+    if (_mouseIsOnExit()) {
         gradeDe->currentSceneId = EXIT;
+        return true;
+    }
+    return false;
+}
+
+static void _renderGamePopUp(void)
+{
+    GAME_E gameId = getGameSlotIdByMousePosition();
+    if (gameId == -1) {
+        return;
+    }
+    GameSlot_t *gameSlot = getGameSlotById(gameId);
+    if (gameSlot == NULL) {
+        return;
+    }
+    changeMouseCursor(CURSOR_INFO, CURSOR_TYPE_HINT);
+    renderTooltips(gameSlot->tooltips);
+}
+
+static bool _renderMouseOnExit(void)
+{
+    if (_mouseIsOnExit()) {
+        changeMouseCursor(CURSOR_EXIT, CURSOR_TYPE_CENTER);
         return true;
     }
     return false;
@@ -46,27 +75,21 @@ void eventManagerSceneMenuChooseGame(void)
         if (_clickOnGame()) return;
         if (_clickOnExit()) return;
     }
-}
 
-void renderGamePopUp(void)
-{
-    int gameId = getGameSlotIdByMousePosition();
-    if (gameId == -1) return;
-    GameSlot_t *gameSlot = getGameSlotById(gameId);
-    if (gameSlot == NULL) return;
-    renderTooltips(gameSlot->tooltips);
+    if (_renderMouseOnExit()) return;
+    changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
 }
 
 void renderSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
-    eventManagerSceneMenuChooseGame();
     renderRectangleShape(sceneMenuChooseGame->background);
     renderRectangleShape(sceneMenuChooseGame->backgroundMenu);
     renderCircleShape(sceneMenuChooseGame->exitButton);
     renderGameSlotList();
-    renderGamePopUp();
+    _renderGamePopUp();
+    _renderMouseOnExit();
 }
 
 void loadSceneMenuChooseGame(void)

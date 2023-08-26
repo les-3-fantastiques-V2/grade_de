@@ -17,11 +17,23 @@
 //Personal Include
 
 
+/*==================== ENUM ====================*/
+
+
+    typedef enum FONT {
+        FONT_COMFORTAA_BOLD,
+        FONT_COMFORTAA_LIGHT,
+        FONT_COMFORTAA_REGULAR,
+        FONT_SPICY_PIZZA,
+        FONT_MAX,
+    } FONT_E;
+
+
 /*==================== STRUCTURE =====================*/
 
 
     typedef struct structFont {
-        int fontId;
+        FONT_E fontId;
         sfFont *font;
     } Font_t;
 
@@ -31,25 +43,13 @@
     } FontList_t;
 
 
-/*==================== ENUM ====================*/
-
-
-    enum FONT {
-        FONT_COMFORTAA_BOLD,
-        FONT_COMFORTAA_LIGHT,
-        FONT_COMFORTAA_REGULAR,
-        FONT_SPICY_PIZZA,
-        FONT_MAX,
-    };
-
-
 /*==================== FUNCTION ====================*/
 
 
         // Font
     void destroyFont(Font_t *font);
-    sfFont *getFontById(int fontId);
-    Font_t *createFontById(int fontId);
+    sfFont *getFontById(FONT_E fontId);
+    Font_t *createFontById(FONT_E fontId);
 
         // Font List
     void initFontListStruct(void);

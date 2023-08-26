@@ -19,13 +19,18 @@ void (*destroySceneElement[SCENE_MAX])(void) = {
     &destroySceneMenuChooseGame,
 };
 
-SceneConfig_t *createSceneConfigById(int sceneId)
+void (*eventSceneManager[SCENE_MAX])(void) = {
+    &eventManagerSceneMenuChooseGame,
+};
+
+SceneConfig_t *createSceneConfigById(SCENE_E sceneId)
 {
     if (sceneId < 0 || sceneId >= SCENE_MAX) return NULL;
 
     SceneConfig_t *sceneConfig = malloc(sizeof(SceneConfig_t));
     sceneConfig->renderFunction = renderFunction[sceneId];
     sceneConfig->loadSceneElement = loadSceneElement[sceneId];
+    sceneConfig->eventSceneManager = eventSceneManager[sceneId];
     sceneConfig->destroySceneElement = destroySceneElement[sceneId];
     sceneConfig->sceneId = sceneId;
 

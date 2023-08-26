@@ -19,6 +19,7 @@ void initGradeDeStruct(void)
 
     initWindowConfigStruct();
     initSceneMapStruct();
+    initMouseCursorStruct();
     initFontListStruct();
     gradeDeStruct->currentSceneId = SCENE_MENU_CHOOSE_GAME;
     gradeDeStruct->exitStatus = 0;
@@ -29,6 +30,7 @@ int destroyGradeDeStruct(void)
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
 
     destroyFontListStruct();
+    destroyMouseCursorStruct();
     destroySceneMapStruct();
     destroyWindowConfigStruct();
 

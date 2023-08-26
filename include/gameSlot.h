@@ -17,6 +17,19 @@
 //Personal Include
 
 
+/*==================== ENUM ====================*/
+
+
+    typedef enum GAME {
+        NO_GAME = -1,
+        GAME_TESTING,
+        GAME_EMPTY,
+        GAME_ABC,
+        GAME_RUNNER,
+        GAME_MAX,
+    } GAME_E;
+
+
 /*==================== STRUCTURE =====================*/
 
 
@@ -41,18 +54,15 @@
     } GameSlotList_t;
 
 
-/*==================== ENUM ====================*/
-
-
 /*==================== FUNCTION ====================*/
 
 
         // Game Slot
     void destroyGameSlot(GameSlot_t *gameSlot);
-    int getGameSlotIdByMousePosition();
+    GAME_E getGameSlotIdByMousePosition();
     GameSlot_t *createEmptyGameSlot();
-    GameSlot_t *getGameSlotById(int gameId);
-    GameSlot_t *createGameSlotById(int gameId);
+    GameSlot_t *getGameSlotById(GAME_E gameId);
+    GameSlot_t *createGameSlotById(GAME_E gameId);
 
         // Game Slot List
     void initGameSlotListStruct(void);
@@ -66,7 +76,9 @@
 
 /*==================== MACRO ====================*/
 
+
     #define GAME_SLOT_WIDTH 250
     #define GAME_SLOT_HEIGHT 150
+
 
 #endif /*GAME_SLOT_H_*/

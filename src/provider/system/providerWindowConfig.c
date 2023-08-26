@@ -33,6 +33,7 @@ void initWindowConfigStruct(void)
         desktopVideoMode.height / 2 - WINDOW_HEIGHT / 2
     };
     sfRenderWindow_setPosition(windowConfigStruct->window, newPosition);
+    sfRenderWindow_setMouseCursorVisible(windowConfigStruct->window, sfFalse);
 
     gradeDeStruct->windowConfig = windowConfigStruct;
 }
