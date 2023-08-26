@@ -46,6 +46,16 @@
 /*==================== FUNCTION ====================*/
 
 
+        // Font
+    void destroyFont(Font_t *font);
+    sfFont *getFontById(int fontId);
+    Font_t *createFontById(int fontId);
+
+        // Font List
+    void initFontListStruct(void);
+    void destroyFontListStruct(void);
+
+
 /*==================== MACRO ====================*/
 
 

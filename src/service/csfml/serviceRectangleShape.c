@@ -2,10 +2,17 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** serviceCreateRectangleShape.c
+** serviceRectangleShape.c
 */
 
 #include "gradeDe.h"
+
+void renderRectangleShape(sfRectangleShape *rectangleShape)
+{
+    WindowConfig_t *windowConfig = getWindowConfigStruct();
+
+    sfRenderWindow_drawRectangleShape(windowConfig->window, rectangleShape, NULL);
+}
 
 sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position)
 {

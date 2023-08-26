@@ -8,9 +8,17 @@
 #include "gradeDe.h"
 
 char *gameName[GAME_MAX] = {
+    "Testing Game Name",
+    "Empty",
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    "Runner",
 };
 
 char *gameDescription[GAME_MAX] = {
+    "Testing Game Description",
+    "Empty",
+    "abcdefghijklmnopqrstuvwxyz",
+    "Run for your life little guy !",
 };
 
 void destroyGameSlot(GameSlot_t *gameSlot)

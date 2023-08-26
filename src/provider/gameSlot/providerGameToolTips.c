@@ -19,26 +19,25 @@ GameTooltips_t *createGameTooltips(char *name, char *description)
     );
 
 
-    char *splitedName = splitText(name, 250, 30);
     gameTooltips->originNamePosition = (sfVector2f){0, 0};
-    gameTooltips->name = createText(
-        splitedName,
+    gameTooltips->name = createTextWithMaxWidth(
+        name,
         gameTooltips->originNamePosition,
         30,
-        FONT_COMFORTAA_BOLD
+        FONT_COMFORTAA_BOLD,
+        250
     );
     sfFloatRect nameRect = sfText_getGlobalBounds(gameTooltips->name);
 
-    char *splitedDescription = splitText(description, 250, 20);
     gameTooltips->originDescriptionPosition = (sfVector2f){0, nameRect.height + 12};
-    gameTooltips->description = createText(
-        splitedDescription,
+    gameTooltips->description = createTextWithMaxWidth(
+        description,
         gameTooltips->originDescriptionPosition,
         20,
-        FONT_COMFORTAA_LIGHT
+        FONT_COMFORTAA_LIGHT,
+        250
     );
 
-    free(splitedName); free(splitedDescription);
     return gameTooltips;
 }
 
