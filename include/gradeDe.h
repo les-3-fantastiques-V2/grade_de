@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** MenuChooseGame.h
+** gradeDe.h
 */
 
 #ifndef GRADE_DE_H_
@@ -23,9 +23,10 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "font.h"
+    #include "gameSlot.h"
     #include "mapScene.h"
     #include "provider.h"
-    #include "font.h"
     #include "service.h"
 
 

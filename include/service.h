@@ -14,9 +14,6 @@
 //General Include
 
 //Personal Include
-    #include "font.h"
-    #include "gameSlot.h"
-    #include "mapScene.h"
 
 
 /*==================== STRUCTURE =====================*/

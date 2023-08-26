@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** MenuChooseGame.h
+** mapScene.h
 */
 
 #ifndef MAP_SCENE_H_
@@ -14,8 +14,6 @@
 //General Include
 
 //Personal Include
-    #include "gameSlot.h"
-
 
 /*==================== STRUCTURE =====================*/
 

@@ -14,9 +14,6 @@
 //General Include
 
 //Personal Include
-    #include "font.h"
-    #include "gameSlot.h"
-    #include "mapScene.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -45,31 +42,6 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Font
-    void destroyFont(Font_t *font);
-    sfFont *getFontById(int fontId);
-    Font_t *createFontById(int fontId);
-
-        // Font List
-    void initFontListStruct(void);
-    void destroyFontListStruct(void);
-
-        // Game Slot
-    void destroyGameSlot(GameSlot_t *gameSlot);
-    int getGameSlotIdByMousePosition();
-    GameSlot_t *createEmptyGameSlot();
-    GameSlot_t *getGameSlotById(int gameId);
-    GameSlot_t *createGameSlotById(int gameId);
-
-        // Game Slot List
-    void initGameSlotListStruct(void);
-    void destroyGameSlotListStruct(void);
-
-        // Game ToolTips
-    void renderTooltips(GameTooltips_t *gameTooltips);
-    void destroyGameTooltips(GameTooltips_t *gameTooltips);
-    GameTooltips_t *createGameTooltips(char *name, char *description);
-
         // Grade De
     void initGradeDeStruct(void);
     int destroyGradeDeStruct(void);
@@ -93,6 +65,7 @@
 
     #define WINDOW_WIDTH 1280
     #define WINDOW_HEIGHT 720
+
 
 #endif /*PROVIDER_H_*/
 
