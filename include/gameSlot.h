@@ -15,7 +15,6 @@
 
 
 //Personal Include
-    #include "gradeDe.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -46,6 +45,23 @@
 
 
 /*==================== FUNCTION ====================*/
+
+
+        // Game Slot
+    void destroyGameSlot(GameSlot_t *gameSlot);
+    int getGameSlotIdByMousePosition();
+    GameSlot_t *createEmptyGameSlot();
+    GameSlot_t *getGameSlotById(int gameId);
+    GameSlot_t *createGameSlotById(int gameId);
+
+        // Game Slot List
+    void initGameSlotListStruct(void);
+    void destroyGameSlotListStruct(void);
+
+        // Game ToolTips
+    void renderTooltips(GameTooltips_t *gameTooltips);
+    void destroyGameTooltips(GameTooltips_t *gameTooltips);
+    GameTooltips_t *createGameTooltips(char *name, char *description);
 
 
 /*==================== MACRO ====================*/

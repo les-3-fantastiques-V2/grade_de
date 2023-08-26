@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** MenuChooseGame.h
+** gradeDe.h
 */
 
 #ifndef GRADE_DE_H_
@@ -23,9 +23,11 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "font.h"
+    #include "gameSlot.h"
     #include "mapScene.h"
     #include "provider.h"
-    #include "font.h"
+    #include "service.h"
 
 
 /*==================== STRUCTURE =====================*/
@@ -41,6 +43,10 @@
     };
 
     enum GAME {
+        GAME_TESTING,
+        GAME_EMPTY,
+        GAME_ABC,
+        GAME_RUNNER,
         GAME_MAX,
     };
 
@@ -51,20 +57,6 @@
     void eventManager(void);
     void sceneManager(void);
     void renderGameSlotList(void);
-    void renderText(sfText *text);
-    void renderCircleShape(sfCircleShape *circleShape);
-    void renderRectangleShape(sfRectangleShape *rectangleShape);
-
-    bool sceneIsOpen(int currentSceneId);
-    bool mouseIsOn(sfVector2f position, sfVector2f size);
-
-    int percent(int value, int percent);
-
-    char *splitText(char *text, int maxWidth, int fontSize);
-
-    sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
-    sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);
-    sfText *createText(char *textContent, sfVector2f position, unsigned int fontSize, int fontId);
 
 
 /*==================== MACRO ====================*/

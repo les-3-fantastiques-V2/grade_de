@@ -2,10 +2,17 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** serviceCreateCircleShape.c
+** serviceCircleShape.c
 */
 
 #include "gradeDe.h"
+
+void renderCircleShape(sfCircleShape *circleShape)
+{
+    WindowConfig_t *windowConfig = getWindowConfigStruct();
+
+    sfRenderWindow_drawCircleShape(windowConfig->window, circleShape, NULL);
+}
 
 sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position)
 {

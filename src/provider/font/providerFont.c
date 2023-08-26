@@ -38,7 +38,7 @@ Font_t *createFontById(int fontId)
     return font;
 }
 
-Font_t *getFontById(int fontId)
+sfFont *getFontById(int fontId)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
     FontList_t *fontList = gradeDe->fontList;
@@ -46,7 +46,7 @@ Font_t *getFontById(int fontId)
     if (fontId < 0 || fontId > FONT_MAX) return NULL;
     while (fontList != NULL) {
         if (fontList->font->fontId == fontId)
-            return fontList->font;
+            return fontList->font->font;
         fontList = fontList->next;
     }
     return NULL;
