@@ -11,13 +11,14 @@ GameTooltips_t *createGameTooltips(char *name, char *description)
 {
     GameTooltips_t *gameTooltips = malloc(sizeof(GameTooltips_t));
 
-    gameTooltips->originBackgroundPosition = (sfVector2f){0, 0};
+    gameTooltips->originBackgroundPosition = (sfVector2f){-10, -10};
     gameTooltips->background = createRectangleShape(
         (sfVector2f){250, 250},
         sfColor_fromRGB(200, 200, 200),
         gameTooltips->originBackgroundPosition
     );
-
+    gameTooltips->backgroundTexture = sfTexture_createFromFile("assets/image/BoxLargeCream.png", NULL);
+    sfRectangleShape_setTexture(gameTooltips->background, gameTooltips->backgroundTexture, sfTrue);
 
     gameTooltips->originNamePosition = (sfVector2f){0, 0};
     gameTooltips->name = createTextWithMaxWidth(
@@ -25,7 +26,7 @@ GameTooltips_t *createGameTooltips(char *name, char *description)
         gameTooltips->originNamePosition,
         30,
         FONT_COMFORTAA_BOLD,
-        250
+        240
     );
     sfFloatRect nameRect = sfText_getGlobalBounds(gameTooltips->name);
 
@@ -35,7 +36,7 @@ GameTooltips_t *createGameTooltips(char *name, char *description)
         gameTooltips->originDescriptionPosition,
         20,
         FONT_COMFORTAA_LIGHT,
-        250
+        240
     );
 
     return gameTooltips;

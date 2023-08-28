@@ -38,6 +38,7 @@
         sfVector2f originNamePosition;
         sfVector2f originDescriptionPosition;
         sfRectangleShape *background;
+        sfTexture *backgroundTexture;
         sfText *name;
         sfText *description;
     } GameTooltips_t;
