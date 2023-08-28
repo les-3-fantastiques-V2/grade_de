@@ -7,7 +7,7 @@
 
 #include "gradeDe.h"
 
-static void _addSceneMap(int sceneId, SceneMap_t **sceneMap)
+static void _addSceneMap(SCENE_E sceneId, SceneMap_t **sceneMap)
 {
     SceneConfig_t *sceneConfig = createSceneConfigById(sceneId);
 

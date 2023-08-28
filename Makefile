@@ -7,6 +7,7 @@
 
 SRC		=   $(wildcard src/controller/manager/*.c)	\
 			$(wildcard src/controller/scene/*.c)	\
+			$(wildcard src/provider/cursor/*.c)		\
 			$(wildcard src/provider/font/*.c)		\
 			$(wildcard src/provider/gameSlot/*.c)	\
 			$(wildcard src/provider/scene/*.c)		\

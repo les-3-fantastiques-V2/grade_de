@@ -16,6 +16,9 @@
 //Personal Include
 
 
+/*==================== ENUM ====================*/
+
+
 /*==================== STRUCTURE =====================*/
 
 
@@ -31,12 +34,10 @@
         WindowConfig_t *windowConfig;
         SceneMap_t *sceneMap;
         FontList_t *fontList;
+        MouseCursor_t *mouseCursor;
         int currentSceneId;
         int exitStatus;
     } GradeDe_t;
-
-
-/*==================== ENUM ====================*/
 
 
 /*==================== FUNCTION ====================*/
@@ -48,7 +49,7 @@
     GradeDe_t *getGradeDeStruct(void);
 
         // Scene Config
-    SceneConfig_t *createSceneConfigById(int sceneId);
+    SceneConfig_t *createSceneConfigById(SCENE_E sceneId);
     void destroySceneConfig(SceneConfig_t *sceneConfig);
 
         // Scene Map
@@ -62,6 +63,7 @@
 
 
 /*==================== MACRO ====================*/
+
 
     #define WINDOW_WIDTH 1280
     #define WINDOW_HEIGHT 720

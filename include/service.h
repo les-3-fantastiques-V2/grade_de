@@ -16,10 +16,10 @@
 //Personal Include
 
 
-/*==================== STRUCTURE =====================*/
-
-
 /*==================== ENUM ====================*/
+
+
+/*==================== STRUCTURE =====================*/
 
 
 /*==================== FUNCTION ====================*/
@@ -42,8 +42,8 @@
 
         // Text
             void renderText(sfText *text);
-            sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId);
-            sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, int fontId, int maxWidth);
+            sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId);
+            sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId, int maxWidth);
 
     // Math
         // Percent
