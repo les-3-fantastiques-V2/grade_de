@@ -44,7 +44,7 @@ static bool _clickOnExit(void)
     return false;
 }
 
-static void _renderGamePopUp(void)
+static void _renderGameTooltips(void)
 {
     GAME_E gameId = getGameSlotIdByMousePosition();
     if (gameId == -1) {
@@ -88,7 +88,7 @@ void renderSceneMenuChooseGame(void)
     renderRectangleShape(sceneMenuChooseGame->backgroundMenu);
     renderCircleShape(sceneMenuChooseGame->exitButton);
     renderGameSlotList();
-    _renderGamePopUp();
+    _renderGameTooltips();
     _renderMouseOnExit();
 }
 
