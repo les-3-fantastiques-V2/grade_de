@@ -82,7 +82,7 @@ static bool _clickOnSettings(void)
     GradeDe_t *gradeDe = getGradeDeStruct();
 
     if (_mouseIsOnSettings()) {
-        gradeDe->currentSceneId = EXIT;
+        gradeDe->currentSceneId = SCENE_MENU_SETTINGS;
         return true;
     }
     return false;
@@ -128,6 +128,7 @@ void renderSceneMenuChooseGame(void)
 void loadSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
+    changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
 
     sceneMenuChooseGame->currentSlotId = 0;
     initGameSlotListStruct();

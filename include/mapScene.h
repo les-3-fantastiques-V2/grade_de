@@ -22,6 +22,7 @@
     typedef enum SCENE {
         EXIT = -1,
         SCENE_MENU_CHOOSE_GAME,
+        SCENE_MENU_SETTINGS,
         SCENE_MAX,
     } SCENE_E;
 
@@ -53,6 +54,11 @@
         GameSlot_t *emptySlot;
     } SceneMenuChooseGame_t;
 
+    typedef struct structSceneMenuSettings {
+        sfRectangleShape *background;
+        sfCircleShape *backButton;
+    } SceneMenuSettings_t;
+
 
 /*==================== FUNCTION ====================*/
 
@@ -63,6 +69,13 @@
     void destroySceneMenuChooseGame(void);
     void eventManagerSceneMenuChooseGame(void);
     SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
+
+        // Scene Menu Settings
+    void loadSceneMenuSettings(void);
+    void renderSceneMenuSettings(void);
+    void destroySceneMenuSettings(void);
+    void eventManagerSceneMenuSettings(void);
+    SceneMenuSettings_t *getSceneMenuSettingsStruct(void);
 
 
 /*==================== MACRO ====================*/
