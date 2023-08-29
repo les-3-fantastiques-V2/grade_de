@@ -23,6 +23,7 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "button.h"
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"
