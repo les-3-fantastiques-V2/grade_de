@@ -24,6 +24,7 @@
         CURSOR_DEFAULT,
         CURSOR_INFO,
         CURSOR_EXIT,
+        CURSOR_SETTINGS,
         CURSOR_MAX,
     } CURSOR_E;
 

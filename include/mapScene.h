@@ -48,6 +48,7 @@
         sfRectangleShape *background;
         sfRectangleShape *backgroundMenu;
         sfCircleShape *exitButton;
+        sfCircleShape *settingsButton;
         GameSlotList_t *gameSlotList;
         GameSlot_t *emptySlot;
     } SceneMenuChooseGame_t;

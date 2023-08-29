@@ -11,6 +11,7 @@ char *CursorNameList[CURSOR_MAX] = {
     "Default",
     "Info",
     "Exit",
+    "Settings",
 };
 
 void destroyCursor(Cursor_t *cursor)
