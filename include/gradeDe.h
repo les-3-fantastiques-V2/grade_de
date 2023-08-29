@@ -44,6 +44,8 @@
     void renderGameSlotList(void);
     void eventManager(SceneConfig_t *sceneConfig);
 
+    int getGameSlotPositionIdByMousePosition(void);
+
 
 /*==================== MACRO ====================*/
 

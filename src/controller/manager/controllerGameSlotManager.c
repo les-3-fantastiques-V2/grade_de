@@ -43,3 +43,14 @@ void renderGameSlotList(void)
     }
 }
 
+int getGameSlotPositionIdByMousePosition(void)
+{
+    for (int i = 0; i < 6; i++) {
+        sfVector2f position = _getSlotPosition(i);
+        sfVector2f size = (sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT};
+        if (mouseIsOn(position, size)) {
+            return i;
+        }
+    }
+    return -1;
+}
