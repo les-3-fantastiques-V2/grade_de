@@ -56,7 +56,7 @@
 
     typedef struct structSceneMenuSettings {
         sfRectangleShape *background;
-        sfCircleShape *backButton;
+        ButtonCircle_t *backButton;
     } SceneMenuSettings_t;
 
 

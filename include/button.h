@@ -26,7 +26,7 @@
     typedef struct structButtonCircle {
         sfCircleShape *hitbox;
         sfTexture *texture;
-    }ButtonCirle_t;
+    } ButtonCircle_t;
 
 
 /*==================== FUNCTION ====================*/
@@ -34,6 +34,7 @@
 
     // Button Circle
         void renderButtonCircle(ButtonCircle_t *buttonCircle);
+        bool mouseIsOnCircleButton(ButtonCircle_t *buttonCircle);
         void destroyButtonCircleColor(ButtonCircle_t *buttonCircle);
         void destroyButtonCircleTexture(ButtonCircle_t *buttonCircle);
         ButtonCircle_t *createButtonCircleColor(float radius, sfColor color, sfVector2f position);

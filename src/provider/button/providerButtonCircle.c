@@ -48,3 +48,13 @@ void destroyButtonCircleTexture(ButtonCircle_t *buttonCircle)
     sfTexture_destroy(buttonCircle->texture);
     free(buttonCircle);
 }
+
+/* Check */
+bool mouseIsOnCircleButton(ButtonCircle_t *buttonCircle)
+{
+    sfVector2f circlePosition = sfCircleShape_getPosition(buttonCircle->hitbox);
+    float circleRadius = sfCircleShape_getRadius(buttonCircle->hitbox);
+    sfVector2f circleSize = (sfVector2f){circleRadius * 2, circleRadius * 2};
+
+    return mouseIsOn(circlePosition, circleSize);
+}

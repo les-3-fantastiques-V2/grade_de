@@ -8,6 +8,7 @@
 SRC		=   $(wildcard src/controller/manager/*.c)				\
 			$(wildcard src/controller/scene/MenuChooseGame/*.c)	\
 			$(wildcard src/controller/scene/MenuSettings/*.c)	\
+			$(wildcard src/provider/button/*.c)					\
 			$(wildcard src/provider/cursor/*.c)					\
 			$(wildcard src/provider/font/*.c)					\
 			$(wildcard src/provider/gameSlot/*.c)				\
