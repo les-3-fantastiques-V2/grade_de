@@ -11,7 +11,7 @@ GameTooltips_t *createGameTooltips(char *name, char *description)
 {
     GameTooltips_t *gameTooltips = malloc(sizeof(GameTooltips_t));
 
-    gameTooltips->originBackgroundPosition = (sfVector2f){0, 0};
+    gameTooltips->originBackgroundPosition = (sfVector2f){10, 10};
     gameTooltips->background = createRectangleShape(
         (sfVector2f){250, 250},
         sfColor_fromRGB(200, 200, 200),
@@ -63,7 +63,7 @@ void renderTooltips(GameTooltips_t *gameTooltips)
     int id = getGameSlotPositionIdByMousePosition();
     sfVector2f correction = {0, 0};
     if (id == 2 || id == 5) correction.x = -270;
-    if (id == 3 || id == 4 || id == 5) correction.y = -285;
+    if (id == 3 || id == 4 || id == 5) correction.y = -270;
 
     sfVector2f origineBackgroundPosition = gameTooltips->originBackgroundPosition;
     sfVector2f newBackgroundPosition = (sfVector2f){

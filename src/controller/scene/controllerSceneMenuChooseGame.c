@@ -54,7 +54,7 @@ static void _renderGameTooltips(void)
     if (gameSlot == NULL) {
         return;
     }
-    changeMouseCursor(CURSOR_INFO, CURSOR_TYPE_HINT);
+    changeMouseCursor(CURSOR_INFO, CURSOR_TYPE_CENTER);
     renderTooltips(gameSlot->tooltips);
 }
 
