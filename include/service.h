@@ -26,10 +26,6 @@
 
 
     // CSFML
-        // Circle Shape
-            void renderCircleShape(sfCircleShape *circleShape);
-            sfCircleShape *createCircleShape(float radius, sfColor color, sfVector2f position);
-
         // Mouse
             bool mouseIsOn(sfVector2f position, sfVector2f size);
 

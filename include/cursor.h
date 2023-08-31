@@ -23,8 +23,6 @@
     typedef enum CURSOR {
         CURSOR_DEFAULT,
         CURSOR_INFO,
-        CURSOR_EXIT,
-        CURSOR_SETTINGS,
         CURSOR_MAX,
     } CURSOR_E;
 
@@ -70,8 +68,10 @@
 
         // Mouse Cursor
             void renderMouseCursor(void);
+            CURSOR_E getMouseCursorId(void);
             void initMouseCursorStruct(void);
             void destroyMouseCursorStruct(void);
+            CURSOR_TYPE_E getMouseCursorType(void);
             void changeMouseCursor(CURSOR_E cursorId, CURSOR_TYPE_E type);
 
 

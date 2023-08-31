@@ -20,25 +20,34 @@
 /*==================== ENUM ====================*/
 
 
+    typedef enum BUTTON_STATE {
+        BUTTON_STATE_DEFAULT,
+        BUTTON_STATE_HOVER,
+        BUTTON_STATE_ACTIVE
+    } BUTTON_STATE_E;
+
+
 /*==================== STRUCTURE =====================*/
 
 
-    typedef struct structButtonCircle {
-        sfCircleShape *hitbox;
+    typedef struct structButton {
+        sfRectangleShape *button;
         sfTexture *texture;
-    } ButtonCircle_t;
+        BUTTON_STATE_E state;
+    } Button_t;
 
 
 /*==================== FUNCTION ====================*/
 
 
-    // Button Circle
-        void renderButtonCircle(ButtonCircle_t *buttonCircle);
-        bool mouseIsOnCircleButton(ButtonCircle_t *buttonCircle);
-        void destroyButtonCircleColor(ButtonCircle_t *buttonCircle);
-        void destroyButtonCircleTexture(ButtonCircle_t *buttonCircle);
-        ButtonCircle_t *createButtonCircleColor(float radius, sfColor color, sfVector2f position);
-        ButtonCircle_t *createButtonCircleTexture(float radius, sfTexture *texture, sfVector2f position);
+    void renderButton(Button_t *button);
+    void destroyButton(Button_t *button);
+    void setButtonStateAuto(Button_t *button);
+
+    bool hoverButton(Button_t *button);
+    bool clickOnButton(Button_t *button);
+
+    Button_t *createButton(sfVector2f size, char *texturePath, sfVector2f position);
 
 
 /*==================== MACRO ====================*/
