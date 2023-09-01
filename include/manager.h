@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2023
 ** grade_de
 ** File description:
-** gradeDe.h
+** manager.h
 */
 
-#ifndef GRADE_DE_H_
-    #define GRADE_DE_H_
+#ifndef MANAGER_H_
+    #define MANAGER_H_
 
 /*=========================== INCLUDE ========================*/
 
@@ -14,6 +14,7 @@
 //General Include
 
 //Personal Include
+    #include "mapScene.h"
 
 
 /*==================== ENUM ====================*/
@@ -40,5 +41,5 @@
 /*==================== MACRO ====================*/
 
 
-#endif /*GRADE_DE_H_*/
+#endif /*MANAGER_H_*/
 

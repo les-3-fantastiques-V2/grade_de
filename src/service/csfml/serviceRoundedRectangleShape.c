@@ -104,8 +104,9 @@ static sfVector3f drawArcBottomLeft(sfConvexShape *roundedRectangle, sfVector3f 
 }
 
 
-sfConvexShape *createRoundedRectangle(int width, int height, int radius)
+sfConvexShape *createRoundedRectangle(sfVector3f settings, sfColor color, sfVector2f position)
 {
+    int width = settings.x; int height = settings.y; int radius = settings.z;
     sfVector2f rectangleBorder = {width - (radius) * 2, height - (radius) * 2};
     sfVector3f pointInfo = {0, 0, 0};
     int borderWidthStep[4] = {rectangleBorder.x, 0, -rectangleBorder.x, 0};
@@ -124,10 +125,8 @@ sfConvexShape *createRoundedRectangle(int width, int height, int radius)
     }
 
     sfConvexShape_setOrigin(roundedRectangle, (sfVector2f){0, -radius});
-    sfConvexShape_setPosition(roundedRectangle, (sfVector2f){WINDOW_WIDTH / 6 * 1 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2});
-    sfConvexShape_setFillColor(roundedRectangle, sfWhite);
-    sfConvexShape_setOutlineColor(roundedRectangle, (sfColor){150, 150, 150, 150});
-    sfConvexShape_setOutlineThickness(roundedRectangle, 5);
+    sfConvexShape_setPosition(roundedRectangle, position);
+    sfConvexShape_setFillColor(roundedRectangle, color);
 
     return roundedRectangle;
 }

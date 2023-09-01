@@ -28,6 +28,7 @@
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"
+    #include "manager.h"
     #include "mapScene.h"
     #include "provider.h"
     #include "service.h"
@@ -40,14 +41,6 @@
 
 
 /*==================== FUNCTION ====================*/
-
-
-    void sceneManager(void);
-    void renderGameSlotList(void);
-    void changeScene(SCENE_E sceneId);
-    void eventManager(SceneConfig_t *sceneConfig);
-
-    int getGameSlotPositionIdByMousePosition(void);
 
 
 /*==================== MACRO ====================*/

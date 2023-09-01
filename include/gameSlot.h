@@ -22,6 +22,7 @@
 
     typedef enum GAME {
         NO_GAME = -1,
+        GAME_SNAKE,
         GAME_MAX,
     } GAME_E;
 

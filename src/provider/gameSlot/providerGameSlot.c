@@ -8,9 +8,11 @@
 #include "gradeDe.h"
 
 char *gameName[GAME_MAX] = {
+    "Snake",
 };
 
 char *gameDescription[GAME_MAX] = {
+    "Try to eat the maximum of apple without touching the wall or yourself !",
 };
 
 void destroyGameSlot(GameSlot_t *gameSlot)
@@ -25,9 +27,15 @@ GameSlot_t *createEmptyGameSlot()
 {
     GameSlot_t *emptySlot = malloc(sizeof(GameSlot_t));
     emptySlot->id = -1;
-    emptySlot->iconBox = createRoundedRectangle(GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40);
+    emptySlot->iconBox = createRoundedRectangle(
+        (sfVector3f) {GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40},
+        sfWhite,
+        (sfVector2f) {0, 0}
+    );
+    sfConvexShape_setOutlineColor(emptySlot->iconBox, (sfColor){255, 165, 66, 255});
+    sfConvexShape_setOutlineThickness(emptySlot->iconBox, 2);
     emptySlot->icon = sfTexture_createFromFile("assets/games/Empty.png", NULL);
-    sfConvexShape_setFillColor(emptySlot->iconBox, sfColor_fromRGB(150, 150, 150));
+    sfConvexShape_setTexture(emptySlot->iconBox, emptySlot->icon, sfTrue);
     emptySlot->tooltips = createGameTooltips("empty slot", "empty slot");
 
     return emptySlot;
@@ -57,7 +65,11 @@ GameSlot_t *createGameSlotById(GAME_E gameId)
     GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
     gameSlot->id = gameId;
     gameSlot->tooltips = createGameTooltips(gameName[gameId], gameDescription[gameId]);
-    gameSlot->iconBox = createRoundedRectangle(GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40);
+    gameSlot->iconBox = createRoundedRectangle(
+        (sfVector3f) {GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40},
+        sfWhite,
+        (sfVector2f) {0, 0}
+    );
 
     char *gameIconPath = malloc(sizeof(char) * (strlen("assets/games/") + strlen(gameName[gameId]) + strlen(".png") + 1));
     strcpy(gameIconPath, "assets/games/");
@@ -65,6 +77,8 @@ GameSlot_t *createGameSlotById(GAME_E gameId)
     strcat(gameIconPath, ".png");
     gameSlot->icon = sfTexture_createFromFile(gameIconPath, NULL);
     sfConvexShape_setTexture(gameSlot->iconBox, gameSlot->icon, sfTrue);
+    sfConvexShape_setOutlineColor(gameSlot->iconBox, (sfColor){255, 165, 66, 255});
+    sfConvexShape_setOutlineThickness(gameSlot->iconBox, 2);
 
     free(gameIconPath);
     return gameSlot;

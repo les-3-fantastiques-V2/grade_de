@@ -31,7 +31,7 @@
 
         // Rounded Rectangle
             void renderRoundedRectangle(sfConvexShape *roundedRectangle);
-            sfConvexShape *createRoundedRectangle(int width, int height, int radius);
+            sfConvexShape *createRoundedRectangle(sfVector3f settings, sfColor color, sfVector2f position);
 
         // Rectangle Shape
             void renderRectangleShape(sfRectangleShape *rectangleShape);
