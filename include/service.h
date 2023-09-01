@@ -29,6 +29,10 @@
         // Mouse
             bool mouseIsOn(sfVector2f position, sfVector2f size);
 
+        // Rounded Rectangle
+            void renderRoundedRectangle(sfConvexShape *roundedRectangle);
+            sfConvexShape *createRoundedRectangle(int width, int height, int radius);
+
         // Rectangle Shape
             void renderRectangleShape(sfRectangleShape *rectangleShape);
             sfRectangleShape *createRectangleShape(sfVector2f size, sfColor color, sfVector2f position);

@@ -32,16 +32,17 @@ FLAGS	=	-I./include			\
 			-Wlogical-op		\
 			-Wredundant-decls
 
-CSFML	=	-lcsfml-graphics	\
-			-lcsfml-window		\
-			-lcsfml-system		\
-			-lcsfml-audio
+LIB	=	-lcsfml-graphics	\
+		-lcsfml-window		\
+		-lcsfml-system		\
+		-lcsfml-audio		\
+		-lm
 
 COMP	=	gcc
 
 $(NAME):	$(OBJ)
 	@echo -ne " >> Compilation des sources...\n"
-	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(CSFML)
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB)
 	@echo -ne " >> Compilation réussi !\n"
 
 all:	$(NAME)

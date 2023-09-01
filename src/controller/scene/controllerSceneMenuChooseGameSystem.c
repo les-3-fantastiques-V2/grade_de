@@ -90,6 +90,9 @@ void destroySceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
+    // TODO: Fix segfault
+    // destroyButton(sceneMenuChooseGame->exitButton);
+
     sfRectangleShape_destroy(sceneMenuChooseGame->background);
     sfRectangleShape_destroy(sceneMenuChooseGame->backgroundMenu);
     destroyButton(sceneMenuChooseGame->exitButton);
