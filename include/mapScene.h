@@ -44,12 +44,16 @@
 
 
     typedef struct structSceneMenuChooseGame {
+        bool asNext;
+        bool asPrevious;
         int currentSlotId;
         sfRectangleShape *background;
-        sfRectangleShape *backgroundMenu;
-        sfCircleShape *exitButton;
+        sfConvexShape *backgroundMenu;
         GameSlotList_t *gameSlotList;
         GameSlot_t *emptySlot;
+        Button_t *exitButton;
+        Button_t *leftArrowButton;
+        Button_t *rightArrowButton;
     } SceneMenuChooseGame_t;
 
 
