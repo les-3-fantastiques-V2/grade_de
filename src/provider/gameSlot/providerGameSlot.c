@@ -8,22 +8,17 @@
 #include "gradeDe.h"
 
 char *gameName[GAME_MAX] = {
-    "Testing Game Name",
-    "Empty",
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    "Runner",
+    "Snake",
 };
 
 char *gameDescription[GAME_MAX] = {
-    "Testing Game Description",
-    "Empty",
-    "abcdefghijklmnopqrstuvwxyz",
-    "Run for your life little guy !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
 };
 
 void destroyGameSlot(GameSlot_t *gameSlot)
 {
-    sfRectangleShape_destroy(gameSlot->icon);
+    sfConvexShape_destroy(gameSlot->iconBox);
+    sfTexture_destroy(gameSlot->icon);
     destroyGameTooltips(gameSlot->tooltips);
     free(gameSlot);
 }
@@ -32,7 +27,15 @@ GameSlot_t *createEmptyGameSlot()
 {
     GameSlot_t *emptySlot = malloc(sizeof(GameSlot_t));
     emptySlot->id = -1;
-    emptySlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(150, 150, 150), (sfVector2f){0, 0});
+    emptySlot->iconBox = createRoundedRectangle(
+        (sfVector3f) {GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40},
+        sfWhite,
+        (sfVector2f) {0, 0}
+    );
+    sfConvexShape_setOutlineColor(emptySlot->iconBox, (sfColor){255, 165, 66, 255});
+    sfConvexShape_setOutlineThickness(emptySlot->iconBox, 2);
+    emptySlot->icon = sfTexture_createFromFile("assets/games/Empty.png", NULL);
+    sfConvexShape_setTexture(emptySlot->iconBox, emptySlot->icon, sfTrue);
     emptySlot->tooltips = createGameTooltips("empty slot", "empty slot");
 
     return emptySlot;
@@ -48,7 +51,7 @@ GAME_E getGameSlotIdByMousePosition() {
     }
     for (int i = 0; i < 6; i++) {
         if (gameSlotList == NULL) break;
-        sfVector2f slotPosition = sfRectangleShape_getPosition(gameSlotList->gameSlot->icon);
+        sfVector2f slotPosition = sfConvexShape_getPosition(gameSlotList->gameSlot->iconBox);
         if (mouseIsOn(slotPosition, (sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}))
             return gameSlotList->gameSlot->id;
         gameSlotList = gameSlotList->next;
@@ -61,15 +64,28 @@ GameSlot_t *createGameSlotById(GAME_E gameId)
 {
     GameSlot_t *gameSlot = malloc(sizeof(GameSlot_t));
     gameSlot->id = gameId;
-    gameSlot->icon = createRectangleShape((sfVector2f){GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT}, sfColor_fromRGB(255, 255, 255), (sfVector2f){0, 0});
     gameSlot->tooltips = createGameTooltips(gameName[gameId], gameDescription[gameId]);
+    gameSlot->iconBox = createRoundedRectangle(
+        (sfVector3f) {GAME_SLOT_WIDTH, GAME_SLOT_HEIGHT, 40},
+        sfWhite,
+        (sfVector2f) {0, 0}
+    );
 
+    char *gameIconPath = malloc(sizeof(char) * (strlen("assets/games/") + strlen(gameName[gameId]) + strlen(".png") + 1));
+    strcpy(gameIconPath, "assets/games/");
+    strcat(gameIconPath, gameName[gameId]);
+    strcat(gameIconPath, ".png");
+    gameSlot->icon = sfTexture_createFromFile(gameIconPath, NULL);
+    sfConvexShape_setTexture(gameSlot->iconBox, gameSlot->icon, sfTrue);
+    sfConvexShape_setOutlineColor(gameSlot->iconBox, (sfColor){255, 165, 66, 255});
+    sfConvexShape_setOutlineThickness(gameSlot->iconBox, 2);
+
+    free(gameIconPath);
     return gameSlot;
 }
 
 GameSlot_t *getGameSlotById(GAME_E gameId)
 {
-
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
 

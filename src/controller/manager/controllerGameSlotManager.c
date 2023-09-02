@@ -24,7 +24,6 @@ static sfVector2f _getSlotPosition(int i)
 void renderGameSlotList(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
-    WindowConfig_t *windowConfig = getWindowConfigStruct();
     GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
 
     for (int j = 0; j < sceneMenuChooseGame->currentSlotId; j++) {
@@ -33,11 +32,11 @@ void renderGameSlotList(void)
     }
     for (int i = 0; i < 6; i++) {
         if (gameSlotList == NULL) {
-            sfRectangleShape_setPosition(sceneMenuChooseGame->emptySlot->icon, _getSlotPosition(i));
-            sfRenderWindow_drawRectangleShape(windowConfig->window, sceneMenuChooseGame->emptySlot->icon, NULL);
+            sfConvexShape_setPosition(sceneMenuChooseGame->emptySlot->iconBox, _getSlotPosition(i));
+            renderRoundedRectangle(sceneMenuChooseGame->emptySlot->iconBox);
         } else {
-            sfRectangleShape_setPosition(gameSlotList->gameSlot->icon, _getSlotPosition(i));
-            sfRenderWindow_drawRectangleShape(windowConfig->window, gameSlotList->gameSlot->icon, NULL);
+            sfConvexShape_setPosition(gameSlotList->gameSlot->iconBox, _getSlotPosition(i));
+            renderRoundedRectangle(gameSlotList->gameSlot->iconBox);
             gameSlotList = gameSlotList->next;
         }
     }

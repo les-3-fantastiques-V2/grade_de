@@ -5,16 +5,17 @@
 ## Makefile
 ##
 
-SRC		=   $(wildcard src/controller/manager/*.c)	\
-			$(wildcard src/controller/scene/*.c)	\
-			$(wildcard src/provider/cursor/*.c)		\
-			$(wildcard src/provider/font/*.c)		\
-			$(wildcard src/provider/gameSlot/*.c)	\
-			$(wildcard src/provider/scene/*.c)		\
-			$(wildcard src/provider/system/*.c)		\
-			$(wildcard src/service/csfml/*.c)		\
-			$(wildcard src/service/math/*.c)		\
-			$(wildcard src/service/text/*.c)		\
+SRC		=   $(wildcard src/controller/manager/*.c)				\
+			$(wildcard src/controller/scene/*.c)				\
+			$(wildcard src/provider/button/*.c)					\
+			$(wildcard src/provider/cursor/*.c)					\
+			$(wildcard src/provider/font/*.c)					\
+			$(wildcard src/provider/gameSlot/*.c)				\
+			$(wildcard src/provider/scene/*.c)					\
+			$(wildcard src/provider/system/*.c)					\
+			$(wildcard src/service/csfml/*.c)					\
+			$(wildcard src/service/math/*.c)					\
+			$(wildcard src/service/text/*.c)					\
 			$(wildcard src/*.c)
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
@@ -31,16 +32,17 @@ FLAGS	=	-I./include			\
 			-Wlogical-op		\
 			-Wredundant-decls
 
-CSFML	=	-lcsfml-graphics	\
-			-lcsfml-window		\
-			-lcsfml-system		\
-			-lcsfml-audio
+LIB	=	-lcsfml-graphics	\
+		-lcsfml-window		\
+		-lcsfml-system		\
+		-lcsfml-audio		\
+		-lm
 
 COMP	=	gcc
 
 $(NAME):	$(OBJ)
 	@echo -ne " >> Compilation des sources...\n"
-	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(CSFML)
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB)
 	@echo -ne " >> Compilation réussi !\n"
 
 all:	$(NAME)

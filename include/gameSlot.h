@@ -22,10 +22,7 @@
 
     typedef enum GAME {
         NO_GAME = -1,
-        GAME_TESTING,
-        GAME_EMPTY,
-        GAME_ABC,
-        GAME_RUNNER,
+        GAME_SNAKE,
         GAME_MAX,
     } GAME_E;
 
@@ -45,7 +42,8 @@
 
     typedef struct structGameSlot {
         int id;
-        sfRectangleShape *icon;
+        sfTexture *icon;
+        sfConvexShape *iconBox;
         GameTooltips_t *tooltips;
     } GameSlot_t;
 

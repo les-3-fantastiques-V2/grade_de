@@ -35,7 +35,7 @@ void initMouseCursorStruct(void)
     gradeDe->mouseCursor = malloc(sizeof(MouseCursor_t));
     initCursorListStruct();
     gradeDe->mouseCursor->currentCursor = getCursorById(CURSOR_DEFAULT);
-    gradeDe->mouseCursor->type = true;
+    gradeDe->mouseCursor->type = CURSOR_TYPE_POINTER;
 }
 
 void destroyMouseCursorStruct(void)
@@ -52,4 +52,18 @@ void changeMouseCursor(CURSOR_E cursorId, CURSOR_TYPE_E type)
 
     gradeDe->mouseCursor->currentCursor = getCursorById(cursorId);
     gradeDe->mouseCursor->type = type;
+}
+
+CURSOR_E getMouseCursorId(void)
+{
+    GradeDe_t *gradeDe = getGradeDeStruct();
+
+    return gradeDe->mouseCursor->currentCursor->cursorId;
+}
+
+CURSOR_TYPE_E getMouseCursorType(void)
+{
+    GradeDe_t *gradeDe = getGradeDeStruct();
+
+    return gradeDe->mouseCursor->type;
 }

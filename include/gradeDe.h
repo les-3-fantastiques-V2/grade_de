@@ -12,6 +12,7 @@
 
 
 //General Include
+    #include <math.h>
     #include <stdbool.h>
     #include <stdio.h>
     #include <stdlib.h>
@@ -23,9 +24,11 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "button.h"
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"
+    #include "manager.h"
     #include "mapScene.h"
     #include "provider.h"
     #include "service.h"
@@ -38,13 +41,6 @@
 
 
 /*==================== FUNCTION ====================*/
-
-
-    void sceneManager(void);
-    void renderGameSlotList(void);
-    void eventManager(SceneConfig_t *sceneConfig);
-
-    int getGameSlotPositionIdByMousePosition(void);
 
 
 /*==================== MACRO ====================*/

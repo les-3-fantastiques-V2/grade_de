@@ -7,6 +7,13 @@
 
 #include "gradeDe.h"
 
+void changeScene(SCENE_E sceneId)
+{
+    GradeDe_t *gradeDe = getGradeDeStruct();
+
+    gradeDe->currentSceneId = sceneId;
+}
+
 static void _renderScene(SceneConfig_t *sceneConfig)
 {
     WindowConfig_t *windowConfig = getWindowConfigStruct();
