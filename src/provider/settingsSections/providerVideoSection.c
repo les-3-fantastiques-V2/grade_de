@@ -7,36 +7,44 @@
 
 #include "gradeDe.h"
 
-static void _clickOnVideoSection(void)
+static void _callbackPressed(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
-    if (sceneMenuSettings->currentSection == SETTINGS_SECTION_VIDEO) return;
 
-    sfFloatRect rect = sfText_getGlobalBounds(sceneMenuSettings->videoSection->title);
-    sfVector2f pos = {rect.left, rect.top};
-    sfVector2f size = {rect.width, rect.height};
-    if (mouseIsOn(pos, size) && sfMouse_isButtonPressed(sfMouseLeft)) {
-        changeSettingsSection(SETTINGS_SECTION_VIDEO);
-        sfText_setFillColor(sceneMenuSettings->videoSection->title, (sfColor){255, 165, 66, 255});
-    }
+    changeSettingsSection(SETTINGS_SECTION_VIDEO);
+    sfText_setFillColor(sceneMenuSettings->videoSection->title, (sfColor){255, 165, 66, 255});
+}
+
+static void _callbackHover(void)
+{
+    SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
+
+    sfText_setFillColor(sceneMenuSettings->videoSection->title, (sfColor){255, 165, 66, 150});
+}
+
+static void _callbackDefault(void)
+{
+    SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
+
+    sfText_setFillColor(sceneMenuSettings->videoSection->title, sfBlack);
+}
+
+
+
+void renderSettingsVideoSectionContent(void)
+{
 }
 
 void renderSettingsVideoSection(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
-    if (sceneMenuSettings->currentSection != SETTINGS_SECTION_VIDEO) {
-        sfFloatRect rect = sfText_getGlobalBounds(sceneMenuSettings->videoSection->title);
-        sfVector2f pos = {rect.left, rect.top};
-        sfVector2f size = {rect.width, rect.height};
-        if (mouseIsOn(pos, size)){
-            sfText_setFillColor(sceneMenuSettings->videoSection->title, (sfColor){255, 165, 66, 150});
-        } else {
-            sfText_setFillColor(sceneMenuSettings->videoSection->title, sfBlack);
-        }
-    }
 
-    _clickOnVideoSection();
-    renderText(sceneMenuSettings->videoSection->title);
+    if (sceneMenuSettings->currentSection == SETTINGS_SECTION_VIDEO) {
+        renderText(sceneMenuSettings->videoSection->title);
+        renderSettingsVideoSectionContent();
+    } else {
+        renderTextWithAllCallbacks(sceneMenuSettings->videoSection->title, &_callbackPressed, &_callbackHover, &_callbackDefault);
+    }
 }
 
 void initSettingsVideoSection(void)

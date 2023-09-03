@@ -44,6 +44,7 @@
             void renderText(sfText *text);
             sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId);
             sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId, int maxWidth);
+            void renderTextWithAllCallbacks(sfText *text, void (*callbackPressed)(void), void (*callbackHover)(void), void (*callbackDefault)(void));
 
     // Math
         // Percent

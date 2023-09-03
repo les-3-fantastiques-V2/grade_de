@@ -7,36 +7,43 @@
 
 #include "gradeDe.h"
 
-static void _clickOnSoundSection(void)
+static void _callbackPressed(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
-    if (sceneMenuSettings->currentSection == SETTINGS_SECTION_SOUND) return;
 
-    sfFloatRect rect = sfText_getGlobalBounds(sceneMenuSettings->soundSection->title);
-    sfVector2f pos = {rect.left, rect.top};
-    sfVector2f size = {rect.width, rect.height};
-    if (mouseIsOn(pos, size) && sfMouse_isButtonPressed(sfMouseLeft)) {
-        changeSettingsSection(SETTINGS_SECTION_SOUND);
-        sfText_setFillColor(sceneMenuSettings->soundSection->title, (sfColor){255, 165, 66, 255});
-    }
+    changeSettingsSection(SETTINGS_SECTION_SOUND);
+    sfText_setFillColor(sceneMenuSettings->soundSection->title, (sfColor){255, 165, 66, 255});
+}
+
+static void _callbackHover(void)
+{
+    SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
+
+    sfText_setFillColor(sceneMenuSettings->soundSection->title, (sfColor){255, 165, 66, 150});
+}
+
+static void _callbackDefault(void)
+{
+    SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
+
+    sfText_setFillColor(sceneMenuSettings->soundSection->title, sfBlack);
+}
+
+
+void renderSettingsSoundSectionContent(void)
+{
 }
 
 void renderSettingsSoundSection(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
-    if (sceneMenuSettings->currentSection != SETTINGS_SECTION_SOUND) {
-        sfFloatRect rect = sfText_getGlobalBounds(sceneMenuSettings->soundSection->title);
-        sfVector2f pos = {rect.left, rect.top};
-        sfVector2f size = {rect.width, rect.height};
-        if (mouseIsOn(pos, size)){
-            sfText_setFillColor(sceneMenuSettings->soundSection->title, (sfColor){255, 165, 66, 150});
-        } else {
-            sfText_setFillColor(sceneMenuSettings->soundSection->title, sfBlack);
-        }
-    }
 
-    _clickOnSoundSection();
-    renderText(sceneMenuSettings->soundSection->title);
+    if (sceneMenuSettings->currentSection == SETTINGS_SECTION_SOUND) {
+        renderText(sceneMenuSettings->soundSection->title);
+        renderSettingsSoundSectionContent();
+    } else {
+        renderTextWithAllCallbacks(sceneMenuSettings->soundSection->title, &_callbackPressed, &_callbackHover, &_callbackDefault);
+    }
 }
 
 void initSettingsSoundSection(void)
