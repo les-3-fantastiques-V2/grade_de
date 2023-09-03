@@ -89,6 +89,7 @@ void loadSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
+    changeMusic(MUSIC_HOME_AMBIENT);
 
     sceneMenuChooseGame->currentSlotId = 0;
     initGameSlotListStruct();

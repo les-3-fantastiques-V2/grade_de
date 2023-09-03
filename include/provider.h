@@ -35,6 +35,7 @@
         SceneMap_t *sceneMap;
         FontList_t *fontList;
         MouseCursor_t *mouseCursor;
+        MusicPlayer_t *musicPlayer;
         int currentSceneId;
         int exitStatus;
     } GradeDe_t;

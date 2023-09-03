@@ -30,6 +30,7 @@
     #include "gameSlot.h"
     #include "manager.h"
     #include "mapScene.h"
+    #include "music.h"
     #include "provider.h"
     #include "service.h"
 

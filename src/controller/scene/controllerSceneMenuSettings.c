@@ -38,6 +38,7 @@ void loadSceneMenuSettings(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
     changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
+    changeMusic(MUSIC_HOME_AMBIENT);
 
     sceneMenuSettings->background = createRectangleShape(
         (sfVector2f){WINDOW_WIDTH, WINDOW_HEIGHT},
