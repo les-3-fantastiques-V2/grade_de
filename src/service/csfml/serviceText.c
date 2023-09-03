@@ -57,6 +57,7 @@ static char *_splitText(char *text, int maxWidth, int fontSize, FONT_E fontId)
     return newText;
 }
 
+
 void renderText(sfText *text)
 {
     WindowConfig_t *windowConfig = getWindowConfigStruct();

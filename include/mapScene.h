@@ -60,9 +60,12 @@
 
 
     typedef struct structSceneMenuSettings {
+        SETTINGS_SECTION_E currentSection;
         sfRectangleShape *background;
         sfConvexShape *backgroundMenu;
         Button_t *backButton;
+        SettingsSoundSection_t *soundSection;
+        SettingsVideoSection_t *videoSection;
     } SceneMenuSettings_t;
 
 

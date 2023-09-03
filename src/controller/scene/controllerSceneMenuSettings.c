@@ -37,6 +37,7 @@ void renderSceneMenuSettings(void)
     renderRectangleShape(sceneMenuSettings->background);
     renderRoundedRectangle(sceneMenuSettings->backgroundMenu);
     renderButton(sceneMenuSettings->backButton);
+    renderSettingsSection();
 }
 
 void loadSceneMenuSettings(void)
@@ -60,12 +61,14 @@ void loadSceneMenuSettings(void)
         "assets/image/IconArrowLeft.png",
         (sfVector2f){20, WINDOW_HEIGHT - 100}
     );
+    initSettingsSection();
 }
 
 void destroySceneMenuSettings(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
+    destroySettingsSection();
     destroyButton(sceneMenuSettings->backButton);
     sfRectangleShape_destroy(sceneMenuSettings->background);
     sfConvexShape_destroy(sceneMenuSettings->backgroundMenu);

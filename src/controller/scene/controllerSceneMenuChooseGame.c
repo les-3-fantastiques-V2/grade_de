@@ -47,22 +47,22 @@ static void _modifyCurrentSlotId(int value)
 
 /* Button */
 
-void exitButtonPressed(void)
+static void exitButtonPressed(void)
 {
     changeScene(EXIT);
 }
 
-void settingsButtonPressed(void)
+static void settingsButtonPressed(void)
 {
     changeScene(SCENE_MENU_SETTINGS);
 }
 
-void leftArrowButtonPressed(void)
+static void leftArrowButtonPressed(void)
 {
     _modifyCurrentSlotId(-1);
 }
 
-void rightArrowButtonPressed(void)
+static void rightArrowButtonPressed(void)
 {
     _modifyCurrentSlotId(1);
 }
