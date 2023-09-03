@@ -13,6 +13,7 @@ SRC		=   $(wildcard src/controller/manager/*.c)	\
 			$(wildcard src/provider/gameSlot/*.c)	\
 			$(wildcard src/provider/music/*.c)		\
 			$(wildcard src/provider/scene/*.c)		\
+			$(wildcard src/provider/sound/*.c)		\
 			$(wildcard src/provider/system/*.c)		\
 			$(wildcard src/service/csfml/*.c)		\
 			$(wildcard src/service/math/*.c)		\

@@ -12,6 +12,7 @@ void changeScene(SCENE_E sceneId)
     GradeDe_t *gradeDe = getGradeDeStruct();
 
     gradeDe->currentSceneId = sceneId;
+    sleep(0.5);
 }
 
 static void _renderScene(SceneConfig_t *sceneConfig)

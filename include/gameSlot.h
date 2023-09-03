@@ -58,6 +58,7 @@
 
         // Game Slot
     void destroyGameSlot(GameSlot_t *gameSlot);
+    bool clickOnGameSlot(void);
     GAME_E getGameSlotIdByMousePosition();
     GameSlot_t *createEmptyGameSlot();
     GameSlot_t *getGameSlotById(GAME_E gameId);

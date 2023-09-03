@@ -13,10 +13,8 @@ void initMusicPlayerStruct(void)
     gradeDe->musicPlayer = malloc(sizeof(MusicPlayer_t));
     initMusicListStruct();
 
-    gradeDe->musicPlayer->currentMusic = getMusicById(MUSIC_HOME_AMBIENT);
     gradeDe->musicPlayer->volume = 100;
-    sfMusic_setVolume(gradeDe->musicPlayer->currentMusic->music, gradeDe->musicPlayer->volume);
-    sfMusic_play(gradeDe->musicPlayer->currentMusic->music);
+    gradeDe->musicPlayer->currentMusic = NULL;
 }
 
 void destroyMusicPlayerStruct(void)
@@ -38,10 +36,15 @@ void changeMusicVolume(float volume)
 void changeMusic(MUSIC_E musicId)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
-    if (gradeDe->musicPlayer->currentMusic->musicId == musicId) return;
 
-    sfMusic_stop(gradeDe->musicPlayer->currentMusic->music);
+    if (gradeDe->musicPlayer->currentMusic != NULL) {
+        if (gradeDe->musicPlayer->currentMusic->musicId == musicId) return;
+
+        sfMusic_stop(gradeDe->musicPlayer->currentMusic->music);
+    }
+
     gradeDe->musicPlayer->currentMusic = getMusicById(musicId);
+    if (gradeDe->musicPlayer->currentMusic == NULL) return;
     sfMusic_setVolume(gradeDe->musicPlayer->currentMusic->music, gradeDe->musicPlayer->volume);
     sfMusic_play(gradeDe->musicPlayer->currentMusic->music);
 }

@@ -7,8 +7,15 @@
 
 #include "gradeDe.h"
 
-/* System */
+/* Button */
 
+void backButtonPressed(void)
+{
+    changeScene(SCENE_MENU_CHOOSE_GAME);
+}
+
+
+/* System */
 
 SceneMenuSettings_t *getSceneMenuSettingsStruct(void)
 {
@@ -20,9 +27,7 @@ void eventManagerSceneMenuSettings(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
-    if (clickOnButton(sceneMenuSettings->backButton)) {
-        changeScene(SCENE_MENU_CHOOSE_GAME); return;
-    }
+    if (clickOnButton(sceneMenuSettings->backButton, &backButtonPressed)) return;
 }
 
 void renderSceneMenuSettings(void)

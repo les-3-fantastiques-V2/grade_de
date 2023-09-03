@@ -44,8 +44,31 @@ static void _modifyCurrentSlotId(int value)
     sceneMenuChooseGame->asNext = (sceneMenuChooseGame->currentSlotId < GAME_MAX - 6) ? true : false;
 }
 
-/* System */
 
+/* Button */
+
+void exitButtonPressed(void)
+{
+    changeScene(EXIT);
+}
+
+void settingsButtonPressed(void)
+{
+    changeScene(SCENE_MENU_SETTINGS);
+}
+
+void leftArrowButtonPressed(void)
+{
+    _modifyCurrentSlotId(-1);
+}
+
+void rightArrowButtonPressed(void)
+{
+    _modifyCurrentSlotId(1);
+}
+
+
+/* System */
 
 SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void)
 {
@@ -57,18 +80,13 @@ void eventManagerSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
-    if (clickOnButton(sceneMenuChooseGame->exitButton)) {
-        changeScene(EXIT); return;
-    }
-    if (clickOnButton(sceneMenuChooseGame->settingsButton)) {
-        changeScene(SCENE_MENU_SETTINGS); return;
-    }
-    if (clickOnButton(sceneMenuChooseGame->leftArrowButton) && sceneMenuChooseGame->asPrevious) {
-        _modifyCurrentSlotId(-1); return;
-    }
-    if (clickOnButton(sceneMenuChooseGame->rightArrowButton) && sceneMenuChooseGame->asNext) {
-        _modifyCurrentSlotId(1); return;
-    }
+    if (clickOnButton(sceneMenuChooseGame->exitButton, &exitButtonPressed)) return;
+    if (clickOnButton(sceneMenuChooseGame->settingsButton, &settingsButtonPressed)) return;
+    if (sceneMenuChooseGame->asPrevious)
+        if (clickOnButton(sceneMenuChooseGame->leftArrowButton, &leftArrowButtonPressed)) return;
+    if (sceneMenuChooseGame->asNext)
+        if (clickOnButton(sceneMenuChooseGame->rightArrowButton, &rightArrowButtonPressed)) return;
+    if (clickOnGameSlot()) return;
 }
 
 void renderSceneMenuChooseGame(void)

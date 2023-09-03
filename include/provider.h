@@ -36,6 +36,7 @@
         FontList_t *fontList;
         MouseCursor_t *mouseCursor;
         MusicPlayer_t *musicPlayer;
+        SoundPlayer_t *soundPlayer;
         int currentSceneId;
         int exitStatus;
     } GradeDe_t;
