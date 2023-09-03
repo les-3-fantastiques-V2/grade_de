@@ -60,6 +60,9 @@ void eventManagerSceneMenuChooseGame(void)
     if (clickOnButton(sceneMenuChooseGame->exitButton)) {
         changeScene(EXIT); return;
     }
+    if (clickOnButton(sceneMenuChooseGame->settingsButton)) {
+        changeScene(SCENE_MENU_SETTINGS); return;
+    }
     if (clickOnButton(sceneMenuChooseGame->leftArrowButton) && sceneMenuChooseGame->asPrevious) {
         _modifyCurrentSlotId(-1); return;
     }
@@ -77,6 +80,7 @@ void renderSceneMenuChooseGame(void)
     renderGameSlotList();
     _renderGameTooltips();
     renderButton(sceneMenuChooseGame->exitButton);
+    renderButton(sceneMenuChooseGame->settingsButton);
     if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
     if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
 }
@@ -104,6 +108,11 @@ void loadSceneMenuChooseGame(void)
         "assets/image/IconExit.png",
         (sfVector2f){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100}
     );
+    sceneMenuChooseGame->settingsButton = createButton(
+        (sfVector2f){80, 80},
+        "assets/image/IconSettings.png",
+        (sfVector2f){ 20, WINDOW_HEIGHT - 100}
+    );
     sceneMenuChooseGame->leftArrowButton = createButton(
         (sfVector2f){42, 60},
         "assets/image/IconLeft.png",
@@ -122,12 +131,10 @@ void destroySceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
-    // TODO: Fix segfault
-    // destroyButton(sceneMenuChooseGame->LeftArrowButton);
-    // destroyButton(sceneMenuChooseGame->RightArrowButton);
-    // destroyButton(sceneMenuChooseGame->exitButton);
-
+    destroyButton(sceneMenuChooseGame->leftArrowButton);
+    destroyButton(sceneMenuChooseGame->rightArrowButton);
+    destroyButton(sceneMenuChooseGame->exitButton);
+    destroyButton(sceneMenuChooseGame->settingsButton);
     sfRectangleShape_destroy(sceneMenuChooseGame->background);
     sfConvexShape_destroy(sceneMenuChooseGame->backgroundMenu);
-    destroyButton(sceneMenuChooseGame->exitButton);
 }
