@@ -13,7 +13,7 @@ void initSoundPlayerStruct(void)
     gradeDe->soundPlayer = malloc(sizeof(SoundPlayer_t));
     initSoundListStruct();
 
-    gradeDe->soundPlayer->volume = 100;
+    gradeDe->soundPlayer->volume = 5;
     gradeDe->soundPlayer->currentSound = NULL;
 }
 
@@ -43,4 +43,11 @@ void playSound(SOUND_E soundId)
     if (gradeDe->soundPlayer->currentSound == NULL) return;
     sfSound_setVolume(gradeDe->soundPlayer->currentSound->sound, gradeDe->soundPlayer->volume);
     sfSound_play(gradeDe->soundPlayer->currentSound->sound);
+}
+
+float getSoundVolume(void)
+{
+    GradeDe_t *gradeDe = getGradeDeStruct();
+
+    return gradeDe->soundPlayer->volume;
 }

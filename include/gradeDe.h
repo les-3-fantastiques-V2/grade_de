@@ -25,8 +25,8 @@
     #include <SFML/System.h>
 
 //Personal Include
-    #include "settingsSection.h"
     #include "button.h"
+    #include "settingsSection.h"
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"

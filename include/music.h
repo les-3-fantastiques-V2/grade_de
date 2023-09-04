@@ -59,6 +59,7 @@
     void destroyMusicListStruct(void);
 
         // Music Player
+    float getMusicVolume(void);
     void initMusicPlayerStruct(void);
     void changeMusic(MUSIC_E musicId);
     void destroyMusicPlayerStruct(void);

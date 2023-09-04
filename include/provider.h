@@ -28,6 +28,8 @@
         char *name;
         unsigned int frameRate;
         sfEvent event;
+        int brightness;
+        sfRectangleShape *brightnessRectangle;
     } WindowConfig_t;
 
     typedef struct structGradeDe {
@@ -60,6 +62,7 @@
 
         // Window Config
     void initWindowConfigStruct(void);
+    void setBrightness(int brightness);
     void destroyWindowConfigStruct(void);
     WindowConfig_t *getWindowConfigStruct(void);
 

@@ -62,6 +62,7 @@
     void destroySoundListStruct(void);
 
         // Sound Player
+    float getSoundVolume(void);
     void playSound(SOUND_E soundId);
     void initSoundPlayerStruct(void);
     void destroySoundPlayerStruct(void);

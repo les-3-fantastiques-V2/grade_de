@@ -36,6 +36,7 @@ void renderSceneMenuSettings(void)
 
     renderRectangleShape(sceneMenuSettings->background);
     renderRoundedRectangle(sceneMenuSettings->backgroundMenu);
+    renderRoundedRectangle(sceneMenuSettings->line);
     renderButton(sceneMenuSettings->backButton);
     renderSettingsSection();
 }
@@ -56,6 +57,11 @@ void loadSceneMenuSettings(void)
         (sfColor){143, 87, 101, 255},
         (sfVector2f){percent(WINDOW_WIDTH, 2), percent(WINDOW_HEIGHT, 4)}
     );
+    sceneMenuSettings->line = createRoundedRectangle(
+        (sfVector3f){10, percent(WINDOW_HEIGHT, 70), 4},
+        (sfColor) {99, 50, 79, 255},
+        (sfVector2f){300, percent(WINDOW_HEIGHT, 8)}
+    );
     sceneMenuSettings->backButton = createButton(
         (sfVector2f){80, 70},
         "assets/image/IconArrowLeft.png",
@@ -72,4 +78,5 @@ void destroySceneMenuSettings(void)
     destroyButton(sceneMenuSettings->backButton);
     sfRectangleShape_destroy(sceneMenuSettings->background);
     sfConvexShape_destroy(sceneMenuSettings->backgroundMenu);
+    sfConvexShape_destroy(sceneMenuSettings->line);
 }

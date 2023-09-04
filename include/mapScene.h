@@ -64,6 +64,7 @@
         sfRectangleShape *background;
         sfConvexShape *backgroundMenu;
         Button_t *backButton;
+        sfConvexShape *line;
         SettingsSoundSection_t *soundSection;
         SettingsVideoSection_t *videoSection;
     } SceneMenuSettings_t;

@@ -24,6 +24,7 @@ static void _renderScene(SceneConfig_t *sceneConfig)
         eventManager(sceneConfig);
         sceneConfig->renderFunction();
         renderMouseCursor();
+        renderRectangleShape(windowConfig->brightnessRectangle);
         sfRenderWindow_display(windowConfig->window);
         sfRenderWindow_clear(windowConfig->window, sfBlack);
     }
