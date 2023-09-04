@@ -9,18 +9,22 @@
 
 void (*renderFunction[SCENE_MAX])(void) = {
     &renderSceneMenuChooseGame,
+    &renderSceneMenuSettings,
 };
 
 void (*loadSceneElement[SCENE_MAX])(void) = {
     &loadSceneMenuChooseGame,
+    &loadSceneMenuSettings,
 };
 
 void (*destroySceneElement[SCENE_MAX])(void) = {
     &destroySceneMenuChooseGame,
+    &destroySceneMenuSettings,
 };
 
 void (*eventSceneManager[SCENE_MAX])(void) = {
     &eventManagerSceneMenuChooseGame,
+    &eventManagerSceneMenuSettings,
 };
 
 SceneConfig_t *createSceneConfigById(SCENE_E sceneId)

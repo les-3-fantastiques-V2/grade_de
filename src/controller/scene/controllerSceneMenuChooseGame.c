@@ -44,8 +44,31 @@ static void _modifyCurrentSlotId(int value)
     sceneMenuChooseGame->asNext = (sceneMenuChooseGame->currentSlotId < GAME_MAX - 6) ? true : false;
 }
 
-/* System */
 
+/* Button */
+
+static void exitButtonPressed(void)
+{
+    changeScene(EXIT);
+}
+
+static void settingsButtonPressed(void)
+{
+    changeScene(SCENE_MENU_SETTINGS);
+}
+
+static void leftArrowButtonPressed(void)
+{
+    _modifyCurrentSlotId(-1);
+}
+
+static void rightArrowButtonPressed(void)
+{
+    _modifyCurrentSlotId(1);
+}
+
+
+/* System */
 
 SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void)
 {
@@ -57,15 +80,13 @@ void eventManagerSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
-    if (clickOnButton(sceneMenuChooseGame->exitButton)) {
-        changeScene(EXIT); return;
-    }
-    if (clickOnButton(sceneMenuChooseGame->leftArrowButton) && sceneMenuChooseGame->asPrevious) {
-        _modifyCurrentSlotId(-1); return;
-    }
-    if (clickOnButton(sceneMenuChooseGame->rightArrowButton) && sceneMenuChooseGame->asNext) {
-        _modifyCurrentSlotId(1); return;
-    }
+    if (clickOnButton(sceneMenuChooseGame->exitButton, &exitButtonPressed)) return;
+    if (clickOnButton(sceneMenuChooseGame->settingsButton, &settingsButtonPressed)) return;
+    if (sceneMenuChooseGame->asPrevious)
+        if (clickOnButton(sceneMenuChooseGame->leftArrowButton, &leftArrowButtonPressed)) return;
+    if (sceneMenuChooseGame->asNext)
+        if (clickOnButton(sceneMenuChooseGame->rightArrowButton, &rightArrowButtonPressed)) return;
+    if (clickOnGameSlot()) return;
 }
 
 void renderSceneMenuChooseGame(void)
@@ -77,6 +98,7 @@ void renderSceneMenuChooseGame(void)
     renderGameSlotList();
     _renderGameTooltips();
     renderButton(sceneMenuChooseGame->exitButton);
+    renderButton(sceneMenuChooseGame->settingsButton);
     if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
     if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
 }
@@ -85,6 +107,7 @@ void loadSceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
+    changeMusic(MUSIC_HOME_AMBIENT);
 
     sceneMenuChooseGame->currentSlotId = 0;
     initGameSlotListStruct();
@@ -104,6 +127,11 @@ void loadSceneMenuChooseGame(void)
         "assets/image/IconExit.png",
         (sfVector2f){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100}
     );
+    sceneMenuChooseGame->settingsButton = createButton(
+        (sfVector2f){80, 80},
+        "assets/image/IconSettings.png",
+        (sfVector2f){ 20, WINDOW_HEIGHT - 100}
+    );
     sceneMenuChooseGame->leftArrowButton = createButton(
         (sfVector2f){42, 60},
         "assets/image/IconLeft.png",
@@ -122,12 +150,10 @@ void destroySceneMenuChooseGame(void)
 {
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
 
-    // TODO: Fix segfault
-    // destroyButton(sceneMenuChooseGame->LeftArrowButton);
-    // destroyButton(sceneMenuChooseGame->RightArrowButton);
-    // destroyButton(sceneMenuChooseGame->exitButton);
-
+    destroyButton(sceneMenuChooseGame->leftArrowButton);
+    destroyButton(sceneMenuChooseGame->rightArrowButton);
+    destroyButton(sceneMenuChooseGame->exitButton);
+    destroyButton(sceneMenuChooseGame->settingsButton);
     sfRectangleShape_destroy(sceneMenuChooseGame->background);
     sfConvexShape_destroy(sceneMenuChooseGame->backgroundMenu);
-    destroyButton(sceneMenuChooseGame->exitButton);
 }

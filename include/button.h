@@ -45,7 +45,7 @@
     void setButtonStateAuto(Button_t *button);
 
     bool hoverButton(Button_t *button);
-    bool clickOnButton(Button_t *button);
+    bool clickOnButton(Button_t *button, void (*callback)(void));
 
     Button_t *createButton(sfVector2f size, char *texturePath, sfVector2f position);
 

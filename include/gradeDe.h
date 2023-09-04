@@ -17,6 +17,7 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
+    #include <unistd.h>
 
     #include <SFML/Graphics.h>
     #include <SFML/Window.h>
@@ -25,13 +26,16 @@
 
 //Personal Include
     #include "button.h"
+    #include "settingsSection.h"
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"
     #include "manager.h"
     #include "mapScene.h"
-    #include "provider.h"
+    #include "music.h"
     #include "service.h"
+    #include "sound.h"
+    #include "provider.h"
 
 
 /*==================== ENUM ====================*/

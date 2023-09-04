@@ -44,6 +44,11 @@
             void renderText(sfText *text);
             sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId);
             sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId, int maxWidth);
+            void renderTextWithAllCallbacks(sfText *text, void (*callbackPressed)(void), void (*callbackHover)(void), void (*callbackDefault)(void));
+
+        // Time
+            float getTime(sfClock *clock);
+            void resetTime(sfClock *clock);
 
     // Math
         // Percent
@@ -54,6 +59,9 @@
             bool charIsNumeric(char character);
             bool charIsAlphabetic(char character);
             bool charIsAlphanumeric(char character);
+
+        // Convert To String
+            char *intToString(int number);
 
         // String Manipulation
             char *mergeCharToString(char *string, char c);

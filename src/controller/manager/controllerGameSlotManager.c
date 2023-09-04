@@ -53,3 +53,21 @@ int getGameSlotPositionIdByMousePosition(void)
     }
     return -1;
 }
+
+bool clickOnGameSlot(void)
+{
+    if (!sfMouse_isButtonPressed(sfMouseLeft)) return false;
+
+    int gameSlotPositionId = getGameSlotPositionIdByMousePosition();
+    if (gameSlotPositionId == -1) return false;
+
+    SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
+    int gameSlotId = sceneMenuChooseGame->currentSlotId + gameSlotPositionId;
+    playSound(SOUND_LUNCH_APPLICATION);
+
+    GameSlot_t *gameSlot = getGameSlotById(gameSlotId);
+    const char *name = sfText_getString(gameSlot->tooltips->name);
+    printf("Game: %s\n", name);
+
+    return true;
+}
