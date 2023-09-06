@@ -33,6 +33,10 @@ void initConfig(void)
     Config_t *config = getConfig();
 
     config->configList = NULL;
+    if (access("config/settings.csv", F_OK) == -1) {
+        writeFileContent("config/settings.csv", "");
+        return;
+    }
     char *configContent = getFileContent("config/settings.csv");
     char **configTable = stringToWordArray(configContent, "\n");
 
