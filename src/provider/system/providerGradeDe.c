@@ -17,6 +17,7 @@ void initGradeDeStruct(void)
 {
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
 
+    initConfig();
     initWindowConfigStruct();
     initSceneMapStruct();
     initMouseCursorStruct();
@@ -37,6 +38,13 @@ int destroyGradeDeStruct(void)
     destroyMouseCursorStruct();
     destroySceneMapStruct();
     destroyWindowConfigStruct();
+
+    char *saveOnExit = getConfigValueByName("saveOnExit");
+    bool save = false;
+    if (saveOnExit != NULL) save = (strcmp(saveOnExit, "true") == 0) ? true : false;
+    if (save) saveConfig();
+
+    destroyConfig();
 
     return gradeDeStruct->exitStatus;
 }

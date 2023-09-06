@@ -36,18 +36,35 @@
         BUTTON_STATE_E state;
     } Button_t;
 
+    typedef struct structToggleButton {
+        sfRectangleShape *button;
+        sfTexture *textureButton;
+        sfRectangleShape *toggle;
+        sfTexture *textureToggle;
+        bool isToggled;
+    } ToggleButton_t;
+
 
 /*==================== FUNCTION ====================*/
 
+    // Button
+        void renderButton(Button_t *button);
+        void destroyButton(Button_t *button);
+        void setButtonStateAuto(Button_t *button);
 
-    void renderButton(Button_t *button);
-    void destroyButton(Button_t *button);
-    void setButtonStateAuto(Button_t *button);
+        bool hoverButton(Button_t *button);
+        bool clickOnButton(Button_t *button, void (*callback)(void));
 
-    bool hoverButton(Button_t *button);
-    bool clickOnButton(Button_t *button, void (*callback)(void));
+        Button_t *createButton(sfVector2f size, char *texturePath, sfVector2f position);
 
-    Button_t *createButton(sfVector2f size, char *texturePath, sfVector2f position);
+    // ToggleButton
+        void renderToggleButton(ToggleButton_t *toggleButton);
+        void destroyToggleButton(ToggleButton_t *toggleButton);
+
+        bool hoverToggleButton(ToggleButton_t *toggleButton);
+        bool clickOnToggleButton(ToggleButton_t *toggleButton);
+
+        ToggleButton_t *createToggleButton(sfVector2f size, sfVector2f position);
 
 
 /*==================== MACRO ====================*/

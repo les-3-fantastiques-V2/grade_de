@@ -56,8 +56,8 @@ void renderPlusMinus(PlusMinus_t *plusMinus)
     renderText(plusMinus->valueText);
     _clickOnButton(plusMinus->plus, plusMinus, 1);
     _clickOnButton(plusMinus->minus, plusMinus, -1);
-    renderButton(plusMinus->plus);
-    renderButton(plusMinus->minus);
+    if (plusMinus->value + plusMinus->step <= plusMinus->maxValue) renderButton(plusMinus->plus);
+    if (plusMinus->value - plusMinus->step >= plusMinus->minValue) renderButton(plusMinus->minus);
 }
 
 PlusMinus_t *initPlusMinusStruct(char *title, int *values, sfVector2f position, void (*update)(void))
