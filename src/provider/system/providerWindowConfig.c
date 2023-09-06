@@ -22,6 +22,20 @@ void setBrightness(int brightness)
         windowConfigStruct->brightnessRectangle,
         (sfColor){0, 0, 0, 255 - percent(255, windowConfigStruct->brightness)}
     );
+    char *brightnessString = intToString(windowConfigStruct->brightness);
+    setConfig("brightness", brightnessString);
+    free(brightnessString);
+}
+
+void setFrameRate(int frameRate)
+{
+    WindowConfig_t *windowConfigStruct = getWindowConfigStruct();
+
+    windowConfigStruct->frameRate = frameRate;
+    sfRenderWindow_setFramerateLimit(windowConfigStruct->window, windowConfigStruct->frameRate);
+    char *frameRateString = intToString(windowConfigStruct->frameRate);
+    setConfig("frameRate", frameRateString);
+    free(frameRateString);
 }
 
 void initWindowConfigStruct(void)
@@ -31,7 +45,14 @@ void initWindowConfigStruct(void)
 
     windowConfigStruct->videoMode = (sfVideoMode){WINDOW_WIDTH, WINDOW_HEIGHT, 32};
     windowConfigStruct->name = "GradeDe";
-    windowConfigStruct->frameRate = 60;
+    char *frameRate = getConfigValueByName("frameRate");
+    if (frameRate != NULL) {
+        int frameRateValue = (int)atof(frameRate);
+        windowConfigStruct->frameRate = frameRateValue;
+    } else {
+        addConfig("frameRate", "60");
+        windowConfigStruct->frameRate = 60;
+    }
     windowConfigStruct->window = sfRenderWindow_create(
         windowConfigStruct->videoMode,
         windowConfigStruct->name,
@@ -45,7 +66,15 @@ void initWindowConfigStruct(void)
     };
     sfRenderWindow_setPosition(windowConfigStruct->window, newPosition);
     sfRenderWindow_setMouseCursorVisible(windowConfigStruct->window, sfFalse);
-    windowConfigStruct->brightness = 100;
+
+    char *brightness = getConfigValueByName("brightness");
+    if (brightness != NULL) {
+        int brightnessValue = (int)atof(brightness);
+        windowConfigStruct->brightness = brightnessValue;
+    } else {
+        addConfig("brightness", "100");
+        windowConfigStruct->brightness = 100;
+    }
     windowConfigStruct->brightnessRectangle = createRectangleShape(
         (sfVector2f){WINDOW_WIDTH, WINDOW_HEIGHT},
         (sfColor){0, 0, 0, 255 - percent(255, windowConfigStruct->brightness)},

@@ -67,6 +67,7 @@
         sfConvexShape *line;
         SettingsSoundSection_t *soundSection;
         SettingsVideoSection_t *videoSection;
+        SettingsNotesSection_t *notesSection;
     } SceneMenuSettings_t;
 
 

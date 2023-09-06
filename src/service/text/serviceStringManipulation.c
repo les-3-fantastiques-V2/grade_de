@@ -37,50 +37,44 @@ char *mergeStringToString(char *string1, char *string2)
     return newString;
 }
 
-static int *_getTableConfig(char *string)
+static int _countWords(char *string, char *separator)
 {
-    int *tableConfig = malloc(sizeof(int) * 2);
-    tableConfig[0] = 0; tableConfig[1] = 0;
-    int currentWidth = 0;
+    int words = 0;
 
-    for(int i = 0; string[i] != '\0'; i++) {
-        if (string[i] == '\n' || string[i] == '\t' || string[i] == ' ') {
-            tableConfig[0] = (tableConfig[0] < currentWidth) ? currentWidth : tableConfig[0];
-            tableConfig[1]++; currentWidth = 0;
-        } else {
-            currentWidth++;
-        }
-    }
-    tableConfig[0] = (tableConfig[0] < currentWidth) ? currentWidth : tableConfig[0];
-    tableConfig[1]++; currentWidth = 0;
+    int i = 0;
+    for (; string[i] != '\0'; i++)
+        if (charIsInString(string[i], separator))
+            words++;
+    if (i > 0 && !charIsInString(string[i - 1], separator))
+        words++;
 
-    return tableConfig;
+    return words;
 }
 
-char **stringToWordArray(char *string)
+static int _getWordLength(char *string, char *separator, int index)
 {
-    int *tableConfig = _getTableConfig(string);
-    char **table = malloc(sizeof(char *) * (tableConfig[1] + 1));
-    for (int i = 0; i < tableConfig[1]; i++)
-        table[i] = malloc(sizeof(char) * (tableConfig[0] + 1));
-    for (int i = 0; i < tableConfig[1]; i++)
-        for (int j = 0; j < tableConfig[0]; j++)
-            table[i][j] = '\0';
-    table[tableConfig[1]] = NULL;
+    int length = 0;
 
-    int i = 0; int j = 0; int k = 0;
-    while (string[k] != '\0') {
-        if (string[k] == '\n' || string[k] == '\t' || string[k] == ' ') {
-            table[i][j] = '\0'; i++; j = 0; k++;
-        } else {
-            table[i][j] = string[k]; j++; k++;
-        }
+    for (int i = index; string[i] != '\0' && !charIsInString(string[i], separator); i++)
+        length++;
+
+    return length;
+}
+
+char **stringToWordArray(char *string, char *separator)
+{
+    int words = _countWords(string, separator);
+    char **array = malloc(sizeof(char *) * (words + 1));
+
+    int index = 0;
+    for (int i = 0; i < words; i++) {
+        int length = _getWordLength(string, separator, index);
+        array[i] = malloc(sizeof(char) * (length + 1));
+        for (int j = 0; j < length; j++) array[i][j] = string[index + j];
+        array[i][length] = '\0';
+        index += length + 1;
     }
 
-    for (i = 0; table[i] != NULL; i++)
-        for (j = 0; table[i][j] != '\0'; j++)
-            if (!charIsAlphanumeric(table[i][j])) table[i][j] = '\0';
-
-    free(tableConfig);
-    return table;
+    array[words] = NULL;
+    return array;
 }

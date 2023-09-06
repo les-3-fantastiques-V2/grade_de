@@ -31,11 +31,9 @@ static void _callbackDefault(void)
 
 static void _frameRateGestion(void)
 {
-    WindowConfig_t *winConfig = getWindowConfigStruct();
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
-    winConfig->frameRate = sceneMenuSettings->videoSection->frameRateGestion->value;
-    sfRenderWindow_setFramerateLimit(winConfig->window, winConfig->frameRate);
+    setFrameRate(sceneMenuSettings->videoSection->frameRateGestion->value);
 }
 
 static void _brightnessGestion(void)
@@ -47,7 +45,7 @@ static void _brightnessGestion(void)
 
 
 
-void renderSettingsVideoSectionContent(void)
+void _renderSettingsVideoSectionContent(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
@@ -61,7 +59,7 @@ void renderSettingsVideoSection(void)
 
     if (sceneMenuSettings->currentSection == SETTINGS_SECTION_VIDEO) {
         renderText(sceneMenuSettings->videoSection->title);
-        renderSettingsVideoSectionContent();
+        _renderSettingsVideoSectionContent();
     } else {
         renderTextWithAllCallbacks(sceneMenuSettings->videoSection->title, &_callbackPressed, &_callbackHover, &_callbackDefault);
     }
@@ -77,7 +75,7 @@ void initSettingsVideoSection(void)
     int *values = malloc(sizeof(int) * 4);
     values[PLUS_MINUS_VALUE] = winConfig->frameRate;
     values[PLUS_MINUS_MIN] = 12;
-    values[PLUS_MINUS_MAX] = 60;
+    values[PLUS_MINUS_MAX] = 120;
     values[PLUS_MINUS_STEP] = 12;
 
     videoSection->frameRateGestion = initPlusMinusStruct(
@@ -86,7 +84,7 @@ void initSettingsVideoSection(void)
         (sfVector2f){400, 100},
         &_frameRateGestion
     );
-    values[PLUS_MINUS_VALUE] = 100;
+    values[PLUS_MINUS_VALUE] = winConfig->brightness;
     values[PLUS_MINUS_MIN] = 20;
     values[PLUS_MINUS_MAX] = 100;
     values[PLUS_MINUS_STEP] = 1;

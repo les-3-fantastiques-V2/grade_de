@@ -12,11 +12,14 @@
 
 
 //General Include
+    #include <fcntl.h>
     #include <math.h>
     #include <stdbool.h>
     #include <stdio.h>
     #include <stdlib.h>
     #include <string.h>
+    #include <sys/stat.h>
+    #include <sys/types.h>
     #include <unistd.h>
 
     #include <SFML/Graphics.h>
@@ -25,6 +28,7 @@
     #include <SFML/System.h>
 
 //Personal Include
+    #include "config.h"
     #include "button.h"
     #include "settingsSection.h"
     #include "cursor.h"

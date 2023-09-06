@@ -61,6 +61,7 @@
     void destroySceneMapStruct(void);
 
         // Window Config
+    void setFrameRate(int frameRate);
     void initWindowConfigStruct(void);
     void setBrightness(int brightness);
     void destroyWindowConfigStruct(void);

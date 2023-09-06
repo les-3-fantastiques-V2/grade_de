@@ -26,3 +26,11 @@ bool charIsAlphanumeric(char character)
     if (charIsNumeric(character)) return true;
     return false;
 }
+
+bool charIsInString(char character, char *string)
+{
+    for (int i = 0; string[i] != '\0'; i++) {
+        if (character == string[i]) return true;
+    }
+    return false;
+}

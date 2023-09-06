@@ -44,7 +44,7 @@ static void _soundGestion(void)
 }
 
 
-void renderSettingsSoundSectionContent(void)
+void _renderSettingsSoundSectionContent(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
@@ -58,7 +58,7 @@ void renderSettingsSoundSection(void)
 
     if (sceneMenuSettings->currentSection == SETTINGS_SECTION_SOUND) {
         renderText(sceneMenuSettings->soundSection->title);
-        renderSettingsSoundSectionContent();
+        _renderSettingsSoundSectionContent();
     } else {
         renderTextWithAllCallbacks(sceneMenuSettings->soundSection->title, &_callbackPressed, &_callbackHover, &_callbackDefault);
     }
