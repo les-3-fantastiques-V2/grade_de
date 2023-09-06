@@ -7,12 +7,20 @@
 
 #include "gradeDe.h"
 
-static void _callbackPressed(void)
+static void _callbackPressedTitle(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
     changeSettingsSection(SETTINGS_SECTION_SAVE);
     sfText_setFillColor(sceneMenuSettings->saveSection->title, (sfColor){255, 165, 66, 255});
+}
+
+static void _callbackPressedSave(void)
+{
+    SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
+
+    sfText_setFillColor(sceneMenuSettings->saveSection->save, (sfColor){255, 165, 66, 255});
+    saveConfig();
 }
 
 static void _callbackHoverTitle(void)
@@ -57,7 +65,7 @@ void _renderSettingsSaveSectionContent(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
-    renderTextWithAllCallbacks(sceneMenuSettings->saveSection->save, &saveConfig, &_callbackHoverSave, &_callbackDefaultSave);
+    renderTextWithAllCallbacks(sceneMenuSettings->saveSection->save, &_callbackPressedSave, &_callbackHoverSave, &_callbackDefaultSave);
     renderText(sceneMenuSettings->saveSection->saveOnExitButtonLabel);
     if (clickOnToggleButton(sceneMenuSettings->saveSection->saveOnExitButton)) _changeSaveOnExit();
     renderToggleButton(sceneMenuSettings->saveSection->saveOnExitButton);
@@ -71,7 +79,7 @@ void renderSettingsSaveSection(void)
         renderText(sceneMenuSettings->saveSection->title);
         _renderSettingsSaveSectionContent();
     } else {
-        renderTextWithAllCallbacks(sceneMenuSettings->saveSection->title, &_callbackPressed, &_callbackHoverTitle, &_callbackDefaultTitle);
+        renderTextWithAllCallbacks(sceneMenuSettings->saveSection->title, &_callbackPressedTitle, &_callbackHoverTitle, &_callbackDefaultTitle);
     }
 }
 
