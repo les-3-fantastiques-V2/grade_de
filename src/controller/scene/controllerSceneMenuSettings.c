@@ -38,6 +38,7 @@ void renderSceneMenuSettings(void)
     renderRoundedRectangle(sceneMenuSettings->backgroundMenu);
     renderRoundedRectangle(sceneMenuSettings->line);
     renderButton(sceneMenuSettings->backButton);
+    renderText(sceneMenuSettings->note);
     renderSettingsSection();
 }
 
@@ -46,6 +47,7 @@ void loadSceneMenuSettings(void)
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
     changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
     changeMusic(MUSIC_HOME_AMBIENT);
+
 
     sceneMenuSettings->background = createRectangleShape(
         (sfVector2f){WINDOW_WIDTH, WINDOW_HEIGHT},
@@ -67,6 +69,13 @@ void loadSceneMenuSettings(void)
         "assets/image/IconArrowLeft.png",
         (sfVector2f){20, WINDOW_HEIGHT - 100}
     );
+    sceneMenuSettings->note = createTextWithMaxWidth(
+        "Note that all the settings will be shared with all games and applications.",
+        (sfVector2f){400, 540},
+        20,
+        FONT_SPICY_PIZZA,
+        800
+    );
     initSettingsSection();
 }
 
@@ -75,6 +84,7 @@ void destroySceneMenuSettings(void)
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
     destroySettingsSection();
+    sfText_destroy(sceneMenuSettings->note);
     destroyButton(sceneMenuSettings->backButton);
     sfRectangleShape_destroy(sceneMenuSettings->background);
     sfConvexShape_destroy(sceneMenuSettings->backgroundMenu);

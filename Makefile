@@ -62,17 +62,17 @@ fclean: clean
 re: fclean all
 
 valgrind $(ARGS):
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 	@make clean
 	@valgrind -s ./$(NAME) $(ARGS)
 
 valgrind_plus $(ARGS):
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 	@make clean
 	@valgrind -s --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 debug:
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 
 object/%.o: src/%.c
 	@mkdir -p $(@D)

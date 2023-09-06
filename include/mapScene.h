@@ -65,9 +65,10 @@
         sfConvexShape *backgroundMenu;
         Button_t *backButton;
         sfConvexShape *line;
+        sfText *note;
         SettingsSoundSection_t *soundSection;
         SettingsVideoSection_t *videoSection;
-        SettingsNotesSection_t *notesSection;
+        SettingsSaveSection_t *saveSection;
     } SceneMenuSettings_t;
 
 

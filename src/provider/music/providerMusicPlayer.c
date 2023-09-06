@@ -18,7 +18,7 @@ void initMusicPlayerStruct(void)
         int volume = (int)atof(musicVolume);
         gradeDe->musicPlayer->volume = volume;
     } else {
-        addConfig("musicVolume", "100");
+        setConfig("musicVolume", "100");
         gradeDe->musicPlayer->volume = 100;
     }
     gradeDe->musicPlayer->currentMusic = NULL;

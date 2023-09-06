@@ -13,7 +13,7 @@ void changeSettingsSection(SETTINGS_SECTION_E section)
 
     sfText_setFillColor(sceneMenuSettings->soundSection->title, sfBlack);
     sfText_setFillColor(sceneMenuSettings->videoSection->title, sfBlack);
-    sfText_setFillColor(sceneMenuSettings->notesSection->title, sfBlack);
+    sfText_setFillColor(sceneMenuSettings->saveSection->title, sfBlack);
 
     sceneMenuSettings->currentSection = section;
 }
@@ -22,7 +22,7 @@ void renderSettingsSection(void)
 {
     renderSettingsSoundSection();
     renderSettingsVideoSection();
-    renderSettingsNotesSection();
+    renderSettingsSaveSection();
 }
 
 void initSettingsSection(void)
@@ -31,7 +31,7 @@ void initSettingsSection(void)
 
     initSettingsSoundSection();
     initSettingsVideoSection();
-    initSettingsNotesSection();
+    initSettingsSaveSection();
 
     sceneMenuSettings->currentSection = SETTINGS_SECTION_SOUND;
     sfText_setFillColor(sceneMenuSettings->soundSection->title, (sfColor){255, 165, 66, 255});
@@ -41,5 +41,5 @@ void destroySettingsSection(void)
 {
     destroySettingsSoundSection();
     destroySettingsVideoSection();
-    destroySettingsNotesSection();
+    destroySettingsSaveSection();
 }

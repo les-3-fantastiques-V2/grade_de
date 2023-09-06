@@ -50,7 +50,7 @@ void initWindowConfigStruct(void)
         int frameRateValue = (int)atof(frameRate);
         windowConfigStruct->frameRate = frameRateValue;
     } else {
-        addConfig("frameRate", "60");
+        setConfig("frameRate", "60");
         windowConfigStruct->frameRate = 60;
     }
     windowConfigStruct->window = sfRenderWindow_create(
@@ -72,7 +72,7 @@ void initWindowConfigStruct(void)
         int brightnessValue = (int)atof(brightness);
         windowConfigStruct->brightness = brightnessValue;
     } else {
-        addConfig("brightness", "100");
+        setConfig("brightness", "100");
         windowConfigStruct->brightness = 100;
     }
     windowConfigStruct->brightnessRectangle = createRectangleShape(

@@ -27,7 +27,7 @@
     typedef enum SETTINGS_SECTION {
         SETTINGS_SECTION_SOUND,
         SETTINGS_SECTION_VIDEO,
-        SETTINGS_SECTION_NOTES,
+        SETTINGS_SECTION_SAVE,
     } SETTINGS_SECTION_E;
 
 
@@ -58,10 +58,12 @@
         PlusMinus_t *brightnessGestion;
     } SettingsVideoSection_t;
 
-    typedef struct structSectionNotes {
+    typedef struct structSectionSave {
         sfText *title;
-        sfText *notes;
-    } SettingsNotesSection_t;
+        sfText *save;
+        sfText *saveOnExitButtonLabel;
+        ToggleButton_t *saveOnExitButton;
+    } SettingsSaveSection_t;
 
 
 /*==================== FUNCTION ====================*/
@@ -87,10 +89,10 @@
     void renderSettingsVideoSection(void);
     void destroySettingsVideoSection(void);
 
-        // Notes Section
-    void initSettingsNotesSection(void);
-    void renderSettingsNotesSection(void);
-    void destroySettingsNotesSection(void);
+        // Save Section
+    void initSettingsSaveSection(void);
+    void renderSettingsSaveSection(void);
+    void destroySettingsSaveSection(void);
 
 
 /*==================== MACRO ====================*/

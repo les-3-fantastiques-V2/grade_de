@@ -39,7 +39,6 @@
     void initConfig(void);
     void saveConfig(void);
     void destroyConfig(void);
-    void addConfig(char *name, char *value);
     void setConfig(char *name, char *value);
 
     char *getConfigValueByName(char *name);

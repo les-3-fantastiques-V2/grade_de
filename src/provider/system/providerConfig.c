@@ -28,6 +28,23 @@ void addConfig(char *name, char *value)
     config->configList = newConfig;
 }
 
+void setConfig(char *name, char *value)
+{
+    Config_t *config = getConfig();
+    ConfigList_t *currentConfig = config->configList;
+
+    while (currentConfig != NULL) {
+        if (strcmp(currentConfig->name, name) == 0) {
+            free(currentConfig->value);
+            currentConfig->value = malloc(sizeof(char) * (strlen(value) + 1));
+            strcpy(currentConfig->value, value);
+            return;
+        }
+        currentConfig = currentConfig->next;
+    }
+    addConfig(name, value);
+}
+
 void initConfig(void)
 {
     Config_t *config = getConfig();
@@ -42,7 +59,7 @@ void initConfig(void)
 
     for (int i = 0; configTable[i] != NULL; i++) {
         char **configLine = stringToWordArray(configTable[i], ";");
-        addConfig(configLine[0], configLine[1]);
+        setConfig(configLine[0], configLine[1]);
         freeCharArray(configLine);
     }
     freeCharArray(configTable);
@@ -99,21 +116,4 @@ void saveConfig(void)
     Config_t *config = getConfig();
     ConfigList_t *currentConfig = config->configList;
     _saveConfig(currentConfig);
-}
-
-void setConfig(char *name, char *value)
-{
-    Config_t *config = getConfig();
-    ConfigList_t *currentConfig = config->configList;
-
-    while (currentConfig != NULL) {
-        if (strcmp(currentConfig->name, name) == 0) {
-            free(currentConfig->value);
-            currentConfig->value = malloc(sizeof(char) * (strlen(value) + 1));
-            strcpy(currentConfig->value, value);
-            return;
-        }
-        currentConfig = currentConfig->next;
-    }
-    addConfig(name, value);
 }
