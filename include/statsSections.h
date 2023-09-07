@@ -31,6 +31,8 @@
 
     typedef struct structSectionApplications {
         sfText *title;
+        sfText *applicationLabel;
+        sfText *applicationCount;
     } StatsApplicationsSection_t;
 
 

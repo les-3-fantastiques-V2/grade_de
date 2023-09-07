@@ -32,6 +32,9 @@ static void _callbackDefault(void)
 static void _renderStatsApplicationsSectionContent(void)
 {
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
+
+    renderText(sceneMenuStats->applicationsSection->applicationLabel);
+    renderText(sceneMenuStats->applicationsSection->applicationCount);
 }
 
 
@@ -53,6 +56,13 @@ void initStatsApplicationsSection(void)
     StatsApplicationsSection_t *applicationsSection = malloc(sizeof(StatsApplicationsSection_t));
 
     applicationsSection->title = createText("Applications", (sfVector2f){100, 100}, 50, FONT_SPICY_PIZZA);
+    applicationsSection->applicationLabel = createText("Application count :  ", (sfVector2f){450, 100}, 40, FONT_SPICY_PIZZA);
+
+    char *applicationCount = intToString(getGameSlotListLength());
+    sfFloatRect rect = sfText_getGlobalBounds(applicationsSection->applicationLabel);
+    applicationsSection->applicationCount = createText(applicationCount, (sfVector2f){rect.left + rect.width, 100}, 40, FONT_SPICY_PIZZA);
+    free(applicationCount);
+
     sceneMenuStats->applicationsSection = applicationsSection;
 }
 
@@ -61,5 +71,7 @@ void destroyStatsApplicationsSection(void)
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
 
     sfText_destroy(sceneMenuStats->applicationsSection->title);
+    sfText_destroy(sceneMenuStats->applicationsSection->applicationLabel);
+    sfText_destroy(sceneMenuStats->applicationsSection->applicationCount);
     free(sceneMenuStats->applicationsSection);
 }

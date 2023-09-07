@@ -67,6 +67,7 @@
         // Game Slot List
     void initGameSlotListStruct(void);
     void destroyGameSlotListStruct(void);
+    int getGameSlotListLength(void);
 
         // Game ToolTips
     void renderTooltips(GameTooltips_t *gameTooltips);
