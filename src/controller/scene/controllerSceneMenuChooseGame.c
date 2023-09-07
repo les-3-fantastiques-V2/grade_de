@@ -106,8 +106,10 @@ void renderSceneMenuChooseGame(void)
     renderButton(sceneMenuChooseGame->exitButton);
     renderButton(sceneMenuChooseGame->settingsButton);
     renderButton(sceneMenuChooseGame->statsButton);
-    if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
-    if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
+    // if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
+    // if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
+    renderButton(sceneMenuChooseGame->leftArrowButton);
+    renderButton(sceneMenuChooseGame->rightArrowButton);
 }
 
 void loadSceneMenuChooseGame(void)
@@ -145,14 +147,14 @@ void loadSceneMenuChooseGame(void)
         (sfVector2f){120, WINDOW_HEIGHT - 90}
     );
     sceneMenuChooseGame->leftArrowButton = createButton(
-        (sfVector2f){42, 60},
+        (sfVector2f){42, 50},
         "assets/image/IconLeft.png",
-        (sfVector2f) {20, percent(WINDOW_HEIGHT, 80) / 2 - 30}
+        (sfVector2f) {percent(WINDOW_WIDTH, 5), percent(WINDOW_HEIGHT, 80) / 2 - 25}
     );
     sceneMenuChooseGame->rightArrowButton = createButton(
-        (sfVector2f){42, 60},
+        (sfVector2f){42, 50},
         "assets/image/IconRight.png",
-        (sfVector2f) {WINDOW_WIDTH - 62, percent(WINDOW_HEIGHT, 80) / 2 - 30}
+        (sfVector2f) {WINDOW_WIDTH - percent(WINDOW_WIDTH, 5) - 42, percent(WINDOW_HEIGHT, 80) / 2 - 25}
     );
     sceneMenuChooseGame->asPrevious = false;
     sceneMenuChooseGame->asNext = (GAME_MAX > 6) ? true : false;

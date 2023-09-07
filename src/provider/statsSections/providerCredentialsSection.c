@@ -29,14 +29,44 @@ static void _callbackDefault(void)
     sfText_setFillColor(sceneMenuStats->credentialsSection->title, sfBlack);
 }
 
-static void _renderStatsCredentialsSectionContent(void)
+static void _modifieCurrentCredentialsId(int value)
 {
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
 
-    renderText(sceneMenuStats->credentialsSection->dragusheenName);
-    renderText(sceneMenuStats->credentialsSection->dragusheenDescription);
-    renderText(sceneMenuStats->credentialsSection->h4rdeolName);
-    renderText(sceneMenuStats->credentialsSection->h4rdeolDescription);
+    sceneMenuStats->credentialsSection->credentialsId += value;
+    sceneMenuStats->credentialsSection->currentCredentials = getCredentialsById(sceneMenuStats->credentialsSection->credentialsId);
+
+    sceneMenuStats->credentialsSection->asPrevious = (sceneMenuStats->credentialsSection->credentialsId > 0) ? true : false;
+    sceneMenuStats->credentialsSection->asNext = (sceneMenuStats->credentialsSection->credentialsId < CREDENTIALS_MAX - 1) ? true : false;
+}
+
+static void _leftArrowButtonPressed(void)
+{
+    SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
+
+    if (!sceneMenuStats->credentialsSection->asPrevious) return;
+    _modifieCurrentCredentialsId(-1);
+}
+
+static void _rightArrowButtonPressed(void)
+{
+    SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
+
+    if (!sceneMenuStats->credentialsSection->asNext) return;
+    _modifieCurrentCredentialsId(1);
+}
+
+static void _renderStatsCredentialsSectionContent(void)
+{
+    SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
+    clickOnButton(sceneMenuStats->credentialsSection->leftArrowButton, &_leftArrowButtonPressed);
+    clickOnButton(sceneMenuStats->credentialsSection->rightArrowButton, &_rightArrowButtonPressed);
+
+    renderCredentials(sceneMenuStats->credentialsSection->currentCredentials);
+    // if (sceneMenuStats->credentialsSection->asPrevious) renderButton(sceneMenuStats->credentialsSection->leftArrowButton);
+    // if (sceneMenuStats->credentialsSection->asNext) renderButton(sceneMenuStats->credentialsSection->rightArrowButton);
+    renderButton(sceneMenuStats->credentialsSection->leftArrowButton);
+    renderButton(sceneMenuStats->credentialsSection->rightArrowButton);
 }
 
 
@@ -58,12 +88,22 @@ void initStatsCredentialsSection(void)
     StatsCredentialsSection_t *credentialsSection = malloc(sizeof(StatsCredentialsSection_t));
 
     credentialsSection->title = createText("Credentials", (sfVector2f){100, 200}, 50, FONT_SPICY_PIZZA);
-    credentialsSection->dragusheenName = createText("Dragusheen", (sfVector2f){450, 100}, 40, FONT_SPICY_PIZZA);
-    credentialsSection->dragusheenDescription = createText("Hakuna Matata", (sfVector2f){450, 150}, 30, FONT_SPICY_PIZZA);
-    credentialsSection->h4rdeolName = createText("H4rdeol", (sfVector2f){450, 250}, 40, FONT_SPICY_PIZZA);
-    credentialsSection->h4rdeolDescription = createText("Throughout Heaven and Earth, I alone am the Honored One", (sfVector2f){450, 300}, 30, FONT_SPICY_PIZZA);
+    credentialsSection->leftArrowButton = createButton(
+        (sfVector2f){42, 50},
+        "assets/image/IconLeft.png",
+        (sfVector2f) {410 + percent(WINDOW_WIDTH, 3), percent(WINDOW_HEIGHT, 80) / 2 - 25}
+    );
+    credentialsSection->rightArrowButton = createButton(
+        (sfVector2f){42, 50},
+        "assets/image/IconRight.png",
+        (sfVector2f) {WINDOW_WIDTH - percent(WINDOW_WIDTH, 5) - 42, percent(WINDOW_HEIGHT, 80) / 2 - 25}
+    );
+    credentialsSection->asPrevious = false;
+    credentialsSection->asNext = true;
 
     sceneMenuStats->credentialsSection = credentialsSection;
+    initCredentialsListStruct();
+    sceneMenuStats->credentialsSection->currentCredentials = getCredentialsById(CREDENTIALS_DRAGUSHEEN);
 }
 
 void destroyStatsCredentialsSection(void)
@@ -71,9 +111,8 @@ void destroyStatsCredentialsSection(void)
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
 
     sfText_destroy(sceneMenuStats->credentialsSection->title);
-    sfText_destroy(sceneMenuStats->credentialsSection->dragusheenName);
-    sfText_destroy(sceneMenuStats->credentialsSection->dragusheenDescription);
-    sfText_destroy(sceneMenuStats->credentialsSection->h4rdeolName);
-    sfText_destroy(sceneMenuStats->credentialsSection->h4rdeolDescription);
+    destroyButton(sceneMenuStats->credentialsSection->leftArrowButton);
+    destroyButton(sceneMenuStats->credentialsSection->rightArrowButton);
+    destroyCredentialsListStruct();
     free(sceneMenuStats->credentialsSection);
 }

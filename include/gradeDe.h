@@ -29,6 +29,7 @@
 
 //Personal Include
     #include "config.h"
+    #include "credentials.h"
     #include "button.h"
     #include "settingsSections.h"
     #include "statsSections.h"

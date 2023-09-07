@@ -26,11 +26,14 @@
 /*==================== STRUCTURE =====================*/
 
     typedef struct structSectionCredentials {
+        bool asNext;
+        bool asPrevious;
+        CREDENTIALS_E credentialsId;
         sfText *title;
-        sfText *dragusheenName;
-        sfText *dragusheenDescription;
-        sfText *h4rdeolName;
-        sfText *h4rdeolDescription;
+        Credentials_t *currentCredentials;
+        CredentialsList_t *credentialsList;
+        Button_t *leftArrowButton;
+        Button_t *rightArrowButton;
     } StatsCredentialsSection_t;
 
     typedef struct structSectionApplications {

@@ -9,9 +9,21 @@
 
 char *gameName[GAME_MAX] = {
     "Snake",
+    "Snake",
+    "Snake",
+    "Snake",
+    "Snake",
+    "Snake",
+    "Snake",
 };
 
 char *gameDescription[GAME_MAX] = {
+    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to eat the maximum of apple without touching the wall or yourself !",
     "Try to eat the maximum of apple without touching the wall or yourself !",
 };
 
