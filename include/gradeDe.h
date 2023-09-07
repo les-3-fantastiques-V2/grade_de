@@ -30,7 +30,8 @@
 //Personal Include
     #include "config.h"
     #include "button.h"
-    #include "settingsSection.h"
+    #include "settingsSections.h"
+    #include "statsSections.h"
     #include "cursor.h"
     #include "font.h"
     #include "gameSlot.h"

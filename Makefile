@@ -15,6 +15,7 @@ SRC		=   $(wildcard src/controller/manager/*.c)			\
 			$(wildcard src/provider/scene/*.c)				\
 			$(wildcard src/provider/settingsSections/*.c)	\
 			$(wildcard src/provider/sound/*.c)				\
+			$(wildcard src/provider/statsSections/*.c)		\
 			$(wildcard src/provider/system/*.c)				\
 			$(wildcard src/service/csfml/*.c)				\
 			$(wildcard src/service/files/*.c)				\
