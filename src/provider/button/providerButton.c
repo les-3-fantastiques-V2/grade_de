@@ -8,9 +8,15 @@
 #include "gradeDe.h"
 
 /* Action */
-bool clickOnButton(Button_t *button)
+
+bool clickOnButton(Button_t *button, void (*callback)(void))
 {
-    return (hoverButton(button) && sfMouse_isButtonPressed(sfMouseLeft));
+    if (hoverButton(button) && sfMouse_isButtonPressed(sfMouseLeft)) {
+        playSound(SOUND_BUTTON_PRESSED);
+        callback();
+        return true;
+    }
+    return false;
 }
 
 bool hoverButton(Button_t *button)
@@ -27,7 +33,7 @@ void setButtonStateAuto(Button_t *button)
 {
     if (hoverButton(button))
         button->state = BUTTON_STATE_HOVER;
-    else if (clickOnButton(button))
+    else if (hoverButton(button) && sfMouse_isButtonPressed(sfMouseLeft))
         button->state = BUTTON_STATE_ACTIVE;
     else
         button->state = BUTTON_STATE_DEFAULT;

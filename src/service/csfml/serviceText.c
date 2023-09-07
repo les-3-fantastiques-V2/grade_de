@@ -33,7 +33,7 @@ static char *_splitWord(char *newText, char *word, int maxWidth, int currentWidt
 static char *_splitText(char *text, int maxWidth, int fontSize, FONT_E fontId)
 {
     char *newText = malloc(sizeof(char) * 1); newText[0] = '\0';
-    char **words = stringToWordArray(text);
+    char **words = stringToWordArray(text, "\n\t ");
     int currentWidth = 0;
 
     for (int wordIndex = 0; words[wordIndex] != NULL; wordIndex++) {
@@ -52,10 +52,11 @@ static char *_splitText(char *text, int maxWidth, int fontSize, FONT_E fontId)
         currentWidth += wordWidth + _getCharacterWidth(' ', fontSize, fontId);
     }
 
-    for (int i = 0; words[i] != NULL; i++) free(words[i]);
+    freeCharArray(words);
 
     return newText;
 }
+
 
 void renderText(sfText *text)
 {
@@ -84,4 +85,20 @@ sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsig
     sfText *text = createText(splittedText, textPosition, fontSize, fontId);
     free(splittedText);
     return text;
+}
+
+void renderTextWithAllCallbacks(sfText *text, void (*callbackPressed)(void), void (*callbackHover)(void), void (*callbackDefault)(void))
+{
+    sfFloatRect rect = sfText_getGlobalBounds(text);
+    sfVector2f pos = {rect.left, rect.top};
+    sfVector2f size = {rect.width, rect.height};
+    if (mouseIsOn(pos, size) && sfMouse_isButtonPressed(sfMouseLeft)) {
+        callbackPressed();
+    } else if (mouseIsOn(pos, size)) {
+        callbackHover();
+    } else {
+        callbackDefault();
+    }
+
+    renderText(text);
 }

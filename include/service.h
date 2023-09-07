@@ -44,6 +44,17 @@
             void renderText(sfText *text);
             sfText *createText(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId);
             sfText *createTextWithMaxWidth(char *textContent, sfVector2f textPosition, unsigned int fontSize, FONT_E fontId, int maxWidth);
+            void renderTextWithAllCallbacks(sfText *text, void (*callbackPressed)(void), void (*callbackHover)(void), void (*callbackDefault)(void));
+
+        // Time
+            float getTime(sfClock *clock);
+            void resetTime(sfClock *clock);
+
+    // Files
+        // Files
+            char *getFileContent(char *filepath);
+            void writeFileContent(char *filepath, char *content);
+            void appendFileContent(char *filepath, char *content);
 
     // Math
         // Percent
@@ -54,11 +65,18 @@
             bool charIsNumeric(char character);
             bool charIsAlphabetic(char character);
             bool charIsAlphanumeric(char character);
+            bool charIsInString(char character, char *string);
+
+        // Convert To String
+            char *intToString(int number);
+
+        // Free
+            void freeCharArray(char **array);
 
         // String Manipulation
             char *mergeCharToString(char *string, char c);
             char *mergeStringToString(char *string1, char *string2);
-            char **stringToWordArray(char *string);
+            char **stringToWordArray(char *string, char *separator);
 
 
 /*==================== MACRO ====================*/

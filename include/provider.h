@@ -28,6 +28,8 @@
         char *name;
         unsigned int frameRate;
         sfEvent event;
+        int brightness;
+        sfRectangleShape *brightnessRectangle;
     } WindowConfig_t;
 
     typedef struct structGradeDe {
@@ -35,6 +37,8 @@
         SceneMap_t *sceneMap;
         FontList_t *fontList;
         MouseCursor_t *mouseCursor;
+        MusicPlayer_t *musicPlayer;
+        SoundPlayer_t *soundPlayer;
         int currentSceneId;
         int exitStatus;
     } GradeDe_t;
@@ -57,7 +61,9 @@
     void destroySceneMapStruct(void);
 
         // Window Config
+    void setFrameRate(int frameRate);
     void initWindowConfigStruct(void);
+    void setBrightness(int brightness);
     void destroyWindowConfigStruct(void);
     WindowConfig_t *getWindowConfigStruct(void);
 

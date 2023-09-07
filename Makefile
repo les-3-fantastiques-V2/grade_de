@@ -5,17 +5,21 @@
 ## Makefile
 ##
 
-SRC		=   $(wildcard src/controller/manager/*.c)				\
-			$(wildcard src/controller/scene/*.c)				\
-			$(wildcard src/provider/button/*.c)					\
-			$(wildcard src/provider/cursor/*.c)					\
-			$(wildcard src/provider/font/*.c)					\
-			$(wildcard src/provider/gameSlot/*.c)				\
-			$(wildcard src/provider/scene/*.c)					\
-			$(wildcard src/provider/system/*.c)					\
-			$(wildcard src/service/csfml/*.c)					\
-			$(wildcard src/service/math/*.c)					\
-			$(wildcard src/service/text/*.c)					\
+SRC		=   $(wildcard src/controller/manager/*.c)			\
+			$(wildcard src/controller/scene/*.c)			\
+			$(wildcard src/provider/button/*.c)				\
+			$(wildcard src/provider/cursor/*.c)				\
+			$(wildcard src/provider/font/*.c)				\
+			$(wildcard src/provider/gameSlot/*.c)			\
+			$(wildcard src/provider/music/*.c)				\
+			$(wildcard src/provider/scene/*.c)				\
+			$(wildcard src/provider/settingsSections/*.c)	\
+			$(wildcard src/provider/sound/*.c)				\
+			$(wildcard src/provider/system/*.c)				\
+			$(wildcard src/service/csfml/*.c)				\
+			$(wildcard src/service/files/*.c)				\
+			$(wildcard src/service/math/*.c)				\
+			$(wildcard src/service/text/*.c)				\
 			$(wildcard src/*.c)
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
@@ -58,17 +62,17 @@ fclean: clean
 re: fclean all
 
 valgrind $(ARGS):
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 	@make clean
 	@valgrind -s ./$(NAME) $(ARGS)
 
 valgrind_plus $(ARGS):
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 	@make clean
 	@valgrind -s --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 debug:
-	@$(COMP) -o $(NAME) $(SRC) $(FLAGS) $(CSFML) -g3
+	@$(COMP) -o $(NAME) $(OBJ) $(FLAGS) $(LIB) -g3
 
 object/%.o: src/%.c
 	@mkdir -p $(@D)
