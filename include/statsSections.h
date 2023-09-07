@@ -27,6 +27,10 @@
 
     typedef struct structSectionCredentials {
         sfText *title;
+        sfText *dragusheenName;
+        sfText *dragusheenDescription;
+        sfText *h4rdeolName;
+        sfText *h4rdeolDescription;
     } StatsCredentialsSection_t;
 
     typedef struct structSectionApplications {

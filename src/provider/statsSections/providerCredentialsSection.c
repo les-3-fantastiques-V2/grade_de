@@ -32,6 +32,11 @@ static void _callbackDefault(void)
 static void _renderStatsCredentialsSectionContent(void)
 {
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
+
+    renderText(sceneMenuStats->credentialsSection->dragusheenName);
+    renderText(sceneMenuStats->credentialsSection->dragusheenDescription);
+    renderText(sceneMenuStats->credentialsSection->h4rdeolName);
+    renderText(sceneMenuStats->credentialsSection->h4rdeolDescription);
 }
 
 
@@ -53,6 +58,11 @@ void initStatsCredentialsSection(void)
     StatsCredentialsSection_t *credentialsSection = malloc(sizeof(StatsCredentialsSection_t));
 
     credentialsSection->title = createText("Credentials", (sfVector2f){100, 200}, 50, FONT_SPICY_PIZZA);
+    credentialsSection->dragusheenName = createText("Dragusheen", (sfVector2f){450, 100}, 40, FONT_SPICY_PIZZA);
+    credentialsSection->dragusheenDescription = createText("Hakuna Matata", (sfVector2f){450, 150}, 30, FONT_SPICY_PIZZA);
+    credentialsSection->h4rdeolName = createText("H4rdeol", (sfVector2f){450, 250}, 40, FONT_SPICY_PIZZA);
+    credentialsSection->h4rdeolDescription = createText("Throughout Heaven and Earth, I alone am the Honored One", (sfVector2f){450, 300}, 30, FONT_SPICY_PIZZA);
+
     sceneMenuStats->credentialsSection = credentialsSection;
 }
 
@@ -61,5 +71,9 @@ void destroyStatsCredentialsSection(void)
     SceneMenuStats_t *sceneMenuStats = getSceneMenuStatsStruct();
 
     sfText_destroy(sceneMenuStats->credentialsSection->title);
+    sfText_destroy(sceneMenuStats->credentialsSection->dragusheenName);
+    sfText_destroy(sceneMenuStats->credentialsSection->dragusheenDescription);
+    sfText_destroy(sceneMenuStats->credentialsSection->h4rdeolName);
+    sfText_destroy(sceneMenuStats->credentialsSection->h4rdeolDescription);
     free(sceneMenuStats->credentialsSection);
 }
