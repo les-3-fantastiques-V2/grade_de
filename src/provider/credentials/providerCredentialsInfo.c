@@ -11,13 +11,16 @@ CredentialsInfo_t *credentialsInfoHardeol(void)
 {
     CredentialsInfo_t *credentials = malloc(sizeof(Credentials_t));
 
-    int nameLength = strlen("Hardeol");
-    credentials->name = malloc(sizeof(char) * (nameLength + 1));
-    credentials->description = malloc(sizeof(char) * (strlen("Throughout Heaven and Earth, I alone am the Honored One") + 1));
-    credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
+    char *name = "Hardeol";
+    char *description = "Throughout Heaven and Earth, I alone am the Honored One.";
 
-    strcpy(credentials->name, "Hardeol");
-    strcpy(credentials->description, "Throughout Heaven and Earth, I alone am the Honored One");
+    int nameLength = strlen(name);
+    credentials->name = malloc(sizeof(char) * (nameLength + 1));
+    strcpy(credentials->name, name);
+    int descriptionLength = strlen(description);
+    credentials->description = malloc(sizeof(char) * (descriptionLength + 1));
+    strcpy(credentials->description, description);
+    credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
     strcpy(credentials->pp, "config/general/credentials/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
 
     return credentials;
@@ -27,13 +30,16 @@ CredentialsInfo_t *credentialsInfoDragusheen(void)
 {
     CredentialsInfo_t *credentials = malloc(sizeof(Credentials_t));
 
-    int nameLength = strlen("Dragusheen");
-    credentials->name = malloc(sizeof(char) * (nameLength + 1));
-    credentials->description = malloc(sizeof(char) * (strlen("Hakuna Matata") + 1));
-    credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
+    char *name = "Dragusheen";
+    char *description = "I'm not stupid, i'm just too lazy to show how smart i am...";
 
-    strcpy(credentials->name, "Dragusheen");
-    strcpy(credentials->description, "Hakuna Matata");
+    int nameLength = strlen(name);
+    credentials->name = malloc(sizeof(char) * (nameLength + 1));
+    strcpy(credentials->name, name);
+    int descriptionLength = strlen(description);
+    credentials->description = malloc(sizeof(char) * (descriptionLength + 1));
+    strcpy(credentials->description, description);
+    credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
     strcpy(credentials->pp, "config/general/credentials/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
 
     return credentials;
