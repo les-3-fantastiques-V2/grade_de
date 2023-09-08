@@ -31,7 +31,7 @@ Credentials_t *createCredentialsById(CREDENTIALS_E credentialsId)
     credentials->name = createText(credentialsInfo->name, (sfVector2f){500, 100}, 40, FONT_SPICY_PIZZA);
     credentials->description = createTextWithMaxWidth(credentialsInfo->description, (sfVector2f){500, 150}, 30, FONT_SPICY_PIZZA, 500);
     credentials->ppTexture = sfTexture_createFromFile(credentialsInfo->pp, NULL);
-    credentials->ppCircle = createCircleShape(40, sfWhite, (sfVector2f){1050, 100});
+    credentials->ppCircle = createCircleShape(50, sfWhite, (sfVector2f){1050, 100});
     sfCircleShape_setTexture(credentials->ppCircle, credentials->ppTexture, sfTrue);
     sfCircleShape_setOutlineThickness(credentials->ppCircle, 5);
     sfCircleShape_setOutlineColor(credentials->ppCircle, (sfColor) {99, 50, 79, 255});

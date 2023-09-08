@@ -31,7 +31,7 @@ CredentialsInfo_t *credentialsInfoDragusheen(void)
     CredentialsInfo_t *credentials = malloc(sizeof(Credentials_t));
 
     char *name = "Dragusheen";
-    char *description = "I'm not stupid, i'm just too lazy to show how smart i am...";
+    char *description = "I'm not stupid, i'm just too Lazy to show how Smart i am...";
 
     int nameLength = strlen(name);
     credentials->name = malloc(sizeof(char) * (nameLength + 1));
