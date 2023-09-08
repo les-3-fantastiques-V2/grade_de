@@ -106,10 +106,8 @@ void renderSceneMenuChooseGame(void)
     renderButton(sceneMenuChooseGame->exitButton);
     renderButton(sceneMenuChooseGame->settingsButton);
     renderButton(sceneMenuChooseGame->statsButton);
-    // if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
-    // if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
-    renderButton(sceneMenuChooseGame->leftArrowButton);
-    renderButton(sceneMenuChooseGame->rightArrowButton);
+    if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
+    if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
 }
 
 void loadSceneMenuChooseGame(void)

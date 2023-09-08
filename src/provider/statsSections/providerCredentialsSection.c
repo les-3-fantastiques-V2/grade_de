@@ -63,10 +63,8 @@ static void _renderStatsCredentialsSectionContent(void)
     clickOnButton(sceneMenuStats->credentialsSection->rightArrowButton, &_rightArrowButtonPressed);
 
     renderCredentials(sceneMenuStats->credentialsSection->currentCredentials);
-    // if (sceneMenuStats->credentialsSection->asPrevious) renderButton(sceneMenuStats->credentialsSection->leftArrowButton);
-    // if (sceneMenuStats->credentialsSection->asNext) renderButton(sceneMenuStats->credentialsSection->rightArrowButton);
-    renderButton(sceneMenuStats->credentialsSection->leftArrowButton);
-    renderButton(sceneMenuStats->credentialsSection->rightArrowButton);
+    if (sceneMenuStats->credentialsSection->asPrevious) renderButton(sceneMenuStats->credentialsSection->leftArrowButton);
+    if (sceneMenuStats->credentialsSection->asNext) renderButton(sceneMenuStats->credentialsSection->rightArrowButton);
 }
 
 

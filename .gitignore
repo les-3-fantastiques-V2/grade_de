@@ -4,4 +4,4 @@
 *.o
 grade_de
 
-config/*.csv
+config/perso/*

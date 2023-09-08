@@ -7,32 +7,36 @@
 
 #include "gradeDe.h"
 
-char *credentialsNameList[CREDENTIALS_MAX] = {
-    "Dragusheen",
-    "Hardeol",
+CredentialsInfo_t *(*credentialsInfoList[CREDENTIALS_MAX])(void) = {
+    &credentialsInfoDragusheen,
+    &credentialsInfoHardeol,
 };
-
-char *credentialsDescriptionList[CREDENTIALS_MAX] = {
-    "Hakuna Matata",
-    "Throughout Heaven and Earth, I alone am the Honored One",
-};
-
 
 void destroyCredentials(Credentials_t *credentials)
 {
     sfText_destroy(credentials->name);
     sfText_destroy(credentials->description);
+    sfCircleShape_destroy(credentials->ppCircle);
+    sfTexture_destroy(credentials->ppTexture);
     free(credentials);
 }
 
 Credentials_t *createCredentialsById(CREDENTIALS_E credentialsId)
 {
+    CredentialsInfo_t *credentialsInfo = credentialsInfoList[credentialsId]();
     Credentials_t *credentials = malloc(sizeof(Credentials_t));
 
     if (credentials == NULL) return NULL;
     credentials->id = credentialsId;
-    credentials->name = createText(credentialsNameList[credentialsId], (sfVector2f){450, 100}, 40, FONT_SPICY_PIZZA);
-    credentials->description = createText(credentialsDescriptionList[credentialsId], (sfVector2f){450, 150}, 30, FONT_SPICY_PIZZA);
+    credentials->name = createText(credentialsInfo->name, (sfVector2f){450, 100}, 40, FONT_SPICY_PIZZA);
+    credentials->description = createText(credentialsInfo->description, (sfVector2f){450, 150}, 30, FONT_SPICY_PIZZA);
+    credentials->ppTexture = sfTexture_createFromFile(credentialsInfo->pp, NULL);
+    credentials->ppCircle = createCircleShape(40, sfWhite, (sfVector2f){100, 100});
+    sfCircleShape_setTexture(credentials->ppCircle, credentials->ppTexture, sfTrue);
+    sfCircleShape_setOutlineThickness(credentials->ppCircle, 5);
+    sfCircleShape_setOutlineColor(credentials->ppCircle, (sfColor) {99, 50, 79, 255});
+
+    destroyCredentialsInfo(credentialsInfo);
     return credentials;
 }
 
@@ -55,4 +59,5 @@ void renderCredentials(Credentials_t *credentials)
 {
     renderText(credentials->name);
     renderText(credentials->description);
+    renderCircleShape(credentials->ppCircle);
 }

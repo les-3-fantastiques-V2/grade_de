@@ -29,11 +29,18 @@ typedef enum CREDENTIALS {
 
 /*==================== STRUCTURE =====================*/
 
+    typedef struct structCredentialsInfo {
+        char *name;
+        char *description;
+        char *pp;
+    } CredentialsInfo_t;
 
     typedef struct structCredentials {
         CREDENTIALS_E id;
         sfText *name;
         sfText *description;
+        sfTexture *ppTexture;
+        sfCircleShape *ppCircle;
     } Credentials_t;
 
     typedef struct structCredentialsList {
@@ -55,6 +62,10 @@ typedef enum CREDENTIALS {
             void initCredentialsListStruct(void);
             void destroyCredentialsListStruct(void);
 
+        // Credentials Info
+            CredentialsInfo_t *credentialsInfoHardeol(void);
+            CredentialsInfo_t *credentialsInfoDragusheen(void);
+            void destroyCredentialsInfo(CredentialsInfo_t *credentialsInfo);
 
 /*==================== MACRO ====================*/
 
