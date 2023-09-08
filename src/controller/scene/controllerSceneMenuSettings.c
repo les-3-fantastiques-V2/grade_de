@@ -9,7 +9,7 @@
 
 /* Button */
 
-void backButtonPressed(void)
+static void _backButtonPressed(void)
 {
     changeScene(SCENE_MENU_CHOOSE_GAME);
 }
@@ -27,7 +27,7 @@ void eventManagerSceneMenuSettings(void)
 {
     SceneMenuSettings_t *sceneMenuSettings = getSceneMenuSettingsStruct();
 
-    if (clickOnButton(sceneMenuSettings->backButton, &backButtonPressed)) return;
+    if (clickOnButton(sceneMenuSettings->backButton, &_backButtonPressed)) return;
 }
 
 void renderSceneMenuSettings(void)

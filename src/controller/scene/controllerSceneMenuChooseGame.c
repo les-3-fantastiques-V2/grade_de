@@ -57,6 +57,11 @@ static void settingsButtonPressed(void)
     changeScene(SCENE_MENU_SETTINGS);
 }
 
+static void statsButtonPressed(void)
+{
+    changeScene(SCENE_MENU_STATS);
+}
+
 static void leftArrowButtonPressed(void)
 {
     _modifyCurrentSlotId(-1);
@@ -82,6 +87,7 @@ void eventManagerSceneMenuChooseGame(void)
 
     if (clickOnButton(sceneMenuChooseGame->exitButton, &exitButtonPressed)) return;
     if (clickOnButton(sceneMenuChooseGame->settingsButton, &settingsButtonPressed)) return;
+    if (clickOnButton(sceneMenuChooseGame->statsButton, &statsButtonPressed)) return;
     if (sceneMenuChooseGame->asPrevious)
         if (clickOnButton(sceneMenuChooseGame->leftArrowButton, &leftArrowButtonPressed)) return;
     if (sceneMenuChooseGame->asNext)
@@ -99,6 +105,7 @@ void renderSceneMenuChooseGame(void)
     _renderGameTooltips();
     renderButton(sceneMenuChooseGame->exitButton);
     renderButton(sceneMenuChooseGame->settingsButton);
+    renderButton(sceneMenuChooseGame->statsButton);
     if (sceneMenuChooseGame->asPrevious) renderButton(sceneMenuChooseGame->leftArrowButton);
     if (sceneMenuChooseGame->asNext) renderButton(sceneMenuChooseGame->rightArrowButton);
 }
@@ -132,15 +139,20 @@ void loadSceneMenuChooseGame(void)
         "assets/image/IconSettings.png",
         (sfVector2f){ 20, WINDOW_HEIGHT - 100}
     );
+    sceneMenuChooseGame->statsButton = createButton(
+        (sfVector2f){70, 70},
+        "assets/image/IconStats.png",
+        (sfVector2f){120, WINDOW_HEIGHT - 90}
+    );
     sceneMenuChooseGame->leftArrowButton = createButton(
-        (sfVector2f){42, 60},
+        (sfVector2f){42, 50},
         "assets/image/IconLeft.png",
-        (sfVector2f) {20, percent(WINDOW_HEIGHT, 80) / 2 - 30}
+        (sfVector2f) {percent(WINDOW_WIDTH, 5), percent(WINDOW_HEIGHT, 80) / 2 - 25}
     );
     sceneMenuChooseGame->rightArrowButton = createButton(
-        (sfVector2f){42, 60},
+        (sfVector2f){42, 50},
         "assets/image/IconRight.png",
-        (sfVector2f) {WINDOW_WIDTH - 62, percent(WINDOW_HEIGHT, 80) / 2 - 30}
+        (sfVector2f) {WINDOW_WIDTH - percent(WINDOW_WIDTH, 5) - 42, percent(WINDOW_HEIGHT, 80) / 2 - 25}
     );
     sceneMenuChooseGame->asPrevious = false;
     sceneMenuChooseGame->asNext = (GAME_MAX > 6) ? true : false;
@@ -154,6 +166,7 @@ void destroySceneMenuChooseGame(void)
     destroyButton(sceneMenuChooseGame->rightArrowButton);
     destroyButton(sceneMenuChooseGame->exitButton);
     destroyButton(sceneMenuChooseGame->settingsButton);
+    destroyButton(sceneMenuChooseGame->statsButton);
     sfRectangleShape_destroy(sceneMenuChooseGame->background);
     sfConvexShape_destroy(sceneMenuChooseGame->backgroundMenu);
 }

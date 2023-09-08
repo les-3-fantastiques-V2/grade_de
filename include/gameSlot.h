@@ -23,6 +23,12 @@
     typedef enum GAME {
         NO_GAME = -1,
         GAME_SNAKE,
+        GAME_SNAKE1,
+        GAME_SNAKE2,
+        GAME_SNAKE3,
+        GAME_SNAKE4,
+        GAME_SNAKE5,
+        GAME_SNAKE6,
         GAME_MAX,
     } GAME_E;
 
@@ -67,6 +73,7 @@
         // Game Slot List
     void initGameSlotListStruct(void);
     void destroyGameSlotListStruct(void);
+    int getGameSlotListLength(void);
 
         // Game ToolTips
     void renderTooltips(GameTooltips_t *gameTooltips);
