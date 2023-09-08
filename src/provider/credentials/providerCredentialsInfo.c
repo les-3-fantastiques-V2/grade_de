@@ -21,7 +21,7 @@ CredentialsInfo_t *credentialsInfoHardeol(void)
     credentials->description = malloc(sizeof(char) * (descriptionLength + 1));
     strcpy(credentials->description, description);
     credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
-    strcpy(credentials->pp, "config/general/credentials/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
+    strcpy(credentials->pp, "config/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
 
     return credentials;
 }
@@ -40,7 +40,7 @@ CredentialsInfo_t *credentialsInfoDragusheen(void)
     credentials->description = malloc(sizeof(char) * (descriptionLength + 1));
     strcpy(credentials->description, description);
     credentials->pp = malloc(sizeof(char) * (strlen("config/general/credentials/") + nameLength + strlen(".png") + 1));
-    strcpy(credentials->pp, "config/general/credentials/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
+    strcpy(credentials->pp, "config/"); strcat(credentials->pp, credentials->name); strcat(credentials->pp, ".png");
 
     return credentials;
 }
