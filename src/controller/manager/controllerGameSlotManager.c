@@ -10,12 +10,12 @@
 static sfVector2f _getSlotPosition(int i)
 {
     sfVector2f slotPosition[6] = {
-        {WINDOW_WIDTH / 6 * 1 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
-        {WINDOW_WIDTH / 6 * 3 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
-        {WINDOW_WIDTH / 6 * 5 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
-        {WINDOW_WIDTH / 6 * 1 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
-        {WINDOW_WIDTH / 6 * 3 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
-        {WINDOW_WIDTH / 6 * 5 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 1.2 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 3.0 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 4.8 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 2 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 1.2 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 3.0 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
+        {WINDOW_WIDTH / 6 * 4.8 - GAME_SLOT_WIDTH / 2, percent(WINDOW_HEIGHT, 80) / 8 * 6 - GAME_SLOT_HEIGHT / 2},
     };
 
     return slotPosition[i];

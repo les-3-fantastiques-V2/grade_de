@@ -23,6 +23,7 @@
         EXIT = -1,
         SCENE_MENU_CHOOSE_GAME,
         SCENE_MENU_SETTINGS,
+        SCENE_MENU_STATS,
         SCENE_MAX,
     } SCENE_E;
 
@@ -54,6 +55,7 @@
         GameSlot_t *emptySlot;
         Button_t *exitButton;
         Button_t *settingsButton;
+        Button_t *statsButton;
         Button_t *leftArrowButton;
         Button_t *rightArrowButton;
     } SceneMenuChooseGame_t;
@@ -70,6 +72,16 @@
         SettingsVideoSection_t *videoSection;
         SettingsSaveSection_t *saveSection;
     } SceneMenuSettings_t;
+
+    typedef struct structSceneMenuStats {
+        STATS_SECTION_E currentSection;
+        sfRectangleShape *background;
+        sfConvexShape *backgroundMenu;
+        Button_t *backButton;
+        sfConvexShape *line;
+        StatsApplicationsSection_t *applicationsSection;
+        StatsCredentialsSection_t *credentialsSection;
+    } SceneMenuStats_t;
 
 
 /*==================== FUNCTION ====================*/
@@ -88,6 +100,14 @@
     void destroySceneMenuSettings(void);
     void eventManagerSceneMenuSettings(void);
     SceneMenuSettings_t *getSceneMenuSettingsStruct(void);
+
+        // Scene Menu Stats
+    void loadSceneMenuStats(void);
+    void renderSceneMenuStats(void);
+    void destroySceneMenuStats(void);
+    void eventManagerSceneMenuStats(void);
+    SceneMenuStats_t *getSceneMenuStatsStruct(void);
+
 
 
 /*==================== MACRO ====================*/

@@ -8,6 +8,7 @@
 SRC		=   $(wildcard src/controller/manager/*.c)			\
 			$(wildcard src/controller/scene/*.c)			\
 			$(wildcard src/provider/button/*.c)				\
+			$(wildcard src/provider/credentials/*.c)		\
 			$(wildcard src/provider/cursor/*.c)				\
 			$(wildcard src/provider/font/*.c)				\
 			$(wildcard src/provider/gameSlot/*.c)			\
@@ -15,6 +16,7 @@ SRC		=   $(wildcard src/controller/manager/*.c)			\
 			$(wildcard src/provider/scene/*.c)				\
 			$(wildcard src/provider/settingsSections/*.c)	\
 			$(wildcard src/provider/sound/*.c)				\
+			$(wildcard src/provider/statsSections/*.c)		\
 			$(wildcard src/provider/system/*.c)				\
 			$(wildcard src/service/csfml/*.c)				\
 			$(wildcard src/service/files/*.c)				\

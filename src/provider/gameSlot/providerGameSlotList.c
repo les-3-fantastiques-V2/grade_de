@@ -42,3 +42,17 @@ void destroyGameSlotListStruct(void)
         sceneMenuChooseGame->gameSlotList = next;
     }
 }
+
+int getGameSlotListLength(void)
+{
+    SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
+    GameSlotList_t *gameSlotList = sceneMenuChooseGame->gameSlotList;
+    int length = 0;
+
+    while (gameSlotList != NULL) {
+        length++;
+        gameSlotList = gameSlotList->next;
+    }
+
+    return length;
+}

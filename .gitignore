@@ -3,4 +3,5 @@
 
 *.o
 grade_de
-config/*
+
+config/perso/*
