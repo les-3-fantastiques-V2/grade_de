@@ -36,6 +36,18 @@ typedef struct game_s {
     int score;
 } game_t;
 
+
+/* Builders assets*/
+
+sfRectangleShape *buildBulding();
+sfRectangleShape *buildBulding2();
+sfRectangleShape *buildGround();
+sfRectangleShape *buildMoon();
+sfRectangleShape *buildStars();
+sfRectangleShape *buildWall();
+
+/* Functions*/
+
 void pollEvent(void);
 game_t *getGame(void);
 void fillGame(game_t *game, map_t *assets);
