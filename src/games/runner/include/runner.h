@@ -39,12 +39,12 @@ typedef struct game_s {
 
 /* Builders assets*/
 
-sfRectangleShape *buildBulding();
-sfRectangleShape *buildBulding2();
-sfRectangleShape *buildGround();
-sfRectangleShape *buildMoon();
-sfRectangleShape *buildStars();
-sfRectangleShape *buildWall();
+sfRectangleShape *buildBulding(void);
+sfRectangleShape *buildBulding2(void);
+sfRectangleShape *buildGround(void);
+sfRectangleShape *buildMoon(void);
+sfRectangleShape *buildStars(void);
+sfRectangleShape *buildWall(void);
 
 /* Functions*/
 

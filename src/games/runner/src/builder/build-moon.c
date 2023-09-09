@@ -7,7 +7,7 @@
 
 #include "runner.h"
 
-sfRectangleShape *buildMoon()
+sfRectangleShape *buildMoon(void)
 {
     game_t *game = getGame();
     sfTexture *texture = game->assets->get(game->assets, "moon");

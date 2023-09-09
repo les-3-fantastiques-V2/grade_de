@@ -7,7 +7,7 @@
 
 #include "runner.h"
 
-sfRectangleShape *buildBulding()
+sfRectangleShape *buildBulding(void)
 {
     game_t *game = getGame();
     sfTexture *texture = game->assets->get(game->assets, "fgBulding");

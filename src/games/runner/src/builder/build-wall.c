@@ -7,7 +7,7 @@
 
 #include "runner.h"
 
-sfRectangleShape *buildWall()
+sfRectangleShape *buildWall(void)
 {
     game_t *game = getGame();
     sfTexture *texture = game->assets->get(game->assets, "wall");
