@@ -15,7 +15,7 @@ sfRectangleShape *buildBulding2(void)
     
     sfTexture_setRepeated(texture, sfTrue);
     sfRectangleShape_setTexture(bulding2, texture, sfTrue);
-    sfRectangleShape_setTextureRect(bulding2, (sfIntRect){0, 0, game->window->mode.width, 256});
+    sfRectangleShape_setTextureRect(bulding2, (sfIntRect){0, 0, game->window->mode.width * 2, 256});
     sfRectangleShape_setScale(bulding2, (sfVector2f){2, 2});
     sfRectangleShape_setSize(bulding2, (sfVector2f){game->window->mode.width, 300});
     sfRectangleShape_setPosition(bulding2, (sfVector2f){0, (float)game->window->mode.height - 750});

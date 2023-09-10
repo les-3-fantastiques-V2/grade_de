@@ -33,7 +33,9 @@ typedef struct game_s {
     map_t *assets;
     d_list_t decor;
     player_t *player;
+    sfView *camera;
     int score;
+    float startPos;
 } game_t;
 
 
@@ -52,5 +54,6 @@ void pollEvent(void);
 game_t *getGame(void);
 void fillGame(game_t *game, map_t *assets);
 void drawGame(void);
+void parallaxEffect(int parallax_spd);
 
 #endif //GRADE_DE_RUNNER_H
