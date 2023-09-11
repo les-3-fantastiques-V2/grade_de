@@ -6,13 +6,13 @@
 ##
 
 SRC		=   $(wildcard src/controller/manager/*.c)								\
-			$(wildcard src/controller/scene/MenuChooseGame/gameSlot/*.c)		\
-			$(wildcard src/controller/scene/MenuChooseGame/*.c)					\
-			$(wildcard src/controller/scene/MenuSetting/settingsSections/*.c)	\
-			$(wildcard src/controller/scene/MenuSetting/*.c)					\
-			$(wildcard src/controller/scene/MenuStats/credentials/*.c)			\
-			$(wildcard src/controller/scene/MenuStats/statsSections/*.c)		\
-			$(wildcard src/controller/scene/MenuStats/*.c)						\
+			$(wildcard src/controller/scene/menuChooseGame/gameSlot/*.c)		\
+			$(wildcard src/controller/scene/menuChooseGame/*.c)					\
+			$(wildcard src/controller/scene/menuSetting/settingsSections/*.c)	\
+			$(wildcard src/controller/scene/menuSetting/*.c)					\
+			$(wildcard src/controller/scene/menuStats/credentials/*.c)			\
+			$(wildcard src/controller/scene/menuStats/statsSections/*.c)		\
+			$(wildcard src/controller/scene/menuStats/*.c)						\
 			$(wildcard src/provider/button/*.c)									\
 			$(wildcard src/provider/cursor/*.c)									\
 			$(wildcard src/provider/font/*.c)									\

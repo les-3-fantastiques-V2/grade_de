@@ -14,10 +14,10 @@
 //General Include
 
 //Personal Include
-    #include "mapScene.h"
-    #include "music.h"
-    #include "cursor.h"
-    #include "sound.h"
+    #include "provider/cursor.h"
+    #include "provider/music.h"
+    #include "provider/scene.h"
+    #include "provider/sound.h"
 
 
 /*==================== ENUM ====================*/

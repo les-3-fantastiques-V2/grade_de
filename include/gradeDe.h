@@ -27,21 +27,28 @@
     #include <SFML/Audio.h>
     #include <SFML/System.h>
 
+
 //Personal Include
-    #include "config.h"
+
+    #include "controller/manager/manager.h"
+
+
+    #include "provider/button.h"
+    #include "provider/cursor.h"
+    #include "provider/font.h"
+    #include "provider/music.h"
+    #include "provider/scene.h"
+    #include "provider/sound.h"
+    #include "provider/system.h"
+
+
+    #include "service/service.h"
+
+
     #include "credentials.h"
-    #include "button.h"
     #include "settingsSections.h"
     #include "statsSections.h"
-    #include "cursor.h"
-    #include "font.h"
     #include "gameSlot.h"
-    #include "manager.h"
-    #include "mapScene.h"
-    #include "music.h"
-    #include "service.h"
-    #include "sound.h"
-    #include "provider.h"
 
 
 /*==================== ENUM ====================*/
@@ -54,6 +61,10 @@
 
 
 /*==================== MACRO ====================*/
+
+
+    #define WINDOW_WIDTH 1280
+    #define WINDOW_HEIGHT 720
 
 
 #endif /*GRADE_DE_H_*/

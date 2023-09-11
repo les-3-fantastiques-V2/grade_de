@@ -14,6 +14,12 @@
 //General Include
 
 //Personal Include
+    #include "gameSlot.h"
+    #include "provider/button.h"
+
+    #include "credentials.h"
+    #include "settingsSections.h"
+    #include "statsSections.h"
 
 
 /*==================== ENUM ====================*/
@@ -108,6 +114,14 @@
         void eventManagerSceneMenuStats(void);
         SceneMenuStats_t *getSceneMenuStatsStruct(void);
 
+
+    // Scene Config
+        SceneConfig_t *createSceneConfigById(SCENE_E sceneId);
+        void destroySceneConfig(SceneConfig_t *sceneConfig);
+
+    // Scene Map
+        void initSceneMapStruct(void);
+        void destroySceneMapStruct(void);
 
 
 /*==================== MACRO ====================*/
