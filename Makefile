@@ -1,27 +1,29 @@
 ##
 ## EPITECH PROJECT, 2023
-## minishell2
+## grade_de
 ## File description:
 ## Makefile
 ##
 
-SRC		=   $(wildcard src/controller/manager/*.c)			\
-			$(wildcard src/controller/scene/*.c)			\
-			$(wildcard src/provider/button/*.c)				\
-			$(wildcard src/provider/credentials/*.c)		\
-			$(wildcard src/provider/cursor/*.c)				\
-			$(wildcard src/provider/font/*.c)				\
-			$(wildcard src/provider/gameSlot/*.c)			\
-			$(wildcard src/provider/music/*.c)				\
-			$(wildcard src/provider/scene/*.c)				\
-			$(wildcard src/provider/settingsSections/*.c)	\
-			$(wildcard src/provider/sound/*.c)				\
-			$(wildcard src/provider/statsSections/*.c)		\
-			$(wildcard src/provider/system/*.c)				\
-			$(wildcard src/service/csfml/*.c)				\
-			$(wildcard src/service/files/*.c)				\
-			$(wildcard src/service/math/*.c)				\
-			$(wildcard src/service/text/*.c)				\
+SRC		=   $(wildcard src/controller/manager/*.c)								\
+			$(wildcard src/controller/scene/MenuChooseGame/gameSlot/*.c)		\
+			$(wildcard src/controller/scene/MenuChooseGame/*.c)					\
+			$(wildcard src/controller/scene/MenuSetting/settingsSections/*.c)	\
+			$(wildcard src/controller/scene/MenuSetting/*.c)					\
+			$(wildcard src/controller/scene/MenuStats/credentials/*.c)			\
+			$(wildcard src/controller/scene/MenuStats/statsSections/*.c)		\
+			$(wildcard src/controller/scene/MenuStats/*.c)						\
+			$(wildcard src/provider/button/*.c)									\
+			$(wildcard src/provider/cursor/*.c)									\
+			$(wildcard src/provider/font/*.c)									\
+			$(wildcard src/provider/music/*.c)									\
+			$(wildcard src/provider/scene/*.c)									\
+			$(wildcard src/provider/sound/*.c)									\
+			$(wildcard src/provider/system/*.c)									\
+			$(wildcard src/service/csfml/*.c)									\
+			$(wildcard src/service/files/*.c)									\
+			$(wildcard src/service/math/*.c)									\
+			$(wildcard src/service/text/*.c)									\
 			$(wildcard src/*.c)
 
 OBJ 	= 	$(patsubst src/%.c,object/%.o,$(SRC))
