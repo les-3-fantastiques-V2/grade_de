@@ -56,23 +56,23 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Game Slot
-    void destroyGameSlot(GameSlot_t *gameSlot);
-    bool clickOnGameSlot(void);
-    GAME_E getGameSlotIdByMousePosition();
-    GameSlot_t *createEmptyGameSlot();
-    GameSlot_t *getGameSlotById(GAME_E gameId);
-    GameSlot_t *createGameSlotById(GAME_E gameId);
+    // Game Slot
+        void destroyGameSlot(GameSlot_t *gameSlot);
+        bool clickOnGameSlot(void);
+        GAME_E getGameSlotIdByMousePosition();
+        GameSlot_t *createEmptyGameSlot();
+        GameSlot_t *getGameSlotById(GAME_E gameId);
+        GameSlot_t *createGameSlotById(GAME_E gameId);
 
-        // Game Slot List
-    void initGameSlotListStruct(void);
-    void destroyGameSlotListStruct(void);
-    int getGameSlotListLength(void);
+    // Game Slot List
+        void initGameSlotListStruct(void);
+        void destroyGameSlotListStruct(void);
+        int getGameSlotListLength(void);
 
-        // Game ToolTips
-    void renderTooltips(GameTooltips_t *gameTooltips);
-    void destroyGameTooltips(GameTooltips_t *gameTooltips);
-    GameTooltips_t *createGameTooltips(char *name, char *description);
+    // Game ToolTips
+        void renderTooltips(GameTooltips_t *gameTooltips);
+        void destroyGameTooltips(GameTooltips_t *gameTooltips);
+        GameTooltips_t *createGameTooltips(char *name, char *description);
 
 
 /*==================== MACRO ====================*/

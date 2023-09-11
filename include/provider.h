@@ -47,25 +47,25 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Grade De
-    void initGradeDeStruct(void);
-    int destroyGradeDeStruct(void);
-    GradeDe_t *getGradeDeStruct(void);
+    // Grade De
+        void initGradeDeStruct(void);
+        int destroyGradeDeStruct(void);
+        GradeDe_t *getGradeDeStruct(void);
 
-        // Scene Config
-    SceneConfig_t *createSceneConfigById(SCENE_E sceneId);
-    void destroySceneConfig(SceneConfig_t *sceneConfig);
+    // Scene Config
+        SceneConfig_t *createSceneConfigById(SCENE_E sceneId);
+        void destroySceneConfig(SceneConfig_t *sceneConfig);
 
-        // Scene Map
-    void initSceneMapStruct(void);
-    void destroySceneMapStruct(void);
+    // Scene Map
+        void initSceneMapStruct(void);
+        void destroySceneMapStruct(void);
 
-        // Window Config
-    void setFrameRate(int frameRate);
-    void initWindowConfigStruct(void);
-    void setBrightness(int brightness);
-    void destroyWindowConfigStruct(void);
-    WindowConfig_t *getWindowConfigStruct(void);
+    // Window Config
+        void setFrameRate(int frameRate);
+        void initWindowConfigStruct(void);
+        void setBrightness(int brightness);
+        void destroyWindowConfigStruct(void);
+        WindowConfig_t *getWindowConfigStruct(void);
 
 
 /*==================== MACRO ====================*/

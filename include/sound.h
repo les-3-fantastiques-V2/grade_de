@@ -52,21 +52,14 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Sound
-    void destroySound(Sound_t *sound);
-    Sound_t *getSoundById(SOUND_E soundId);
-    Sound_t *createSoundById(SOUND_E soundId);
+    // Sound
+        void destroySound(Sound_t *sound);
+        Sound_t *getSoundById(SOUND_E soundId);
+        Sound_t *createSoundById(SOUND_E soundId);
 
-        // Sound List
-    void initSoundListStruct(void);
-    void destroySoundListStruct(void);
-
-        // Sound Player
-    float getSoundVolume(void);
-    void playSound(SOUND_E soundId);
-    void initSoundPlayerStruct(void);
-    void destroySoundPlayerStruct(void);
-    void changeSoundVolume(float volume);
+    // Sound List
+        void initSoundListStruct(void);
+        void destroySoundListStruct(void);
 
 
 /*==================== MACRO ====================*/

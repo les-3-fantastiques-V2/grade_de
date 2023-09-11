@@ -87,26 +87,26 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Scene Menu Choose Game
-    void loadSceneMenuChooseGame(void);
-    void renderSceneMenuChooseGame(void);
-    void destroySceneMenuChooseGame(void);
-    void eventManagerSceneMenuChooseGame(void);
-    SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
+    // Scene Menu Choose Game
+        void loadSceneMenuChooseGame(void);
+        void renderSceneMenuChooseGame(void);
+        void destroySceneMenuChooseGame(void);
+        void eventManagerSceneMenuChooseGame(void);
+        SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
 
-        // Scene Menu Settings
-    void loadSceneMenuSettings(void);
-    void renderSceneMenuSettings(void);
-    void destroySceneMenuSettings(void);
-    void eventManagerSceneMenuSettings(void);
-    SceneMenuSettings_t *getSceneMenuSettingsStruct(void);
+    // Scene Menu Settings
+        void loadSceneMenuSettings(void);
+        void renderSceneMenuSettings(void);
+        void destroySceneMenuSettings(void);
+        void eventManagerSceneMenuSettings(void);
+        SceneMenuSettings_t *getSceneMenuSettingsStruct(void);
 
-        // Scene Menu Stats
-    void loadSceneMenuStats(void);
-    void renderSceneMenuStats(void);
-    void destroySceneMenuStats(void);
-    void eventManagerSceneMenuStats(void);
-    SceneMenuStats_t *getSceneMenuStatsStruct(void);
+    // Scene Menu Stats
+        void loadSceneMenuStats(void);
+        void renderSceneMenuStats(void);
+        void destroySceneMenuStats(void);
+        void eventManagerSceneMenuStats(void);
+        SceneMenuStats_t *getSceneMenuStatsStruct(void);
 
 
 
