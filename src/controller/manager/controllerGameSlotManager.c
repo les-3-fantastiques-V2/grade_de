@@ -64,10 +64,7 @@ bool clickOnGameSlot(void)
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     int gameSlotId = sceneMenuChooseGame->currentSlotId + gameSlotPositionId;
     playSound(SOUND_LUNCH_APPLICATION);
-
-    GameSlot_t *gameSlot = getGameSlotById(gameSlotId);
-    const char *name = sfText_getString(gameSlot->tooltips->name);
-    printf("Game: %s\n", name);
+    changeScene(SCENE_GAME_START + gameSlotId);
 
     return true;
 }

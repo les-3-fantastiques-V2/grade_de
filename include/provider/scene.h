@@ -24,6 +24,7 @@
         SCENE_MENU_CHOOSE_GAME,
         SCENE_MENU_SETTINGS,
         SCENE_MENU_STATS,
+        SCENE_GAME_PACMAN,
         SCENE_MAX,
     } SCENE_E;
 
@@ -59,5 +60,6 @@
 
 /*==================== MACRO ====================*/
 
+    #define SCENE_GAME_START SCENE_GAME_PACMAN
 
 #endif /*MAP_SCENE_H_*/

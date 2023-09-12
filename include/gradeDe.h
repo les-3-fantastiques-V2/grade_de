@@ -33,6 +33,8 @@
     // Controller
         #include "controller/manager/manager.h"
 
+        #include "controller/scene/gamePacman/gamePacman.h"
+
         #include "controller/scene/menuChooseGame/gameSlot.h"
         #include "controller/scene/menuChooseGame/menuChooseGame.h"
 

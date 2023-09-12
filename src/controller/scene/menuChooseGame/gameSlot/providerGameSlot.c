@@ -8,11 +8,11 @@
 #include "gradeDe.h"
 
 char *gameName[GAME_MAX] = {
-    "Snake",
+    "Pacman",
 };
 
 char *gameDescription[GAME_MAX] = {
-    "Try to eat the maximum of apple without touching the wall or yourself !",
+    "Try to escape the ghost as long as possible !",
 };
 
 void destroyGameSlot(GameSlot_t *gameSlot)

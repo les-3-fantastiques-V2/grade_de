@@ -11,24 +11,28 @@ void (*renderFunction[SCENE_MAX])(void) = {
     &renderSceneMenuChooseGame,
     &renderSceneMenuSettings,
     &renderSceneMenuStats,
+    &renderSceneGamePacman,
 };
 
 void (*loadSceneElement[SCENE_MAX])(void) = {
     &loadSceneMenuChooseGame,
     &loadSceneMenuSettings,
     &loadSceneMenuStats,
+    &loadSceneGamePacman,
 };
 
 void (*destroySceneElement[SCENE_MAX])(void) = {
     &destroySceneMenuChooseGame,
     &destroySceneMenuSettings,
     &destroySceneMenuStats,
+    &destroySceneGamePacman,
 };
 
 void (*eventSceneManager[SCENE_MAX])(void) = {
     &eventManagerSceneMenuChooseGame,
     &eventManagerSceneMenuSettings,
     &eventManagerSceneMenuStats,
+    &eventManagerSceneGamePacman,
 };
 
 SceneConfig_t *createSceneConfigById(SCENE_E sceneId)

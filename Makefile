@@ -6,6 +6,7 @@
 ##
 
 SRC		=   $(wildcard src/controller/manager/*.c)								\
+			$(wildcard src/controller/scene/gamePacman/*.c)						\
 			$(wildcard src/controller/scene/menuChooseGame/gameSlot/*.c)		\
 			$(wildcard src/controller/scene/menuChooseGame/*.c)					\
 			$(wildcard src/controller/scene/menuSetting/settingsSections/*.c)	\
