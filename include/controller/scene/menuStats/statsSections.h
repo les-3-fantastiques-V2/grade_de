@@ -13,7 +13,11 @@
 
 //General Include
 
+
 //Personal Include
+    #include "credentials.h"
+    #include "provider/button.h"
+
 
 /*==================== ENUM ====================*/
 
@@ -46,21 +50,21 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Stats Section
-    void initStatsSection(void);
-    void renderStatsSection(void);
-    void destroyStatsSection(void);
-    void changeStatsSection(STATS_SECTION_E section);
+    // Stats Section
+        void initStatsSection(void);
+        void renderStatsSection(void);
+        void destroyStatsSection(void);
+        void changeStatsSection(STATS_SECTION_E section);
 
-        // Applications Section
-    void initStatsApplicationsSection(void);
-    void renderStatsApplicationsSection(void);
-    void destroyStatsApplicationsSection(void);
+    // Applications Section
+        void initStatsApplicationsSection(void);
+        void renderStatsApplicationsSection(void);
+        void destroyStatsApplicationsSection(void);
 
-        // Credentials Section
-    void initStatsCredentialsSection(void);
-    void renderStatsCredentialsSection(void);
-    void destroyStatsCredentialsSection(void);
+    // Credentials Section
+        void initStatsCredentialsSection(void);
+        void renderStatsCredentialsSection(void);
+        void destroyStatsCredentialsSection(void);
 
 
 /*==================== MACRO ====================*/

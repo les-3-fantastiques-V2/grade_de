@@ -14,6 +14,7 @@
 //General Include
 
 //Personal Include
+    #include "provider/button.h"
 
 /*==================== ENUM ====================*/
 
@@ -68,31 +69,31 @@
 
 /*==================== FUNCTION ====================*/
 
-        // Plus Minus
-    void renderPlusMinus(PlusMinus_t *plusMinus);
-    void destroyPlusMinus(PlusMinus_t *plusMinus);
-    PlusMinus_t *initPlusMinusStruct(char *title, int *values, sfVector2f position, void (*update)(void));
+    // Plus Minus
+        void renderPlusMinus(PlusMinus_t *plusMinus);
+        void destroyPlusMinus(PlusMinus_t *plusMinus);
+        PlusMinus_t *initPlusMinusStruct(char *title, int *values, sfVector2f position, void (*update)(void));
 
-        // Settings Section
-    void initSettingsSection(void);
-    void renderSettingsSection(void);
-    void destroySettingsSection(void);
-    void changeSettingsSection(SETTINGS_SECTION_E section);
+    // Settings Section
+        void initSettingsSection(void);
+        void renderSettingsSection(void);
+        void destroySettingsSection(void);
+        void changeSettingsSection(SETTINGS_SECTION_E section);
 
-        // Sound Section
-    void initSettingsSoundSection(void);
-    void renderSettingsSoundSection(void);
-    void destroySettingsSoundSection(void);
+    // Sound Section
+        void initSettingsSoundSection(void);
+        void renderSettingsSoundSection(void);
+        void destroySettingsSoundSection(void);
 
-        // Video Section
-    void initSettingsVideoSection(void);
-    void renderSettingsVideoSection(void);
-    void destroySettingsVideoSection(void);
+    // Video Section
+        void initSettingsVideoSection(void);
+        void renderSettingsVideoSection(void);
+        void destroySettingsVideoSection(void);
 
-        // Save Section
-    void initSettingsSaveSection(void);
-    void renderSettingsSaveSection(void);
-    void destroySettingsSaveSection(void);
+    // Save Section
+        void initSettingsSaveSection(void);
+        void renderSettingsSaveSection(void);
+        void destroySettingsSaveSection(void);
 
 
 /*==================== MACRO ====================*/

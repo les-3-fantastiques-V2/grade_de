@@ -49,21 +49,15 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Music
-    void destroyMusic(Music_t *music);
-    Music_t *getMusicById(MUSIC_E musicId);
-    Music_t *createMusicById(MUSIC_E musicId);
+    // Music
+        void destroyMusic(Music_t *music);
+        Music_t *getMusicById(MUSIC_E musicId);
+        Music_t *createMusicById(MUSIC_E musicId);
 
-        // Music List
-    void initMusicListStruct(void);
-    void destroyMusicListStruct(void);
+    // Music List
+        void initMusicListStruct(void);
+        void destroyMusicListStruct(void);
 
-        // Music Player
-    float getMusicVolume(void);
-    void initMusicPlayerStruct(void);
-    void changeMusic(MUSIC_E musicId);
-    void destroyMusicPlayerStruct(void);
-    void changeMusicVolume(float volume);
 
 
 /*==================== MACRO ====================*/

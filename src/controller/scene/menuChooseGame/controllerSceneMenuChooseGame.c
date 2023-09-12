@@ -118,6 +118,7 @@ void loadSceneMenuChooseGame(void)
 
     sceneMenuChooseGame->currentSlotId = 0;
     initGameSlotListStruct();
+
     sceneMenuChooseGame->emptySlot = getGameSlotById(-1);
     sceneMenuChooseGame->background = createRectangleShape(
         (sfVector2f){WINDOW_WIDTH, WINDOW_HEIGHT},
