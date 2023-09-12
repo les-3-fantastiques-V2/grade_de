@@ -14,12 +14,6 @@
 //General Include
 
 //Personal Include
-    #include "gameSlot.h"
-    #include "provider/button.h"
-
-    #include "credentials.h"
-    #include "settingsSections.h"
-    #include "statsSections.h"
 
 
 /*==================== ENUM ====================*/
@@ -51,68 +45,7 @@
     } SceneMap_t;
 
 
-    typedef struct structSceneMenuChooseGame {
-        bool asNext;
-        bool asPrevious;
-        int currentSlotId;
-        sfRectangleShape *background;
-        sfConvexShape *backgroundMenu;
-        GameSlotList_t *gameSlotList;
-        GameSlot_t *emptySlot;
-        Button_t *exitButton;
-        Button_t *settingsButton;
-        Button_t *statsButton;
-        Button_t *leftArrowButton;
-        Button_t *rightArrowButton;
-    } SceneMenuChooseGame_t;
-
-
-    typedef struct structSceneMenuSettings {
-        SETTINGS_SECTION_E currentSection;
-        sfRectangleShape *background;
-        sfConvexShape *backgroundMenu;
-        Button_t *backButton;
-        sfConvexShape *line;
-        sfText *note;
-        SettingsSoundSection_t *soundSection;
-        SettingsVideoSection_t *videoSection;
-        SettingsSaveSection_t *saveSection;
-    } SceneMenuSettings_t;
-
-    typedef struct structSceneMenuStats {
-        STATS_SECTION_E currentSection;
-        sfRectangleShape *background;
-        sfConvexShape *backgroundMenu;
-        Button_t *backButton;
-        sfConvexShape *line;
-        StatsApplicationsSection_t *applicationsSection;
-        StatsCredentialsSection_t *credentialsSection;
-    } SceneMenuStats_t;
-
-
 /*==================== FUNCTION ====================*/
-
-
-    // Scene Menu Choose Game
-        void loadSceneMenuChooseGame(void);
-        void renderSceneMenuChooseGame(void);
-        void destroySceneMenuChooseGame(void);
-        void eventManagerSceneMenuChooseGame(void);
-        SceneMenuChooseGame_t *getSceneMenuChooseGameStruct(void);
-
-    // Scene Menu Settings
-        void loadSceneMenuSettings(void);
-        void renderSceneMenuSettings(void);
-        void destroySceneMenuSettings(void);
-        void eventManagerSceneMenuSettings(void);
-        SceneMenuSettings_t *getSceneMenuSettingsStruct(void);
-
-    // Scene Menu Stats
-        void loadSceneMenuStats(void);
-        void renderSceneMenuStats(void);
-        void destroySceneMenuStats(void);
-        void eventManagerSceneMenuStats(void);
-        SceneMenuStats_t *getSceneMenuStatsStruct(void);
 
 
     // Scene Config
