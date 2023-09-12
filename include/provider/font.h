@@ -46,14 +46,14 @@
 /*==================== FUNCTION ====================*/
 
 
-        // Font
-    void destroyFont(Font_t *font);
-    sfFont *getFontById(FONT_E fontId);
-    Font_t *createFontById(FONT_E fontId);
+    // Font
+        void destroyFont(Font_t *font);
+        sfFont *getFontById(FONT_E fontId);
+        Font_t *createFontById(FONT_E fontId);
 
-        // Font List
-    void initFontListStruct(void);
-    void destroyFontListStruct(void);
+    // Font List
+        void initFontListStruct(void);
+        void destroyFontListStruct(void);
 
 
 /*==================== MACRO ====================*/

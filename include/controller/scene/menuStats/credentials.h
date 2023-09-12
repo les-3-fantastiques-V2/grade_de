@@ -67,6 +67,7 @@ typedef enum CREDENTIALS {
             CredentialsInfo_t *credentialsInfoDragusheen(void);
             void destroyCredentialsInfo(CredentialsInfo_t *credentialsInfo);
 
+
 /*==================== MACRO ====================*/
 
 
