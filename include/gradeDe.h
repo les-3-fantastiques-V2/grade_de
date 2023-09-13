@@ -54,6 +54,7 @@
         #include "provider/scene.h"
         #include "provider/sound.h"
         #include "provider/system.h"
+        #include "provider/transition.h"
 
 
     // Service

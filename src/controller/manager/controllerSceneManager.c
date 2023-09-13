@@ -12,7 +12,6 @@ void changeScene(SCENE_E sceneId)
     GradeDe_t *gradeDe = getGradeDeStruct();
 
     gradeDe->currentSceneId = sceneId;
-    sleep(0.5);
 }
 
 static void _renderScene(SceneConfig_t *sceneConfig)
@@ -25,6 +24,7 @@ static void _renderScene(SceneConfig_t *sceneConfig)
         sceneConfig->renderFunction();
         renderMouseCursor();
         renderRectangleShape(windowConfig->brightnessRectangle);
+        renderTransition();
         sfRenderWindow_display(windowConfig->window);
         sfRenderWindow_clear(windowConfig->window, sfBlack);
     }

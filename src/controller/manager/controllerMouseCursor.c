@@ -10,7 +10,7 @@
 void renderMouseCursor(void)
 {
     GradeDe_t *gradeDe = getGradeDeStruct();
-    WindowConfig_t *windowConfig = gradeDe->windowConfig;
+    WindowConfig_t *windowConfig = getWindowConfigStruct();
     sfVector2i mousePos = sfMouse_getPositionRenderWindow(windowConfig->window);
     sfVector2f cursorPos = (sfVector2f){mousePos.x, mousePos.y};
 

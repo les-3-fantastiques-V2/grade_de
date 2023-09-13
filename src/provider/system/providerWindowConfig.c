@@ -40,7 +40,6 @@ void setFrameRate(int frameRate)
 
 void initWindowConfigStruct(void)
 {
-    GradeDe_t *gradeDeStruct = getGradeDeStruct();
     WindowConfig_t *windowConfigStruct = getWindowConfigStruct();
 
     windowConfigStruct->videoMode = (sfVideoMode){WINDOW_WIDTH, WINDOW_HEIGHT, 32};
@@ -80,8 +79,6 @@ void initWindowConfigStruct(void)
         (sfColor){0, 0, 0, 255 - percent(255, windowConfigStruct->brightness)},
         (sfVector2f){0, 0}
     );
-
-    gradeDeStruct->windowConfig = windowConfigStruct;
 }
 
 void destroyWindowConfigStruct(void)

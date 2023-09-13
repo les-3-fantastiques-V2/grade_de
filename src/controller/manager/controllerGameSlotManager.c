@@ -64,7 +64,7 @@ bool clickOnGameSlot(void)
     SceneMenuChooseGame_t *sceneMenuChooseGame = getSceneMenuChooseGameStruct();
     int gameSlotId = sceneMenuChooseGame->currentSlotId + gameSlotPositionId;
     playSound(SOUND_LUNCH_APPLICATION);
-    changeScene(SCENE_GAME_START + gameSlotId);
+    playTransition(SCENE_GAME_START + gameSlotId);
 
     return true;
 }

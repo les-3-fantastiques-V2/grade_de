@@ -62,6 +62,10 @@
         void destroySoundPlayerStruct(void);
         void changeSoundVolume(float volume);
 
+    // Transition
+        void renderTransition(void);
+        void playTransition(SCENE_E nextScene);
+
 
 /*==================== MACRO ====================*/
 

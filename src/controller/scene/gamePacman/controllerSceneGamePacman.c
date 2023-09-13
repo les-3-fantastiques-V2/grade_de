@@ -42,6 +42,7 @@ void renderSceneGamePacman(void)
 void loadSceneGamePacman(void)
 {
     SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
+    changeMouseCursor(CURSOR_DEFAULT, CURSOR_TYPE_POINTER);
 
     sceneGamePacman->background = createRectangleShape(
         (sfVector2f){WINDOW_WIDTH, WINDOW_HEIGHT},
@@ -50,9 +51,11 @@ void loadSceneGamePacman(void)
     );
     sceneGamePacman->backgroundGame = createRoundedRectangle(
         (sfVector3f){percent(WINDOW_WIDTH, 96), percent(WINDOW_HEIGHT, 78), 40},
-        (sfColor){143, 87, 101, 255},
+        (sfColor){0, 0, 0, 255},
         (sfVector2f){percent(WINDOW_WIDTH, 2), percent(WINDOW_HEIGHT, 4)}
     );
+    sfConvexShape_setOutlineColor(sceneGamePacman->backgroundGame, (sfColor){255, 165, 66, 255});
+    sfConvexShape_setOutlineThickness(sceneGamePacman->backgroundGame, 2);
     sceneGamePacman->backbutton = createButton(
         (sfVector2f){70, 70},
         "assets/image/IconArrowLeft.png",

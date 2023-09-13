@@ -24,6 +24,7 @@ void initGradeDeStruct(void)
     initFontListStruct();
     initMusicPlayerStruct();
     initSoundPlayerStruct();
+    initTransitionStruct();
     gradeDeStruct->currentSceneId = SCENE_MENU_CHOOSE_GAME;
     gradeDeStruct->exitStatus = 0;
 }
@@ -32,6 +33,7 @@ int destroyGradeDeStruct(void)
 {
     GradeDe_t *gradeDeStruct = getGradeDeStruct();
 
+    destroyTransitionStruct();
     destroySoundPlayerStruct();
     destroyMusicListStruct();
     destroyFontListStruct();

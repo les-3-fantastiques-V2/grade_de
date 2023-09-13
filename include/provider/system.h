@@ -40,6 +40,18 @@
         } Config_t;
 
 
+    // Grade De
+        typedef struct structGradeDe {
+            SceneMap_t *sceneMap;
+            FontList_t *fontList;
+            MouseCursor_t *mouseCursor;
+            MusicPlayer_t *musicPlayer;
+            SoundPlayer_t *soundPlayer;
+            int currentSceneId;
+            int exitStatus;
+        } GradeDe_t;
+
+
     // Window Config
         typedef struct structWindowConfig {
             sfRenderWindow *window;
@@ -50,20 +62,6 @@
             int brightness;
             sfRectangleShape *brightnessRectangle;
         } WindowConfig_t;
-
-
-    // Grade De
-        typedef struct structGradeDe {
-            WindowConfig_t *windowConfig;
-            SceneMap_t *sceneMap;
-            FontList_t *fontList;
-            MouseCursor_t *mouseCursor;
-            MusicPlayer_t *musicPlayer;
-            SoundPlayer_t *soundPlayer;
-            int currentSceneId;
-            int exitStatus;
-        } GradeDe_t;
-
 
 
 /*==================== FUNCTION ====================*/
