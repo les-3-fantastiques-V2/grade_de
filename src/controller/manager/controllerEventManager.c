@@ -16,11 +16,10 @@ static bool closeEvent(WindowConfig_t *windowConfig)
 
 void eventManager(SceneConfig_t *sceneConfig)
 {
-    GradeDe_t *gradeDe = getGradeDeStruct();
     WindowConfig_t *windowConfig = getWindowConfigStruct();
 
     while (sfRenderWindow_pollEvent(windowConfig->window, &windowConfig->event)) {
-        if (closeEvent(windowConfig)) gradeDe->currentSceneId = EXIT;
+        if (closeEvent(windowConfig)) playTransition(EXIT);
         sceneConfig->eventSceneManager();
     }
 }

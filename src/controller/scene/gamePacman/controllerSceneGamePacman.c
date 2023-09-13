@@ -11,7 +11,7 @@
 
 static void backButtonPressed(void)
 {
-    changeScene(SCENE_MENU_CHOOSE_GAME);
+    playTransition(SCENE_MENU_CHOOSE_GAME);
 }
 
 

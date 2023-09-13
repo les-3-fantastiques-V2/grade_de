@@ -49,7 +49,7 @@ static void _modifyCurrentSlotId(int value)
 
 static void exitButtonPressed(void)
 {
-    changeScene(EXIT);
+    playTransition(EXIT);
 }
 
 static void settingsButtonPressed(void)
