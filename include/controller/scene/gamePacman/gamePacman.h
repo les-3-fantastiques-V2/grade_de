@@ -16,6 +16,7 @@
 
 //Personal Include
     #include "provider/button.h"
+    #include "gamePacmanBoard.h"
 
 
 /*==================== ENUM ====================*/
@@ -23,11 +24,11 @@
 
 /*==================== STRUCTURE =====================*/
 
-
     typedef struct structSceneGamePacman {
         sfRectangleShape *background;
         sfConvexShape *backgroundGame;
         Button_t *backbutton;
+        PacmanGameBoard_t *gameBoard;
     } SceneGamePacman_t;
 
 

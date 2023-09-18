@@ -7,6 +7,7 @@
 
 #include "gradeDe.h"
 
+
 /* Button Action */
 
 static void backButtonPressed(void)
@@ -37,6 +38,7 @@ void renderSceneGamePacman(void)
     renderRectangleShape(sceneGamePacman->background);
     renderRoundedRectangle(sceneGamePacman->backgroundGame);
     renderButton(sceneGamePacman->backbutton);
+    renderPacmanGameBoard();
 }
 
 void loadSceneGamePacman(void)
@@ -61,12 +63,14 @@ void loadSceneGamePacman(void)
         "assets/image/IconArrowLeft.png",
         (sfVector2f){ 20, WINDOW_HEIGHT - 90}
     );
+    initPacmanGameBoard();
 }
 
 void destroySceneGamePacman(void)
 {
     SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
 
+    destroyPacmanGameBoard();
     destroyButton(sceneGamePacman->backbutton);
     sfRectangleShape_destroy(sceneGamePacman->background);
     sfConvexShape_destroy(sceneGamePacman->backgroundGame);

@@ -17,6 +17,7 @@ SRC		=   $(wildcard src/controller/manager/*.c)								\
 			$(wildcard src/provider/button/*.c)									\
 			$(wildcard src/provider/cursor/*.c)									\
 			$(wildcard src/provider/font/*.c)									\
+			$(wildcard src/provider/mazeGenerator/*.c)							\
 			$(wildcard src/provider/music/*.c)									\
 			$(wildcard src/provider/scene/*.c)									\
 			$(wildcard src/provider/sound/*.c)									\

@@ -34,6 +34,7 @@
         #include "controller/manager/manager.h"
 
         #include "controller/scene/gamePacman/gamePacman.h"
+        #include "controller/scene/gamePacman/gamePacmanBoard.h"
 
         #include "controller/scene/menuChooseGame/gameSlot.h"
         #include "controller/scene/menuChooseGame/menuChooseGame.h"
@@ -50,6 +51,7 @@
         #include "provider/button.h"
         #include "provider/cursor.h"
         #include "provider/font.h"
+        #include "provider/mazeGenerator.h"
         #include "provider/music.h"
         #include "provider/scene.h"
         #include "provider/sound.h"
