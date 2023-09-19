@@ -35,6 +35,7 @@
 
         #include "controller/scene/gamePacman/gamePacman.h"
         #include "controller/scene/gamePacman/gamePacmanBoard.h"
+        #include "controller/scene/gamePacman/gamePacmanWallsBuilder.h"
 
         #include "controller/scene/menuChooseGame/gameSlot.h"
         #include "controller/scene/menuChooseGame/menuChooseGame.h"

@@ -26,6 +26,7 @@
     typedef struct structPacmanGameBoardCell {
         sfVector2i position;
         sfRectangleShape *cell;
+        sfTexture *texture;
         struct structPacmanGameBoardCell *next;
     } PacmanGameBoardCell_t;
 
