@@ -27,6 +27,11 @@ typedef struct player_s {
     sfClock *clock;
 } player_t;
 
+typedef struct layer_s {
+    sfRectangleShape *layer;
+    float speed;
+}layer_t;
+
 typedef struct game_s {
     windowConfig_t *window;
     sfClock *clock;
@@ -41,12 +46,12 @@ typedef struct game_s {
 
 /* Builders assets*/
 
-sfRectangleShape *buildBulding(void);
-sfRectangleShape *buildBulding2(void);
-sfRectangleShape *buildGround(void);
-sfRectangleShape *buildMoon(void);
-sfRectangleShape *buildStars(void);
-sfRectangleShape *buildWall(void);
+layer_t *buildBulding(void);
+layer_t *buildBulding2(void);
+layer_t *buildGround(void);
+layer_t *buildMoon(void);
+layer_t *buildStars(void);
+layer_t *buildWall(void);
 
 /* Functions*/
 
@@ -54,6 +59,6 @@ void pollEvent(void);
 game_t *getGame(void);
 void fillGame(game_t *game, map_t *assets);
 void drawGame(void);
-void parallaxEffect(int parallax_spd);
+void parallaxEffect(float parallax_spd);
 
 #endif //GRADE_DE_RUNNER_H

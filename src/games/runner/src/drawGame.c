@@ -13,6 +13,10 @@ void drawGame(void)
     sfRenderWindow *window = game->window->window;
 
     for (d_node_t *node = game->decor.head; node; node = node->next) {
-        sfRenderWindow_drawRectangleShape(window, node->data, NULL);
+        sfRenderWindow_drawRectangleShape(
+            window,
+            ((layer_t *)node->data)->layer,
+            NULL
+        );
     }
 }

@@ -34,8 +34,10 @@ static void stopRunner(void)
     sfClock_destroy(game->clock);
     sfRenderWindow_destroy(game->window->window);
     destroyAssets(game->assets);
-    for (d_node_t *curr = game->decor.head; curr; curr = curr->next)
-        sfSprite_destroy(curr->data);
+    for (d_node_t *curr = game->decor.head; curr; curr = curr->next) {
+        sfRectangleShape_destroy(((layer_t *) curr->data)->layer);
+        free(curr->data);
+    }
     d_free_list(&game->decor, NULL, 0);
     free(game->window);
 }

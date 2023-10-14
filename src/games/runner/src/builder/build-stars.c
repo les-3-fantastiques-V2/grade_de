@@ -7,14 +7,17 @@
 
 #include "runner.h"
 
-sfRectangleShape *buildStars(void)
+layer_t *buildStars(void)
 {
     game_t *game = getGame();
     sfTexture *texture = game->assets->get(game->assets, "stars");
+    layer_t *layer_stars = malloc(sizeof(layer_t));
     sfRectangleShape *stars = sfRectangleShape_create();
 
     sfRectangleShape_setTexture(stars, texture, sfTrue);
     sfRectangleShape_setPosition(stars, (sfVector2f){0, 0});
     sfRectangleShape_setSize(stars, (sfVector2f){(float)game->window->mode.width, 700});
-    return stars;
+    layer_stars->speed = 1.0f;
+    layer_stars->layer = stars;
+    return layer_stars;
 }
