@@ -21,6 +21,6 @@ layer_t *buildBulding2(void)
     sfRectangleShape_setSize(bulding2, (sfVector2f){(float)game->window->mode.width, 300});
     sfRectangleShape_setPosition(bulding2, (sfVector2f){0, (float)game->window->mode.height - 750});
     layer_building2->layer = bulding2;
-    layer_building2->speed = 1.0f;
+    layer_building2->speed = 0.3f;
     return layer_building2;
 } 

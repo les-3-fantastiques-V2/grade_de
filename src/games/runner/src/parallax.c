@@ -8,7 +8,7 @@
 #include "runner.h"
 #include <SFML/Graphics.h>
 
-void parallaxEffect(float parallax_spd)
+void parallaxEffect(float parallax_spd, sfRectangleShape *layer)
 {
     game_t *game = getGame();
     float len = sfView_getSize(game->camera).x;
@@ -22,14 +22,12 @@ void parallaxEffect(float parallax_spd)
             sfView_getCenter(game->camera).y
         }
     );
-    for (d_node_t *node = game->decor.head; node; node = node->next) {
-        sfVector2f new_pos =
-            sfRectangleShape_getPosition(((layer_t *)node->data)->layer);
-        sfRectangleShape_setPosition(((layer_t *)node->data)->layer,
-            (sfVector2f) {new_pos.x + dist, new_pos.y});
-    }
-    if (temp > game->startPos + len) 
-        game->startPos += len; 
+    sfVector2f new_pos =
+        sfRectangleShape_getPosition(layer);
+    sfRectangleShape_setPosition(layer,
+        (sfVector2f) {new_pos.x + dist, new_pos.y});
+    if (temp > game->startPos + len)
+        game->startPos += len;
     else if (temp < game->startPos - len)
         game->startPos -= len;
     sfRenderWindow_setView(game->window->window, game->camera);

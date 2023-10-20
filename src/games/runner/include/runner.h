@@ -61,6 +61,6 @@ void pollEvent(void);
 game_t *getGame(void);
 void fillGame(game_t *game, map_t *assets);
 void drawGame(void);
-void parallaxEffect(float parallax_spd);
+void parallaxEffect(float parallax_spd, sfRectangleShape *layer);
 
 #endif //GRADE_DE_RUNNER_H
