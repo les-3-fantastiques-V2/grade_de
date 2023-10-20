@@ -12,6 +12,8 @@
 
     #include "main.h"
 
+    #define MyDarkBlue (sfColor){0, 25, 50, 160}
+
 typedef struct windowConfig_s {
     sfVideoMode mode;
     sfRenderWindow *window;

@@ -20,7 +20,8 @@ static void fillWindow(windowConfig_t *window)
     window->mode = sfVideoMode_getDesktopMode();
     window->title = "Grade dé";
     window->fps = 60;
-    window->window = sfRenderWindow_create(window->mode, window->title, sfFullscreen, NULL);
+    window->window = sfRenderWindow_create(window->mode, window->title, sfClose, NULL);
+    sfRenderWindow_setPosition(window->window, (sfVector2i){0, 0});
 }
 
 static void initDecor(void)

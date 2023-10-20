@@ -21,7 +21,7 @@ static void loopRunner(void)
     sfRenderWindow_setFramerateLimit(window, game->window->fps);
     while (sfRenderWindow_isOpen(window)) {
         pollEvent();
-        sfRenderWindow_clear(window, sfBlack);
+        sfRenderWindow_clear(window, MyDarkBlue);
         drawGame();
         sfRenderWindow_display(window);
     }

@@ -16,7 +16,7 @@ layer_t *buildStars(void)
 
     sfRectangleShape_setTexture(stars, texture, sfTrue);
     sfRectangleShape_setPosition(stars, (sfVector2f){0, 0});
-    sfRectangleShape_setSize(stars, (sfVector2f){(float)game->window->mode.width, 700});
+    sfRectangleShape_setSize(stars, (sfVector2f){(float)game->window->mode.width, 1500});
     layer_stars->speed = 1.0f;
     layer_stars->layer = stars;
     return layer_stars;
