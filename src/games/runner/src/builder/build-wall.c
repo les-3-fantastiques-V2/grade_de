@@ -18,6 +18,6 @@ layer_t *buildWall(void)
     sfRectangleShape_setPosition(wall, (sfVector2f){0, (float)game->window->mode.height - 600});
     sfRectangleShape_setSize(wall, (sfVector2f){(float)game->window->mode.width, 500});
     layer_wall->layer = wall;
-    layer_wall->speed = 0.7f;
+    layer_wall->speed = 0.88999f;
     return layer_wall;
 }

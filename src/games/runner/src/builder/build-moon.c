@@ -18,6 +18,6 @@ layer_t *buildMoon(void)
     sfRectangleShape_setSize(moon, (sfVector2f){1446, 512});
     sfRectangleShape_setPosition(moon, (sfVector2f){(float)game->window->mode.width / 5, 0});
     layer_moon->layer = moon;
-    layer_moon->speed = 0.9f;
+    layer_moon->speed = 0.9999f;
     return layer_moon;
 }

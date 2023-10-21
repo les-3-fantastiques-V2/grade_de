@@ -20,7 +20,7 @@ layer_t *buildGround(void)
     sfRectangleShape_setScale(ground, (sfVector2f){3, 2});
     sfRectangleShape_setSize(ground, (sfVector2f){(float)game->window->mode.width, 256});
     sfRectangleShape_setPosition(ground, (sfVector2f){0, (float)game->window->mode.height - 256});
-    layer_ground->speed = 0.04f;
+    layer_ground->speed = 1.0f;
     layer_ground->layer = ground;
     return layer_ground;
 }
