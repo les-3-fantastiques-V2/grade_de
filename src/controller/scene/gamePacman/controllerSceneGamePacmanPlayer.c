@@ -7,6 +7,39 @@
 
 #include "gradeDe.h"
 
+static bool _isOnWarpCase(void)
+{
+    SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
+    GamePacmanPlayer_t *player = sceneGamePacman->player;
+
+    if (player->coord.x % 20 != 0 || player->coord.y % 20 != 0) return false;
+    if (sceneGamePacman->gameBoard->mapWalls[player->coord.y / 20][player->coord.x / 20] != PACMAN_MAP_WARP) return false;
+
+    sfVector2i warpCoord[2] = {(sfVector2i){0, 0}, (sfVector2i){0, 0}};
+    int i = 0;
+    for (int y = 0; y < sceneGamePacman->gameBoard->mapSize.y; y++) {
+        for (int x = 0; x < sceneGamePacman->gameBoard->mapSize.x; x++) {
+            if (sceneGamePacman->gameBoard->mapWalls[y][x] == PACMAN_MAP_WARP) {
+                warpCoord[i] = (sfVector2i){x, y}; i++;
+            }
+        }
+    }
+
+    sfVector2i newCoord = {0, 0};
+    if (player->coord.x == warpCoord[0].x * 20 && player->coord.y == warpCoord[0].y * 20) {
+        newCoord.x = (warpCoord[1].x * 20 - 1) - player->coord.x;
+        newCoord.y = (warpCoord[1].y * 20) - player->coord.y;
+    } else {
+        newCoord.x = (warpCoord[0].x * 20 + 1) - player->coord.x;
+        newCoord.y = (warpCoord[0].y * 20) - player->coord.y;
+    }
+
+    player->coord.x += newCoord.x; player->position.x += newCoord.x;
+    player->coord.y += newCoord.y; player->position.y += newCoord.y;
+    sfRectangleShape_setPosition(player->player, player->position);
+    return true;
+}
+
 static bool _directionIsPossible(PACMAN_PLAYER_DIRECTION_E direction, sfVector2i coord)
 {
     bool isPossible = false;
@@ -39,8 +72,9 @@ static void updatePacmanGamePlayer(void)
     SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
     GamePacmanPlayer_t *player = sceneGamePacman->player;
     float time = getTime(sceneGamePacman->player->movingClock);
-    if (time < 0.01) return;
+    if (time < 0.007) return;
     resetTime(sceneGamePacman->player->movingClock);
+    if (_isOnWarpCase()) return;
     if (player->direction == PLAYER_PACMAN_DIRECTION_NONE) player->direction = player->nextDirection;
     if (player->nextDirection != PLAYER_PACMAN_DIRECTION_NONE) {
         if (_directionIsPossible(player->nextDirection, player->coord)) {

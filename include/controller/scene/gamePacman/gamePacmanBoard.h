@@ -19,6 +19,12 @@
 
 /*==================== ENUM ====================*/
 
+    typedef enum PACMAN_MAP {
+        PACMAN_MAP_WALL = -1,
+        PACMAN_MAP_POINT = 0,
+        PACMAN_MAP_EMPTY,
+        PACMAN_MAP_WARP,
+    } PACMAN_MAP_E;
 
 /*==================== STRUCTURE =====================*/
 

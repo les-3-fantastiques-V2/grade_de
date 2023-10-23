@@ -9,12 +9,11 @@
 
 static sfTexture *_getTextureForCell(sfVector2i coord, int **mapWalls, sfVector2i mapSize)
 {
-    if (mapWalls[coord.y][coord.x] == -1) {
+    if (mapWalls[coord.y][coord.x] == PACMAN_MAP_WALL) {
         createWallTexture(coord, mapWalls, mapSize);
         return sfTexture_createFromFile("assets/games/Pacman/wall.png", NULL);
     }
 
-    if (mapWalls[coord.y][coord.x] == 0) return sfTexture_createFromFile( "assets/games/Pacman/point.png", NULL);
     return sfTexture_createFromFile("assets/games/Pacman/empty.png", NULL);
 }
 
@@ -97,15 +96,17 @@ void initPacmanGameBoard(void)
 
     PacmanGameBoard_t *gameBoard = malloc(sizeof(PacmanGameBoard_t));
     gameBoard->PacmanPosition = (sfVector2i){0, 0};
-    // gameBoard->mapSize = (sfVector2i){57, 23};
-    gameBoard->mapSize = (sfVector2i){13, 13};
+    gameBoard->mapSize = (sfVector2i){57, 23};
+    // gameBoard->mapSize = (sfVector2i){13, 13};
     gameBoard->mapMargin = (sfVector2f){
         percent(WINDOW_WIDTH, 96) / 2 - gameBoard->mapSize.x * 20 / 2 + percent(WINDOW_WIDTH, 2),
         percent(WINDOW_HEIGHT, 78) / 2 - gameBoard->mapSize.y * 20 / 2 + percent(WINDOW_HEIGHT, 4)
     };
     gameBoard->mapWalls = mazeImperfectGenerator(gameBoard->mapSize, 20);
-    // for (int x = 0; x < gameBoard->mapSize.x && gameBoard->mapWalls[11][x] == -1; x++) gameBoard->mapWalls[11][x] = 0;
-    // for (int x = gameBoard->mapSize.x - 1; x > 0 && gameBoard->mapWalls[11][x] == -1; x--) gameBoard->mapWalls[11][x] = 0;
+    for (int x = 0; x < gameBoard->mapSize.x && gameBoard->mapWalls[gameBoard->mapSize.y / 2][x] == -1; x++)
+        gameBoard->mapWalls[gameBoard->mapSize.y / 2][x] = PACMAN_MAP_WARP;
+    for (int x = gameBoard->mapSize.x - 1; x > 0 && gameBoard->mapWalls[gameBoard->mapSize.y / 2][x] == -1; x--)
+        gameBoard->mapWalls[gameBoard->mapSize.y / 2][x] = PACMAN_MAP_WARP;
     _createCell(gameBoard);
 
     sceneGamePacman->gameBoard = gameBoard;
