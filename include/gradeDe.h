@@ -20,6 +20,7 @@
     #include <string.h>
     #include <sys/stat.h>
     #include <sys/types.h>
+    #include <time.h>
     #include <unistd.h>
 
     #include <SFML/Graphics.h>
@@ -35,6 +36,7 @@
 
         #include "controller/scene/gamePacman/gamePacman.h"
         #include "controller/scene/gamePacman/gamePacmanBoard.h"
+        #include "controller/scene/gamePacman/gamePacmanPlayer.h"
         #include "controller/scene/gamePacman/gamePacmanWallsBuilder.h"
 
         #include "controller/scene/menuChooseGame/gameSlot.h"

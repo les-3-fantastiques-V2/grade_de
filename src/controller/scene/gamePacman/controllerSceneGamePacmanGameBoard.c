@@ -28,7 +28,9 @@ static void _freeCell(PacmanGameBoardCell_t *cell)
 static void _addCell(PacmanGameBoardCell_t **cell, sfVector2i position, sfVector2i coord, int **mapWalls, sfVector2i mapSize)
 {
     PacmanGameBoardCell_t *newCell = malloc(sizeof(PacmanGameBoardCell_t));
+    newCell->coord = coord;
     newCell->position = position;
+    newCell->isWall = mapWalls[coord.y][coord.x] == -1;
 
     newCell->texture = _getTextureForCell(coord, mapWalls, mapSize);
     newCell->cell = createRectangleShape((sfVector2f){20, 20}, sfWhite, (sfVector2f){position.x, position.y});
@@ -95,14 +97,15 @@ void initPacmanGameBoard(void)
 
     PacmanGameBoard_t *gameBoard = malloc(sizeof(PacmanGameBoard_t));
     gameBoard->PacmanPosition = (sfVector2i){0, 0};
-    gameBoard->mapSize = (sfVector2i){57, 23};
+    // gameBoard->mapSize = (sfVector2i){57, 23};
+    gameBoard->mapSize = (sfVector2i){13, 13};
     gameBoard->mapMargin = (sfVector2f){
         percent(WINDOW_WIDTH, 96) / 2 - gameBoard->mapSize.x * 20 / 2 + percent(WINDOW_WIDTH, 2),
         percent(WINDOW_HEIGHT, 78) / 2 - gameBoard->mapSize.y * 20 / 2 + percent(WINDOW_HEIGHT, 4)
     };
     gameBoard->mapWalls = mazeImperfectGenerator(gameBoard->mapSize, 20);
-    for (int x = 0; x < gameBoard->mapSize.x && gameBoard->mapWalls[11][x] == -1; x++) gameBoard->mapWalls[11][x] = 0;
-    for (int x = gameBoard->mapSize.x - 1; x > 0 && gameBoard->mapWalls[11][x] == -1; x--) gameBoard->mapWalls[11][x] = 0;
+    // for (int x = 0; x < gameBoard->mapSize.x && gameBoard->mapWalls[11][x] == -1; x++) gameBoard->mapWalls[11][x] = 0;
+    // for (int x = gameBoard->mapSize.x - 1; x > 0 && gameBoard->mapWalls[11][x] == -1; x--) gameBoard->mapWalls[11][x] = 0;
     _createCell(gameBoard);
 
     sceneGamePacman->gameBoard = gameBoard;

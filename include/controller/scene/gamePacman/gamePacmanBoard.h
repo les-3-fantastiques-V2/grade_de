@@ -27,6 +27,8 @@
         sfVector2i position;
         sfRectangleShape *cell;
         sfTexture *texture;
+        bool isWall;
+        sfVector2i coord;
         struct structPacmanGameBoardCell *next;
     } PacmanGameBoardCell_t;
 

@@ -17,6 +17,7 @@
 //Personal Include
     #include "provider/button.h"
     #include "gamePacmanBoard.h"
+    #include "gamePacmanPlayer.h"
 
 
 /*==================== ENUM ====================*/
@@ -29,6 +30,7 @@
         sfConvexShape *backgroundGame;
         Button_t *backbutton;
         PacmanGameBoard_t *gameBoard;
+        GamePacmanPlayer_t *player;
     } SceneGamePacman_t;
 
 

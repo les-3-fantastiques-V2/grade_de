@@ -28,6 +28,7 @@ void eventManagerSceneGamePacman(void)
 {
     SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
 
+    eventPacmanGamePlayer();
     if (clickOnButton(sceneGamePacman->backbutton, &backButtonPressed)) return;
 }
 
@@ -39,6 +40,7 @@ void renderSceneGamePacman(void)
     renderRoundedRectangle(sceneGamePacman->backgroundGame);
     renderButton(sceneGamePacman->backbutton);
     renderPacmanGameBoard();
+    renderPacmanGamePlayer();
 }
 
 void loadSceneGamePacman(void)
@@ -64,12 +66,14 @@ void loadSceneGamePacman(void)
         (sfVector2f){ 20, WINDOW_HEIGHT - 90}
     );
     initPacmanGameBoard();
+    initPacmanGamePlayer();
 }
 
 void destroySceneGamePacman(void)
 {
     SceneGamePacman_t *sceneGamePacman = getSceneGamePacmanStruct();
 
+    destroyPacmanGamePlayer();
     destroyPacmanGameBoard();
     destroyButton(sceneGamePacman->backbutton);
     sfRectangleShape_destroy(sceneGamePacman->background);

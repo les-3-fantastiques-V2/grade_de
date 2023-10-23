@@ -21,7 +21,7 @@ static int **_getInitialMaze(sfVector2i mazeSize)
 
 static int _getRandomNumber(int min, int max)
 {
-    return (rand() % (max - min + 1)) + min;
+    return (random() % (max - min + 1)) + min;
 }
 
 static int **_buildMaze(int **maze, sfVector2i position, sfVector2i mazeSize)
@@ -75,6 +75,7 @@ static int **_buildMaze(int **maze, sfVector2i position, sfVector2i mazeSize)
 
 int **mazePerfectGenerator(sfVector2i mazeSize)
 {
+    srandom(time(NULL));
     int **maze = _getInitialMaze(mazeSize);
 
     maze[1][1] = 0;
